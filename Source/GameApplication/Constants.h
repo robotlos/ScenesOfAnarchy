@@ -1,0 +1,11 @@
+#pragma once
+#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
+
+enum CustomControls{
+	BUILT_IN_COUNT = VAPP_INPUT_CONTROL_LAST_ELEMENT,
+	CUSTOM_CONTROL_ONE,
+	CUSTOM_CONTROL_TWO,
+	CUSTOM_CONTROL_THREE,
+	CUSTOM_CONTROL_FOUR,
+	CUSTOM_CONTROL_FIVE
+};

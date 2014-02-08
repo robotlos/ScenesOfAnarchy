@@ -6,255 +6,161 @@
 *
 */
 
-
-// Basic template to base a project EXE on.
-//
-//
-
-
 #include "GameApplicationPCH.h"
-#include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokPhysicsModule.hpp>
-#include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokRagdoll.hpp>
+#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
 
-
-//============================================================================================================
-// Properties for start up. Some of the settings are not relevant for mobile devices
-//============================================================================================================
-int windowSizeX    = 1024;               // Set the Window size X if not in fullscreen.
-int windowSizeY    = 768;                // Set the Window size Y if not in fullscreen.
-int windowPosX    = 500;                 // Set the Window position X if not in fullscreen.
-int windowPosy    = 50;                  // Set the Window position Y if not in fullscreen.
-
-char name[]      = "Scenes of Anarchy";  // Name to be displayed in the windows title bar.
-char StartUpScene[]  = "Scenes\\GravityRoom.vscene";   // Set the location of your start up scene.
-
-float cameraInitX = 0;                    //
-float cameraInitY = 0;                    //
-float cameraInitZ = 1000;                  // Set our camera above the ground so that we can see 
-// the ground.
-IVMultiTouchInput* touchscreen;
-// Use the following line to initialize a plugin that is statically linked. 
+#include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
+#include "IController.h"
+#include "GravityRoomController.h"
+// Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
-VisSampleAppPtr spApp;
 
-//Width and Height of Screen
-int width;
-int height;
 
-int bodyCount = 0;
 
-//Define additional inputs over what VisSampleApp.cpp does
-enum CUSTOM_INPUT_CONTROL{
-	VICLE = VISION_INPUT_CONTROL_LAST_ELEMENT,
-#if defined(WIN32)
-	LEFT_CLICK,
-#endif
-#if defined(_VISION_ANDROID)
-	TAP_BOTTOM_RIGHT,
-	TAP_BOTTOM_LEFT,
-	TAP_TOP_RIGHT,
-	TAP_TOP_LEFT,
-#endif
-	CUSTOM_INPUT_CONTROL_LAST_ELEMENT
+class ProjectTemplateApp : public VAppImpl
+{
+public:
+	ProjectTemplateApp() {}
+	virtual ~ProjectTemplateApp() {}
+
+	virtual void SetupAppConfig(VisAppConfig_cl& config) HKV_OVERRIDE;
+	virtual void PreloadPlugins() HKV_OVERRIDE;
+
+	virtual void Init() HKV_OVERRIDE;
+	virtual void AfterSceneLoaded(bool bLoadingSuccessful) HKV_OVERRIDE;
+	virtual bool Run() HKV_OVERRIDE;
+	virtual void DeInit() HKV_OVERRIDE;
+	void UpdateFPS();
+	IController* controller;
+	float m_iFrameCounter;
+	float m_fTimeAccumulator;
+	float m_fCurrentFrameTime;
+	float m_fCurrentFps;
 };
 
+VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
 
-#if defined(_VISION_ANDROID)
-//Pointer to accelerometer
-VMotionInputAndroid* pMotionInput = NULL;
-//Pointer to physics module
-vHavokPhysicsModule* pMod;
-#endif
-//---------------------------------------------------------------------------------------------------------
-// Init function. Here we trigger loading our scene
-//---------------------------------------------------------------------------------------------------------
-VISION_INIT
+void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
 {
-	// Create our new application.
-	spApp = new VisSampleApp();
+	// Set custom file system root name ("havok_sdk" by default)
+	config.m_sFileSystemRootName = "template_root";
 
-	// set the initial starting position of our game window
-	// and other properties if not in fullscreen. This is only relevant on windows
+	// Set the initial starting position of our game window and other properties
+	// if not in fullscreen. This is only relevant on windows
+	config.m_videoConfig.m_iXRes = 1280; // Set the Window size X if not in fullscreen.
+	config.m_videoConfig.m_iYRes = 720;  // Set the Window size Y if not in fullscreen.
+	config.m_videoConfig.m_iXPos = 50;   // Set the Window position X if not in fullscreen.
+	config.m_videoConfig.m_iYPos = 50;   // Set the Window position Y if not in fullscreen.
+
+	// Name to be displayed in the windows title bar.
+	config.m_videoConfig.m_szWindowTitle = "StandAlone Project Template";
+
+	config.m_videoConfig.m_bWaitVRetrace = true;
+
+	// Fullscreen mode with current desktop resolution
+
 #if defined(WIN32)
-	spApp->m_appConfig.m_videoConfig.m_iXPos = windowPosX;
-	spApp->m_appConfig.m_videoConfig.m_iYPos = windowPosy;
-	spApp->m_appConfig.m_videoConfig.m_szWindowTitle = name;
+	/*
+	DEVMODEA deviceMode;
+	deviceMode = Vision::Video.GetAdapterMode(config.m_videoConfig.m_iAdapter);
+	config.m_videoConfig.m_iXRes = deviceMode.dmPelsWidth;
+	config.m_videoConfig.m_iYRes = deviceMode.dmPelsHeight;
+	config.m_videoConfig.m_bFullScreen = true;
+	*/
 #endif
 
-	// Set the executable directory the current directory
-	VisionAppHelpers::MakeEXEDirCurrent();
+}
 
-	// Set the paths to our stand alone version to override the VisSAampleApp paths.
-	// The paths are platform dependent
-#if defined(WIN32)
-	const VString szRoot = "..\\..\\..\\..";
-	Vision::File.AddDataDirectory( szRoot + "\\Assets" );
-	Vision::File.AddDataDirectory( szRoot + "\\Data\\Vision\\Base" );
-
-#elif defined(_VISION_ANDROID)
-	VString szRoot = VisSampleApp::GetApkDirectory();
-	szRoot += "?assets";
-	Vision::File.AddDataDirectory( szRoot + "\\Assets" );
-	// "/Data/Vision/Base" is always added by the sample app
-
-#elif defined(_VISION_TIZEN)
-	VString szRoot = VisSampleApp::GetDataRootDirectory();
-	Vision::File.AddDataDirectory( szRoot + "\\Assets" );
-	// "/Data/Vision/Base" is always added by the sample app
-
-#elif defined(_VISION_IOS)
-	// setup directories, does nothing on platforms other than iOS,
-	// pass true if you want load from the documents directory
-	VISION_SET_DIRECTORIES(false);
-	VString szRoot = VisSampleApp::GetRootDirectory();
-	// our deploy script always copies the asset data below the "Data" folder
-	Vision::File.AddDataDirectory( szRoot + "/Data/Assets" );
-	// "/Data/Vision/Base" is always added by the sample app
-
-#endif
-
-#if defined(VISION_OUTPUT_DIR)
-	// Set the output directory manually since VSAMPLE_CUSTOMDATADIRECTORIES was specified
-	// at the initialization.
-	Vision::File.SetOutputDirectory(VISION_OUTPUT_DIR);
-	Vision::File.AddDataDirectory(VISION_OUTPUT_DIR);
-#endif
-
-	spApp->LoadVisionEnginePlugin();
-
+void ProjectTemplateApp::PreloadPlugins()
+{
 	// Use the following line to load a plugin. Remember that, except on Windows platform, in addition
 	// you still need to statically link your plugin library (e.g. on mobile platforms) through project
 	// Properties, Linker, Additional Dependencies.
 	VISION_PLUGIN_ENSURE_LOADED(GamePlugin);
+}
 
-	// Init the application and point it to the start up scene.
-	if (!spApp->InitSample( "", StartUpScene, VSampleFlags::VSAMPLE_INIT_DEFAULTS|VSampleFlags::VSAMPLE_CUSTOMDATADIRECTORIES,windowSizeX,windowSizeY))
-		return false;
+//---------------------------------------------------------------------------------------------------------
+// Init function. Here we trigger loading our scene
+//---------------------------------------------------------------------------------------------------------
+void ProjectTemplateApp::Init()
+{
+	m_iFrameCounter=0;
+	m_fTimeAccumulator=0;
+	m_fCurrentFrameTime=0;
+	m_fCurrentFps=0;
 
-	return true;
+	// Set filename and paths to our stand alone version.
+	// Note: "/Data/Vision/Base" is always added by the sample framework
+	VisAppLoadSettings settings("Scenes/GravityRoom.vscene");
+
+	settings.m_customSearchPaths.Append(":template_root/Assets");
+	LoadScene(settings);
 }
 
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
-
-VISION_SAMPLEAPP_AFTER_LOADING
+void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 {
-	// define some help text
-	spApp->AddHelpText( "" );
-	spApp->AddHelpText( "How to use this demo :" );
-	spApp->AddHelpText( "" );
+	// Define some help text
+	//VArray<const char*> help;
+	//help.Append("How to use this demo...");
+	//help.Append("");
+	//RegisterAppModule(new VHelp(help));
 
-	//Look for predefined camera and attach it
-	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("CameraPosition");
-	Vision::Camera.AttachToEntity(pCamera, hkvVec3::ZeroVector());
-
-	//Get the width and height of the screen.
-	 width = Vision::Video.GetXRes();
-	 height = Vision::Video.GetYRes();
-
-#if defined(_VISION_ANDROID)
-	 //Grab the motion device for input and enable it
-	pMotionInput = (VMotionInputAndroid*)(&VInputManager::GetInputDevice(INPUT_DEVICE_MOTION_SENSOR));
-	pMotionInput->SetEnabled(true);
-	//Grab the physics module from the spApp.
-	pMod = static_cast<vHavokPhysicsModule*>(spApp->GetPhysicsModule());
-
-	//register triggers
-	VTouchArea* addRagdollArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef((float)width * .65f, (float)height * .70f, (float)width, (float)height), -900.0f);
-	spApp->GetInputMap()->MapTrigger(TAP_BOTTOM_RIGHT, addRagdollArea, CT_TOUCH_ANY);
-	VTouchArea* addCubeArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(0.0f, (float)height*.70f, (float)width*.35f, (float)height), -900.0f);
-	spApp->GetInputMap()->MapTrigger(TAP_BOTTOM_LEFT, addCubeArea, CT_TOUCH_ANY);
-	VTouchArea* addSphereArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef((float)width * .65f, 0.0f, (float)width, (float)height * .35f), -900.0f);
-	spApp->GetInputMap()->MapTrigger(TAP_TOP_RIGHT, addSphereArea, CT_TOUCH_ANY);
-
-#endif// Add other initial game code here
+	// Create a mouse controlled camera (set above the ground so that we can see the ground)
+	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
+	// Add other initial game code here
 	// [...]
+	controller = new GravityRoomController();
+	controller->MapTriggers(this->GetInputMap());
 }
 
 //---------------------------------------------------------------------------------------------------------
-// main loop of the application until we quit
+// Main Loop of the application until we quit
 //---------------------------------------------------------------------------------------------------------
-
-void AddRagdoll(){	
-	VisBaseEntity_cl *ent2 = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(-100.0f, 5, 100), "Models\\Warrior\\Warrior.model");
-	vHavokRagdoll *ragdoll = new vHavokRagdoll();
-	ragdoll->SetRagdollCollisionFile("Models\\Warrior\\WarriorRagdoll.hkt");
-	ent2->AddComponent(ragdoll);
-
-}
-void AddCube(){
-
-	VisBaseEntity_cl *ent2 = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(-100.0f, 30, 100), "Models\\Misc\\Cube.Model");
-	vHavokRigidBody *cube = new vHavokRigidBody();
-	cube->Havok_TightFit = true;
-	ent2->AddComponent(cube);
-
-}
-void AddSphere(){
-
-	VisBaseEntity_cl *ent2 = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(-100.0f, -30, 100), "Models\\Misc\\Sphere.Model");
-	vHavokRigidBody *sphere = new vHavokRigidBody();
-	sphere->Havok_TightFit = true;
-	sphere->Havok_Restitution = 1.0f;
-	ent2->AddComponent(sphere);
-
-}
-
-
-VISION_SAMPLEAPP_RUN
-{ 
-#if defined(_VISION_ANDROID)
-	//Print out the bodycount 
-	Vision::Message.Print(0,0,0,"Number of Bodies %d", bodyCount);
-	//Grab the accel data
-	hkvVec3 accel = pMotionInput->GetAcceleration();
-	//Multiply it by 1K to increase the intensity
-	accel = accel *1000;
-	//Havok uses weird axises (axi?) so they had to be swapped and negated
-	hkvVec3 gravity = hkvVec3(-1*accel.z,-1*accel.x,accel.y);
-	//set the new gravity
-	pMod->SetGravity(gravity);
-	//Listen for triggers
-	if(spApp->GetInputMap()->GetTrigger(TAP_BOTTOM_RIGHT)){
-		AddRagdoll();
-		bodyCount++;
-	}
-	if(spApp->GetInputMap()->GetTrigger(TAP_BOTTOM_LEFT)){
-		AddCube();
-		bodyCount++;
-	}
-	if(spApp->GetInputMap()->GetTrigger(TAP_TOP_RIGHT)){
-		AddSphere();
-		bodyCount++;
-	}
-#endif// Add other initial game co
-	return spApp->Run();
-}
-
-VISION_DEINIT
+bool ProjectTemplateApp::Run()
 {
-	// Deinit the application
-	spApp->DeInitSample();
-	spApp = NULL;
+	UpdateFPS();
+	controller->Run(this->GetInputMap());
 	return true;
 }
 
-VISION_MAIN_DEFAULT
+void ProjectTemplateApp::UpdateFPS(){
+	m_iFrameCounter++;
+	m_fTimeAccumulator += Vision::GetUITimer()->GetTimeDifference();
 
-	/*
-	* Havok SDK - Base file, BUILD(#20131022)
-	* 
-	* Confidential Information of Havok.  (C) Copyright 1999-2013
-	* Telekinesys Research Limited t/a Havok. All Rights Reserved. The Havok
-	* Logo, and the Havok buzzsaw logo are trademarks of Havok.  Title, ownership
-	* rights, and intellectual property rights in the Havok software remain in
-	* Havok and/or its suppliers.
-	* 
-	* Use of this software for evaluation purposes is subject to and indicates
-	* acceptance of the End User licence Agreement for this product. A copy of
-	* the license is included with this software and is also available from salesteam@havok.com.
-	* 
-	*/
+	if (m_fTimeAccumulator >= 1.0f)
+	{
+		m_fCurrentFrameTime = m_fTimeAccumulator / m_iFrameCounter;
+		m_fCurrentFps = m_iFrameCounter / m_fTimeAccumulator;
+
+		m_fTimeAccumulator = 0.0f;
+		m_iFrameCounter = 0;
+	}
+	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
+}
+
+
+void ProjectTemplateApp::DeInit()
+{
+	// De-Initialization
+	// [...]
+}
+
+/*
+* Havok SDK - Base file, BUILD(#20131218)
+* 
+* Confidential Information of Havok.  (C) Copyright 1999-2013
+* Telekinesys Research Limited t/a Havok. All Rights Reserved. The Havok
+* Logo, and the Havok buzzsaw logo are trademarks of Havok.  Title, ownership
+* rights, and intellectual property rights in the Havok software remain in
+* Havok and/or its suppliers.
+* 
+* Use of this software for evaluation purposes is subject to and indicates
+* acceptance of the End User licence Agreement for this product. A copy of
+* the license is included with this software and is also available from salesteam@havok.com.
+* 
+*/
