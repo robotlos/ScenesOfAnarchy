@@ -12,7 +12,6 @@
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
-#include <sstream>
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
@@ -127,6 +126,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 bool ProjectTemplateApp::Run()
 {
 	UpdateFPS();
+	IController::RecordFps(blah,m_fCurrentFps);
 	controller->Run(this->GetInputMap());
 	return true;
 }
@@ -144,11 +144,6 @@ void ProjectTemplateApp::UpdateFPS(){
 		m_iFrameCounter = 0;
 	}
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
-	std::ostringstream ss;
-	ss << m_fCurrentFps;
-	std::string s = ss.str() + " ";
-	const char * c = s.c_str();
-	blah->WriteText(c);
 }
 
 
