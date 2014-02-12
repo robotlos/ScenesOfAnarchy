@@ -12,6 +12,7 @@
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
+#include <sstream>
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
@@ -38,6 +39,7 @@ public:
 	float m_fTimeAccumulator;
 	float m_fCurrentFrameTime;
 	float m_fCurrentFps;
+	IVFileOutStream* blah;
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -90,6 +92,7 @@ void ProjectTemplateApp::Init()
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
+	blah = Vision::File.Create("blah.txt","data");
 
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
@@ -141,6 +144,11 @@ void ProjectTemplateApp::UpdateFPS(){
 		m_iFrameCounter = 0;
 	}
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
+	std::ostringstream ss;
+	ss << m_fCurrentFps;
+	std::string s = ss.str() + " ";
+	const char * c = s.c_str();
+	blah->WriteText(c);
 }
 
 
