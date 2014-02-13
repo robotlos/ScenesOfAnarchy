@@ -59,7 +59,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">
     <ClCompile>
       <AdditionalOptions>/MP  %(AdditionalOptions)</AdditionalOptions>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>Create</PrecompiledHeader>
       <PrecompiledHeaderFile>GameApplicationPCH.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)GameApplicationPCH.pch</PrecompiledHeaderOutputFile>
     </ClCompile>
@@ -139,12 +139,22 @@
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="EntityStack.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">GameApplicationPCH.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile Condition="'$(Configuration)|$(Platform)'=='Debug DLL|Win32'">$(IntDir)GameApplicationPCH.pch</PrecompiledHeaderOutputFile>
+    </ClCompile>
+    <ClCompile Include="StackNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="EntityStack.h" />
+    <ClInclude Include="StackNode.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
