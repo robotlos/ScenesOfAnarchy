@@ -6,11 +6,15 @@
     <ClCompile Include="$(NDKROOT)\sources\android\native_app_glue\android_native_app_glue.c" />
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="IController.cpp" />
+    <ClCompile Include="EntityStack.cpp" />
+    <ClCompile Include="StackNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="EntityStack.h" />
+    <ClInclude Include="StackNode.h" />
   </ItemGroup>
 </Project>
