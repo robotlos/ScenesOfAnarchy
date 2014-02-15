@@ -2,7 +2,7 @@
 #include "IController.h"
 #include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokPhysicsModule.hpp>
 #include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokRagdoll.hpp>
-#include <sstream>
+
 
 IController::IController(void)
 {
@@ -39,10 +39,3 @@ VisBaseEntity_cl* IController::AddCube(){
 	return ent;
 }
 
-void IController::RecordFps(IVFileOutStream* file, float fps){
-	std::ostringstream ss;
-	ss << fps;
-	std::string s = ss.str() + " ";
-	const char * c = s.c_str();
-	file->WriteText(c);
-}
