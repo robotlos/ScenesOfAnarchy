@@ -18,7 +18,7 @@
     <ProjectGuid>{4910E2EB-2888-4829-9FE1-3E7B6FA0ED76}</ProjectGuid>
     <RootNamespace>
     </RootNamespace>
-    <ProjectName>ProjectTemplate</ProjectName>
+    <ProjectName>ScenesOfAnarchy</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Dev|hkAndroid'">
@@ -40,17 +40,17 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|hkAndroid'">
     <OutDir>..\..\Bin\android_arm_vs2010_anarchy\$(Configuration)\</OutDir>
     <IntDir>..\..\Obj\android_arm_vs2010_anarchy\$(Configuration)\ProjectTemplate\</IntDir>
-    <TargetName>ProjectTemplate</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Dev|hkAndroid'">
-    <TargetName>ProjectTemplate</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <OutDir>..\..\Bin\android_arm_vs2010_anarchy\$(Configuration)\</OutDir>
     <IntDir>..\..\Obj\android_arm_vs2010_anarchy\$(Configuration)\ProjectTemplate\</IntDir>
     <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|hkAndroid'">
-    <TargetName>ProjectTemplate</TargetName>
+    <TargetName>$(ProjectName)</TargetName>
     <OutDir>..\..\Bin\android_arm_vs2010_anarchy\$(Configuration)\</OutDir>
     <IntDir>..\..\Obj\android_arm_vs2010_anarchy\$(Configuration)\ProjectTemplate\</IntDir>
     <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
@@ -122,16 +122,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(NDKROOT)\sources\android\native_app_glue\android_native_app_glue.c" />
+    <ClCompile Include="EntityStack.cpp" />
     <ClCompile Include="GameApplicationPCH.cpp" />
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="StackNode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="EntityStack.h" />
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="StackNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
