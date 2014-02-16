@@ -57,7 +57,7 @@ public:
 	void initMenu();
 	bool is_TowerOfDoom;
 	bool is_GravityRoom;
-	
+	void addButtons();
 	private:
 	State m_state;
 	VDialog* m_pMainMenuDialog;
@@ -132,6 +132,32 @@ void ProjectTemplateApp::Init()
 	//end changes by carlos
 
 }
+//added by Bardia
+void ProjectTemplateApp::addButtons(){
+
+#if defined(_VISION_ANDROID)
+	int width = Vision::Video.GetXRes();
+	int height = Vision::Video.GetYRes();
+
+	VisScreenMask_cl *addCube = new VisScreenMask_cl();
+	addCube->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addCube->SetPos(width *.85, height * .10 );
+
+	VisScreenMask_cl *deleteLast = new VisScreenMask_cl();
+	deleteLast->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	deleteLast->SetPos(width *.10, height * .10 );
+
+	VisScreenMask_cl *addRagdoll = new VisScreenMask_cl();
+	addRagdoll->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addRagdoll->SetPos(width *.85, height * .85 );
+
+	VisScreenMask_cl *addSphere = new VisScreenMask_cl();
+	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addSphere->SetPos(width *.10, height * .85 );
+
+#endif
+
+}
 
 //changes by carlos
 void ProjectTemplateApp::initMenu(){
@@ -161,11 +187,22 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//changes by carlos
 	/*controller = new GravityRoomController();
 	controller->MapTriggers(this->GetInputMap());*/
-		if(is_GravityRoom){
+	
+	if(is_GravityRoom){
 	controller = new GravityRoomController();
 	controller->MapTriggers(this->GetInputMap());
+	VAppMenuContextPtr spContext = GetContext();
+	VGUIManager::GlobalManager().LoadResourceFile("Assets\\MenuSystem.xml");
+	m_pMainMenuDialog = spContext->ShowDialog("Assets\\GravityRoomGUI\\MainMenu.xml");
+	addButtons();
+
+	//VAppMenuContextPtr spContext = GetContext();
+	//VGUIManager::GlobalManager().LoadResourceFile("Assets\\MenuSystem.xml");
+	//m_pMainMenuDialog = spContext->ShowDialog("Assets\\GravityRoomGUI\\MainMenu.xml");
+	
 	}
 	else if(is_TowerOfDoom){
+	
 	controller = new GravityRoomController();
 	controller->MapTriggers(this->GetInputMap());
 	}
@@ -195,6 +232,7 @@ bool ProjectTemplateApp::changeScene(int iDlgResult, VDialog* m_pMainMenuDialog)
 	}
 	return false;
 }
+
 //end changes by carlos
 //changes by carlos
 bool ProjectTemplateApp::runGame(){
@@ -215,6 +253,8 @@ bool ProjectTemplateApp::exitScene(){
 	initMenu();
 	return true;
 }
+
+
 //end changes by carlos
 //---------------------------------------------------------------------------------------------------------
 // Main Loop of the application until we quit
