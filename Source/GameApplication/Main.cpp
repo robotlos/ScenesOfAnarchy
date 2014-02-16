@@ -22,7 +22,18 @@ VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 class ProjectTemplateApp : public VAppImpl
 {
 public:
-	ProjectTemplateApp() {}
+	//changes by carlos
+	enum State{
+		MAIN_MENU_STATE,
+		GAME_STATE
+	};
+//end changes by carlos
+	ProjectTemplateApp() 
+	//changes by carlos
+	: m_state(MAIN_MENU_STATE)
+	, m_pMainMenuDialog(NULL)
+	//end changes by carlos
+	{}
 	virtual ~ProjectTemplateApp() {}
 
 	virtual void SetupAppConfig(VisAppConfig_cl& config) HKV_OVERRIDE;
@@ -38,6 +49,19 @@ public:
 	float m_fTimeAccumulator;
 	float m_fCurrentFrameTime;
 	float m_fCurrentFps;
+
+	///changes by carlos
+	bool changeScene(int iDlgResult, VDialog* m_pMainMenuDialog);
+	bool runGame();
+	bool exitScene();
+	void initMenu();
+	bool is_TowerOfDoom;
+	bool is_GravityRoom;
+	
+	private:
+	State m_state;
+	VDialog* m_pMainMenuDialog;
+	///end changes by carlos
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -93,12 +117,31 @@ void ProjectTemplateApp::Init()
 
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
+	
+	//changes by carlos
+	/*        changes by carlos
 	VisAppLoadSettings settings("Scenes/GravityRoom.vscene");
 
 	settings.m_customSearchPaths.Append(":template_root/Assets");
-	LoadScene(settings);
+	LoadScene(settings);*/
+
+		initMenu();
+		// Prepare the world in order to have skinning shaders for the render to texture menu
+	Vision::InitWorld();
+
+	//end changes by carlos
+
 }
 
+//changes by carlos
+void ProjectTemplateApp::initMenu(){
+	Vision::Error.SetReportStatus(FALSE);
+	Vision::ResourceSystem.SetReportSurvivingResources(FALSE);
+	VAppMenuContextPtr spContext = GetContext();
+	VGUIManager::GlobalManager().LoadResourceFile("Assets\\MenuSystem.xml");
+	m_pMainMenuDialog = spContext->ShowDialog("Assets\\MainMenu.xml");
+}
+//end changes by carlos
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
@@ -114,18 +157,94 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
 	// Add other initial game code here
 	// [...]
+
+	//changes by carlos
+	/*controller = new GravityRoomController();
+	controller->MapTriggers(this->GetInputMap());*/
+		if(is_GravityRoom){
 	controller = new GravityRoomController();
 	controller->MapTriggers(this->GetInputMap());
+	}
+	else if(is_TowerOfDoom){
+	controller = new GravityRoomController();
+	controller->MapTriggers(this->GetInputMap());
+	}
+	//end changes by carlos
+}
+//changes by carlos
+bool ProjectTemplateApp::changeScene(int iDlgResult, VDialog* m_pMainMenuDialog){
+		GetContext()->CloseDialog(m_pMainMenuDialog);
+		m_pMainMenuDialog = NULL;
+		m_state = GAME_STATE;
+	
+	if(iDlgResult == VGUIManager::GetID("LOADGR")){
+		VisAppLoadSettings settings("Scenes/GravityRoom.vscene");
+		settings.m_customSearchPaths.Append(":template_root/Assets");
+		LoadScene(settings);
+		is_GravityRoom = true;
+		is_TowerOfDoom = false;
+		return true;
+	}
+	else if(iDlgResult == VGUIManager::GetID("LOADTD")){
+		VisAppLoadSettings settings("Scenes/TowerOfDoom.vscene");
+		settings.m_customSearchPaths.Append(":template_root/Assets");
+		LoadScene(settings);
+		is_TowerOfDoom = true;
+		is_GravityRoom = false;
+		return true;
+	}
+	return false;
+}
+//end changes by carlos
+//changes by carlos
+bool ProjectTemplateApp::runGame(){
+	if(is_GravityRoom){
+		UpdateFPS();
+		controller->Run(this->GetInputMap());
+		return true;
+	}
+	else if(is_TowerOfDoom){
+		UpdateFPS();
+		return true;
+	}
 }
 
+bool ProjectTemplateApp::exitScene(){
+	is_GravityRoom = false;
+	is_TowerOfDoom = false;
+	initMenu();
+	return true;
+}
+//end changes by carlos
 //---------------------------------------------------------------------------------------------------------
 // Main Loop of the application until we quit
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
-	UpdateFPS();
+	//changes by carlos
+	/*UpdateFPS();
 	controller->Run(this->GetInputMap());
-	return true;
+	return true;*/
+
+		switch(m_state){
+	case MAIN_MENU_STATE:{
+			VASSERT(m_pMainMenuDialog);
+			int iDlgResult = m_pMainMenuDialog->GetDialogResult();
+			if(iDlgResult){
+					return changeScene(iDlgResult, m_pMainMenuDialog);
+		}
+		return true;
+	}
+
+	case GAME_STATE:{
+		if(ProjectTemplateApp::GetInputMap()->GetTrigger(VAPP_EXIT))
+				return exitScene();
+
+		else
+			return runGame();
+		}
+	} //end switch
+return true;
 }
 
 void ProjectTemplateApp::UpdateFPS(){
@@ -148,6 +267,10 @@ void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
 	// [...]
+	//changes by carlos
+		VGUIManager::GlobalManager().CleanupResources();
+	m_pMainMenuDialog = NULL;
+	//end changes by carlos
 }
 
 /*
