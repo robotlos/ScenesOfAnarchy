@@ -128,6 +128,7 @@
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="StackNode.cpp" />
+    <ClCompile Include="TowerOfDoomController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
@@ -136,6 +137,7 @@
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="StackNode.h" />
+    <ClInclude Include="TowerOfDoomController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

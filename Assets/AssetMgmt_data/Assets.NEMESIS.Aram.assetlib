@@ -414,7 +414,7 @@
             "File": {
                 "Hash": 3366308346,
                 "TimeStamp": 1391989462361528600,
-                "LastEditTime": 1392104630944682000
+                "LastEditTime": 1392271531167347800
             },
             "Model": {
                 "LODSwitchDistances": [
@@ -1307,7 +1307,7 @@
             "File": {
                 "Hash": 2544372907,
                 "TimeStamp": 1391989463136572900,
-                "LastEditTime": 1392104635653951300
+                "LastEditTime": 1392271530123288100
             },
             "Texture": {
                 "FileFormat": "DDS",

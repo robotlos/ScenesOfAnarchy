@@ -7,6 +7,7 @@
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="StackNode.cpp" />
     <ClCompile Include="EntityStack.cpp" />
+    <ClCompile Include="TowerOfDoomController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApplicationPCH.h" />
@@ -15,6 +16,7 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="EntityStack.h" />
+    <ClInclude Include="TowerOfDoomController.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

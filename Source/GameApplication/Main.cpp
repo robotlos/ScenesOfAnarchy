@@ -12,6 +12,8 @@
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
+#include "TowerOfDoomController.h"
+
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
@@ -93,7 +95,7 @@ void ProjectTemplateApp::Init()
 
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
-	VisAppLoadSettings settings("Scenes/GravityRoom.vscene");
+	VisAppLoadSettings settings("Scenes/TowerOfDoom.vscene");
 
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
@@ -111,10 +113,10 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//RegisterAppModule(new VHelp(help));
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
-	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
+	Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
 	// Add other initial game code here
 	// [...]
-	controller = new GravityRoomController();
+	controller = new TowerOfDoomController();
 	controller->MapTriggers(this->GetInputMap());
 }
 
