@@ -5,11 +5,11 @@ GravityRoomController::GravityRoomController(void)
 {
 	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("CameraPosition");
 	Vision::Camera.AttachToEntity(pCamera, hkvVec3::ZeroVector());
-#if defined(_VISION_ANDROID)
+if defined(_VISION_ANDROID)
 	pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
 	pMotionInput = (VMotionInputAndroid*)(&VInputManager::GetInputDevice(INPUT_DEVICE_MOTION_SENSOR));
 	pMotionInput->SetEnabled(true);
-#endif
+endif
 }
 
 

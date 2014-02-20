@@ -14,5 +14,6 @@ public:
 	VAppMenuContext* spContext;
 	VDialog* m_pMainMenuDialog;
 	bool enabled;
+	void BackButton();
 };
 

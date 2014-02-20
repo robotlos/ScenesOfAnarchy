@@ -156,6 +156,11 @@ bool ProjectTemplateApp::Run()
 			controller = NULL;
 			menu->Enable();
 		}
+		if(ProjectTemplateApp::GetInputMap()->GetTrigger(VAPP_EXIT)){
+			SwitchScene(MAIN_MENU);
+			currentSceneID = MAIN_MENU;
+			menu->Enable();
+		}
 	}
 	return true;
 }
