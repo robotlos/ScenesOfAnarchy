@@ -12,6 +12,8 @@
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
+#include "MenuController.h"
+#include "Constants.h"
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
@@ -19,6 +21,7 @@ VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
 
 
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","","","","", ""};
 class ProjectTemplateApp : public VAppImpl
 {
 public:
@@ -32,8 +35,12 @@ public:
 	virtual void AfterSceneLoaded(bool bLoadingSuccessful) HKV_OVERRIDE;
 	virtual bool Run() HKV_OVERRIDE;
 	virtual void DeInit() HKV_OVERRIDE;
+	void SwitchScene(int sceneID);
+	void SwitchController(int sceneID);
 	void UpdateFPS();
 	IController* controller;
+	MenuController* menu;
+	int currentSceneID;
 	float m_iFrameCounter;
 	float m_fTimeAccumulator;
 	float m_fCurrentFrameTime;
@@ -81,22 +88,29 @@ void ProjectTemplateApp::PreloadPlugins()
 	VISION_PLUGIN_ENSURE_LOADED(GamePlugin);
 }
 
+
+
 //---------------------------------------------------------------------------------------------------------
 // Init function. Here we trigger loading our scene
 //---------------------------------------------------------------------------------------------------------
 void ProjectTemplateApp::Init()
 {
+	//Initiliaze FPS variables to 0.
 	m_iFrameCounter=0;
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
 
+	//Initliaze the menu
+	menu = new MenuController(this->GetContext());
+	currentSceneID=MAIN_MENU;
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
-	VisAppLoadSettings settings("Scenes/GravityRoom.vscene");
-
+	VisAppLoadSettings settings(sceneNames[currentSceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
+	menu->Enable();
+	
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -114,8 +128,10 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
 	// Add other initial game code here
 	// [...]
-	controller = new GravityRoomController();
-	controller->MapTriggers(this->GetInputMap());
+	//controller = new GravityRoomController();
+	//controller->MapTriggers(this->GetInputMap());
+	
+
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -123,8 +139,24 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
-	UpdateFPS();
-	controller->Run(this->GetInputMap());
+	if(currentSceneID==MAIN_MENU){
+		//Do menu stuff
+		int newSceneID = menu->Run();
+		if(newSceneID != MAIN_MENU){
+			SwitchScene(newSceneID);
+			SwitchController(newSceneID);
+			menu->Disable();
+		}
+	}
+	else{
+		UpdateFPS();
+		bool doNotExit = controller->Run(this->GetInputMap());
+		if(!doNotExit){
+			SwitchScene(MAIN_MENU);
+			controller = NULL;
+			menu->Enable();
+		}
+	}
 	return true;
 }
 
@@ -141,6 +173,32 @@ void ProjectTemplateApp::UpdateFPS(){
 		m_iFrameCounter = 0;
 	}
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
+}
+
+void ProjectTemplateApp::SwitchScene(int sceneID){
+	VisAppLoadSettings settings(sceneNames[sceneID]);
+	settings.m_customSearchPaths.Append(":template_root/Assets");
+	LoadScene(settings);
+	this->currentSceneID=sceneID;
+}
+
+void ProjectTemplateApp::SwitchController(int sceneID){
+	switch(sceneID){
+	case GRAVITY_ROOM:
+		this->controller = new GravityRoomController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
+	case TOWER_OF_DOOM:
+		break;
+	case TUMBLER:
+		break;
+	case CAR_DERBY:
+		break;
+	case BALL_DROP:
+		break;
+	default:
+		break;
+	}
 }
 
 
