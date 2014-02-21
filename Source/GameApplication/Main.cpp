@@ -22,6 +22,7 @@ VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
 
 const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","","","","", ""};
+
 class ProjectTemplateApp : public VAppImpl
 {
 public:
@@ -57,7 +58,7 @@ void ProjectTemplateApp::SetupAppConfig(VisAppConfig_cl& config)
 	// Set the initial starting position of our game window and other properties
 	// if not in fullscreen. This is only relevant on windows
 	config.m_videoConfig.m_iXRes = 1280; // Set the Window size X if not in fullscreen.
-	config.m_videoConfig.m_iYRes = 720;  // Set the Window size Y if not in fullscreen.
+	config.m_videoConfig.m_iYRes = 620;  // Set the Window size Y if not in fullscreen.
 	config.m_videoConfig.m_iXPos = 50;   // Set the Window position X if not in fullscreen.
 	config.m_videoConfig.m_iYPos = 50;   // Set the Window position Y if not in fullscreen.
 
