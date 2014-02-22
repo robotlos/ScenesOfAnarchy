@@ -25,10 +25,9 @@ void MenuController::Enable(){
 	
 	/*Screen Dimensions */
 	int x = Vision::Video.GetXRes();
-
 	int y = Vision::Video.GetYRes();
-	/* Enable Buttons */
 
+	/* Create Buttons */
 	VPushButton* buttonGR = new VPushButton();
 	VPushButton* buttonToD = new VPushButton();
 	VPushButton* buttonScene3 = new VPushButton();
@@ -43,11 +42,11 @@ void MenuController::Enable(){
 		buttonArray[i]->SetPosition((x/2) - x/4, y * i/6 + y/20);		
 		buttonArray[i]->SetText(sceneNames[i]);
 		buttonArray[i]->SetSize(x/2, y/20);		
-		buttonArray[i]->SetDialogResult(i+1);		
-		buttonArray[i]->SetEnabled(true);
+		buttonArray[i]->SetDialogResult(i+1);	//every scene has a dialog result used for loading call
+		buttonArray[i]->SetEnabled(true); //not sure if this is necessary
 
 		buttonArray[i]->Text().SetFont(Vision::Fonts.FindFont("MenuFont"));
-		buttonArray[i]->Text().SetColor(VColorRef (255,255,255,255));
+		buttonArray[i]->Text().SetColor(VColorRef (100,40,245,255));
 		
 		buttonArray[i]->Text().SetHorizontalAlignment(VisFont_cl::ALIGN_CENTER);
 		buttonArray[i]->Text().SetVerticalAlignment(VisFont_cl::ALIGN_CENTER);
@@ -63,12 +62,13 @@ void MenuController::Disable(){
 }
 
 int MenuController::DialogResultToSceneID(int dialogResults){
-	if(dialogResults == VGUIManager::GetID("LOADGR")){
+	if(dialogResults == 1){ //Gravity Room = 1
 		return GRAVITY_ROOM;
 	}
-	else if (dialogResults == VGUIManager::GetID("LOADTD")){
+	else if(dialogResults == 2){ //Tower of Doom = 2
 		return TOWER_OF_DOOM;
 	}
+	//TODO: add cases 3-6
 	return MAIN_MENU;
 }
 int MenuController::Run(){
