@@ -131,6 +131,12 @@ bool ProjectTemplateApp::Run()
 void ProjectTemplateApp::UpdateFPS(){
 	m_iFrameCounter++;
 	m_fTimeAccumulator += Vision::GetUITimer()->GetTimeDifference();
+	static long cps = 0;
+	static hkpWorld *myWorld = vHavokPhysicsModule::GetInstance()->GetPhysicsWorld();
+	static vHavokPhysicsModule *pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
+
+	static int i = 0;
+	static int m = 0;
 
 	if (m_fTimeAccumulator >= 1.0f)
 	{
@@ -139,10 +145,17 @@ void ProjectTemplateApp::UpdateFPS(){
 
 		m_fTimeAccumulator = 0.0f;
 		m_iFrameCounter = 0;
+		cps = myCollisionListener::collision(true);
+		i = pMod->GetNumSolverIterations();
+		m = pMod->GetNumSolverMicrosteps();
 	}
-	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
-}
+	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 45,
+		"FPS : %.1f\nFrame Time : %.2f\nCollisions Detected: %u",
+		m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, cps);
 
+	Vision::Message.Print(1,10,Vision::Video.GetYRes() - 75,
+		"Solver Iterations: %i\nMicro-steps: %i",i,m);
+}
 
 void ProjectTemplateApp::DeInit()
 {

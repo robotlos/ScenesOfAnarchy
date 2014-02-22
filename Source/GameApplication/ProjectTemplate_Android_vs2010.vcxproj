@@ -135,6 +135,7 @@
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="myCollisionListener.h" />
     <ClInclude Include="StackNode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

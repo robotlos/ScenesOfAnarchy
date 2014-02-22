@@ -146,11 +146,13 @@
     <ClCompile Include="StackNode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="collisions.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
     <ClInclude Include="EntityStack.h" />
+    <ClInclude Include="myCollisionListener.h" />
     <ClInclude Include="StackNode.h" />
   </ItemGroup>
   <ItemGroup>
