@@ -33,6 +33,7 @@ public:
 	virtual bool Run() HKV_OVERRIDE;
 	virtual void DeInit() HKV_OVERRIDE;
 	void UpdateFPS();
+	void UpdateStats(); // as UpdateFPS, but with number of objects added to the output.
 	IController* controller;
 	float m_iFrameCounter;
 	float m_fTimeAccumulator;
@@ -123,7 +124,8 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
-	UpdateFPS();
+	//UpdateFPS();  //Update stats replaces and extends UpdateFPS
+	UpdateStats();
 	controller->Run(this->GetInputMap());
 	return true;
 }
@@ -141,6 +143,21 @@ void ProjectTemplateApp::UpdateFPS(){
 		m_iFrameCounter = 0;
 	}
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
+}
+
+void ProjectTemplateApp::UpdateStats(){
+	m_iFrameCounter++;
+	m_fTimeAccumulator += Vision::GetUITimer()->GetTimeDifference();
+
+	if (m_fTimeAccumulator >= 1.0f)
+	{
+		m_fCurrentFrameTime = m_fTimeAccumulator / m_iFrameCounter;
+		m_fCurrentFps = m_iFrameCounter / m_fTimeAccumulator;
+
+		m_fTimeAccumulator = 0.0f;
+		m_iFrameCounter = 0;
+	}
+	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 }
 
 
