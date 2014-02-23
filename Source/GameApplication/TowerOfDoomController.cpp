@@ -18,15 +18,17 @@ TowerOfDoomController::~TowerOfDoomController(void)
 
 
 void TowerOfDoomController::StackBlocks(int numOfBlocks){
-	
 	while (blockCount < numOfBlocks){
 		VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(0, 0, z), "Models\\Misc\\Cube.Model");
 		vHavokRigidBody *cube = new vHavokRigidBody();
 		
 		cube->Havok_TightFit = true;
+		cube->Havok_Mass = 5.0f;
+		cube->Shape_Type = ShapeType_BOX;
+		cube->Shape_BoxSize = hkvVec3(100,100,100);
 		ent->AddComponent(cube);
 		++blockCount;
-		z = z + 100;
+		z = z +100;
 	}
 }
 
@@ -52,23 +54,23 @@ hkvVec3 project3D(float x, float y, float fDist)
 }
 
 void TowerOfDoomController::Run(VInputMap* inputMap){
-	this->StackBlocks(5);
+	this->StackBlocks(500);
 
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		//this->AddCube();
-		this->RemoveLast();
-	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-		this->AddSphere();
-		//this->RemoveLast();
+	//if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
+	//	//this->AddCube();
+	//	this->RemoveLast();
+	//}
+	//if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
+	//	this->AddSphere();
+	//	//this->RemoveLast();
 
-	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
-		this->AddRagdoll();
-	}
-	if(inputMap->GetTrigger(PICK)){
-		this->Swipe(inputMap);
-	}
+	//}
+	//if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
+	//	this->AddRagdoll();
+	//}
+	//if(inputMap->GetTrigger(PICK)){
+	//	this->Swipe(inputMap);
+	//}
 }
 
 void TowerOfDoomController::MapTriggers(VInputMap* inputMap){

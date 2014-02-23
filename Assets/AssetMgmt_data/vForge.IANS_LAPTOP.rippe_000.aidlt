@@ -1,0 +1,679 @@
+fonts/arial32_00.dds	fonts/arial32_00.dds	sRGB=false
+fonts/arial_18_00.dds	fonts/arial_18_00.dds	sRGB=false
+fonts/arial_22_00.dds	fonts/arial_22_00.dds	sRGB=false
+fonts/couriernew_18_00.dds	fonts/couriernew_18_00.dds	sRGB=false
+fonts/debugfont_00.dds	fonts/debugfont_00.dds	sRGB=false
+meshes/plane.vcolmesh	meshes/plane.vcolmesh	
+meshes/plane.vmesh	meshes/plane.vmesh	LODSwitchDistances=
+models/misc/charheight.model	models/misc/charheight.model	LODSwitchDistances=
+models/misc/cube.model	models/misc/cube.model	LODSwitchDistances=
+models/misc/plane.model	models/misc/plane.model	LODSwitchDistances=
+models/misc/point.model	models/misc/point.model	LODSwitchDistances=
+models/misc/sphere.model	models/misc/sphere.model	LODSwitchDistances=
+models/misc/torus.model	models/misc/torus.model	LODSwitchDistances=
+particles/explosion_page.dds	particles/explosion_page.dds	sRGB=false
+particles/groundfog.dds	particles/groundfog.dds	sRGB=false
+particles/smoke.dds	particles/smoke.dds	sRGB=false
+particles/sparkle.dds	particles/sparkle.dds	sRGB=false
+particles/star.dds	particles/star.dds	sRGB=false
+particles/steam.dds	particles/steam.dds	sRGB=false
+shaders/misc_00/multassigned.bmp	shaders/misc_00/multassigned.bmp	sRGB=false
+textures/billboards/billboardatlas_diffuse.dds	textures/billboards/billboardatlas_diffuse.dds	sRGB=false
+textures/billboards/billboardatlas_normal.dds	textures/billboards/billboardatlas_normal.dds	sRGB=false
+textures/billboards/fgrass01.dds	textures/billboards/fgrass01.dds	sRGB=false
+textures/billboards/grass_alpha_01.dds	textures/billboards/grass_alpha_01.dds	sRGB=false
+textures/colors/black.png	textures/colors/black.png	sRGB=false
+textures/colors/blue.png	textures/colors/blue.png	sRGB=false
+textures/colors/bluedark.png	textures/colors/bluedark.png	sRGB=false
+textures/colors/bluelight.png	textures/colors/bluelight.png	sRGB=false
+textures/colors/color_orange.dds	textures/colors/color_orange.dds	sRGB=false
+textures/colors/cyan.png	textures/colors/cyan.png	sRGB=false
+textures/colors/cyandark.png	textures/colors/cyandark.png	sRGB=false
+textures/colors/cyanlight.png	textures/colors/cyanlight.png	sRGB=false
+textures/colors/gray33.png	textures/colors/gray33.png	sRGB=false
+textures/colors/gray50.png	textures/colors/gray50.png	sRGB=false
+textures/colors/gray66.png	textures/colors/gray66.png	sRGB=false
+textures/colors/green.png	textures/colors/green.png	sRGB=false
+textures/colors/greendark.png	textures/colors/greendark.png	sRGB=false
+textures/colors/greenlight.png	textures/colors/greenlight.png	sRGB=false
+textures/colors/magenta.png	textures/colors/magenta.png	sRGB=false
+textures/colors/magentadark.png	textures/colors/magentadark.png	sRGB=false
+textures/colors/magentalight.png	textures/colors/magentalight.png	sRGB=false
+textures/colors/orange.png	textures/colors/orange.png	sRGB=false
+textures/colors/orangedark.png	textures/colors/orangedark.png	sRGB=false
+textures/colors/orangelight.png	textures/colors/orangelight.png	sRGB=false
+textures/colors/red.png	textures/colors/red.png	sRGB=false
+textures/colors/reddark.png	textures/colors/reddark.png	sRGB=false
+textures/colors/redlight.png	textures/colors/redlight.png	sRGB=false
+textures/colors/white.png	textures/colors/white.png	sRGB=false
+textures/colors/yellow.png	textures/colors/yellow.png	sRGB=false
+textures/colors/yellowdark.png	textures/colors/yellowdark.png	sRGB=false
+textures/colors/yellowlight.png	textures/colors/yellowlight.png	sRGB=false
+textures/decals/blubber.dds	textures/decals/blubber.dds	sRGB=false
+textures/decals/blubber_small.dds	textures/decals/blubber_small.dds	sRGB=false
+textures/decals/machinegun.dds	textures/decals/machinegun.dds	sRGB=false
+textures/decals/mgun_hole.dds	textures/decals/mgun_hole.dds	sRGB=false
+textures/decals/wallmarksmoke.dds	textures/decals/wallmarksmoke.dds	sRGB=false
+textures/fps/ammo_back.dds	textures/fps/ammo_back.dds	sRGB=false
+textures/fps/crosshair.dds	textures/fps/crosshair.dds	sRGB=false
+textures/fps/crouching.dds	textures/fps/crouching.dds	sRGB=false
+textures/fps/machinegun.dds	textures/fps/machinegun.dds	sRGB=false
+textures/fps/sniper_border.dds	textures/fps/sniper_border.dds	sRGB=false
+textures/fps/sniper_scope.dds	textures/fps/sniper_scope.dds	sRGB=false
+textures/fps/standing.dds	textures/fps/standing.dds	sRGB=false
+textures/grid01.jpg	textures/grid01.jpg	sRGB=false
+textures/ui/button.dds	textures/ui/button.dds	sRGB=false
+textures/ui/buttonquit_mouseover.tga	textures/ui/buttonquit_mouseover.tga	sRGB=false
+textures/ui/buttonquit_normal.tga	textures/ui/buttonquit_normal.tga	sRGB=false
+textures/ui/checkmark_off.tga	textures/ui/checkmark_off.tga	sRGB=false
+textures/ui/checkmark_on.tga	textures/ui/checkmark_on.tga	sRGB=false
+textures/ui/closebutton.bmp	textures/ui/closebutton.bmp	sRGB=false
+textures/ui/closebuttongray.bmp	textures/ui/closebuttongray.bmp	sRGB=false
+textures/ui/closebuttonhigh.bmp	textures/ui/closebuttonhigh.bmp	sRGB=false
+textures/ui/closebuttonsel.bmp	textures/ui/closebuttonsel.bmp	sRGB=false
+textures/ui/cursor2d/mousearrow_e.dds	textures/ui/cursor2d/mousearrow_e.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_n.dds	textures/ui/cursor2d/mousearrow_n.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_ne.dds	textures/ui/cursor2d/mousearrow_ne.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_nw.dds	textures/ui/cursor2d/mousearrow_nw.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_s.dds	textures/ui/cursor2d/mousearrow_s.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_se.dds	textures/ui/cursor2d/mousearrow_se.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_sw.dds	textures/ui/cursor2d/mousearrow_sw.dds	sRGB=false
+textures/ui/cursor2d/mousearrow_w.dds	textures/ui/cursor2d/mousearrow_w.dds	sRGB=false
+textures/ui/cursor2d/mousecross.dds	textures/ui/cursor2d/mousecross.dds	sRGB=false
+textures/ui/cursor2d/mousecrossadd.dds	textures/ui/cursor2d/mousecrossadd.dds	sRGB=false
+textures/ui/cursor2d/mousemove.dds	textures/ui/cursor2d/mousemove.dds	sRGB=false
+textures/ui/cursor2d/mousepointer-off.dds	textures/ui/cursor2d/mousepointer-off.dds	sRGB=false
+textures/ui/cursor2d/mousepointer-on.dds	textures/ui/cursor2d/mousepointer-on.dds	sRGB=false
+textures/ui/dialogframe_blue.tga	textures/ui/dialogframe_blue.tga	sRGB=false
+textures/ui/edit.dds	textures/ui/edit.dds	sRGB=false
+textures/ui/frame.dds	textures/ui/frame.dds	sRGB=false
+textures/ui/media_stop.tga	textures/ui/media_stop.tga	sRGB=false
+textures/ui/mouse.dds	textures/ui/mouse.dds	sRGB=false
+textures/ui/mousehigh.dds	textures/ui/mousehigh.dds	sRGB=false
+textures/ui/mousehigh.png	textures/ui/mousehigh.png	sRGB=false
+textures/ui/mousehigh.tga	textures/ui/mousehigh.tga	sRGB=false
+textures/ui/mousenorm.dds	textures/ui/mousenorm.dds	sRGB=false
+textures/ui/mousenorm.png	textures/ui/mousenorm.png	sRGB=false
+textures/ui/mousenorm.tga	textures/ui/mousenorm.tga	sRGB=false
+textures/ui/sliderframe.dds	textures/ui/sliderframe.dds	sRGB=false
+textures/ui/sliderframe.png	textures/ui/sliderframe.png	sRGB=false
+textures/ui/sliderhigh.dds	textures/ui/sliderhigh.dds	sRGB=false
+textures/ui/sliderhigh.png	textures/ui/sliderhigh.png	sRGB=false
+textures/ui/slidernorm.dds	textures/ui/slidernorm.dds	sRGB=false
+textures/ui/slidernorm.png	textures/ui/slidernorm.png	sRGB=false
+textures/ui/white.dds	textures/ui/white.dds	sRGB=false
+textures/water/water_n_01.dds	textures/water/water_n_01.dds	sRGB=false
+models/misc/plane2.vmesh	models/misc/plane2.vmesh	LODSwitchDistances=
+models/warrior/explosion_page.dds	models/warrior/explosion_page.dds	sRGB=false
+models/warrior/hair_cmap.dds	models/warrior/hair_cmap.dds	sRGB=false
+models/warrior/hair_nmap.dds	models/warrior/hair_nmap.dds	sRGB=false
+models/warrior/hair_smap.dds	models/warrior/hair_smap.dds	sRGB=false
+models/warrior/sourceasset/hair_cmap.tga	models/warrior/sourceasset/hair_cmap.tga	sRGB=false
+models/warrior/sourceasset/hair_nmap.tga	models/warrior/sourceasset/hair_nmap.tga	sRGB=false
+models/warrior/sourceasset/hair_smap.tga	models/warrior/sourceasset/hair_smap.tga	sRGB=false
+models/warrior/sourceasset/warrior_cmap.tga	models/warrior/sourceasset/warrior_cmap.tga	sRGB=false
+models/warrior/sourceasset/warrior_nmap.tga	models/warrior/sourceasset/warrior_nmap.tga	sRGB=false
+models/warrior/sourceasset/warrior_smap.tga	models/warrior/sourceasset/warrior_smap.tga	sRGB=false
+models/warrior/sourceasset/warrior_xmap.tga	models/warrior/sourceasset/warrior_xmap.tga	sRGB=false
+models/warrior/torch.model	models/warrior/torch.model	LODSwitchDistances=
+models/warrior/torchbottom.model	models/warrior/torchbottom.model	LODSwitchDistances=
+models/warrior/warrior.anim	models/warrior/warrior.anim	
+models/warrior/warrior.model	models/warrior/warrior.model	LODSwitchDistances=
+models/warrior/warrior_cmap-2k.dds	models/warrior/warrior_cmap-2k.dds	sRGB=false
+models/warrior/warrior_nmap-2k.dds	models/warrior/warrior_nmap-2k.dds	sRGB=false
+models/warrior/warrior_smap-2k.dds	models/warrior/warrior_smap-2k.dds	sRGB=false
+models/warrior/warriorevents.anim	models/warrior/warriorevents.anim	
+models/warrior/warriorevents.model	models/warrior/warriorevents.model	LODSwitchDistances=
+textures/blubber.dds	textures/blubber.dds	sRGB=false
+models/animals/chicken.anim	models/animals/chicken.anim	
+models/animals/chicken.model	models/animals/chicken.model	LODSwitchDistances=
+models/animals/crow01.anim	models/animals/crow01.anim	
+models/animals/crow01.model	models/animals/crow01.model	LODSwitchDistances=
+models/animals/dog.anim	models/animals/dog.anim	
+models/animals/dog.model	models/animals/dog.model	LODSwitchDistances=
+models/animals/donkey.anim	models/animals/donkey.anim	
+models/animals/donkey.model	models/animals/donkey.model	LODSwitchDistances=
+models/animals/goose.anim	models/animals/goose.anim	
+models/animals/goose.model	models/animals/goose.model	LODSwitchDistances=
+models/animals/horse.anim	models/animals/horse.anim	
+models/animals/horse.model	models/animals/horse.model	LODSwitchDistances=
+models/animals/pig_pink.anim	models/animals/pig_pink.anim	
+models/animals/pig_pink.model	models/animals/pig_pink.model	LODSwitchDistances=
+models/animals/sheep.anim	models/animals/sheep.anim	
+models/animals/sheep.model	models/animals/sheep.model	LODSwitchDistances=
+models/animals/tentacle.anim	models/animals/tentacle.anim	
+models/animals/tentacle.model	models/animals/tentacle.model	LODSwitchDistances=
+models/diverse/lord_castle.model	models/diverse/lord_castle.model	LODSwitchDistances=
+models/diverse/self_shadow.model	models/diverse/self_shadow.model	LODSwitchDistances=
+models/diverse/water01.model	models/diverse/water01.model	LODSwitchDistances=
+models/houses_variant/tower02_variant01.model	models/houses_variant/tower02_variant01.model	LODSwitchDistances=
+models/houses_variant/tower02b_variant01.model	models/houses_variant/tower02b_variant01.model	LODSwitchDistances=
+models/items/cloverleaf.model	models/items/cloverleaf.model	LODSwitchDistances=
+models/items/diamond.model	models/items/diamond.model	LODSwitchDistances=
+models/items/emerald.model	models/items/emerald.model	LODSwitchDistances=
+models/items/gold.model	models/items/gold.model	LODSwitchDistances=
+models/items/item_beartrap.anim	models/items/item_beartrap.anim	
+models/items/item_beartrap.model	models/items/item_beartrap.model	LODSwitchDistances=
+models/items/item_shotgun.model	models/items/item_shotgun.model	LODSwitchDistances=
+models/items/item_stone.anim	models/items/item_stone.anim	
+models/items/item_stone.model	models/items/item_stone.model	LODSwitchDistances=
+models/items/item_tequila.anim	models/items/item_tequila.anim	
+models/items/item_tequila.model	models/items/item_tequila.model	LODSwitchDistances=
+models/items/morningstar.model	models/items/morningstar.model	LODSwitchDistances=
+models/items/phial.model	models/items/phial.model	LODSwitchDistances=
+models/items/ruby_red.model	models/items/ruby_red.model	LODSwitchDistances=
+models/items/shield01.model	models/items/shield01.model	LODSwitchDistances=
+models/items/sword.anim	models/items/sword.anim	
+models/items/sword.model	models/items/sword.model	LODSwitchDistances=
+models/items/torch.model	models/items/torch.model	LODSwitchDistances=
+models/npc/old/eye.dds	models/npc/old/eye.dds	sRGB=false
+models/npc/old/furdetail.dds	models/npc/old/furdetail.dds	sRGB=false
+models/npc/old/jug04.dds	models/npc/old/jug04.dds	sRGB=false
+models/npc/old/jug04_n.dds	models/npc/old/jug04_n.dds	sRGB=false
+models/npc/old/jug_d.model	models/npc/old/jug_d.model	LODSwitchDistances=
+models/npc/old/stefan_face.dds	models/npc/old/stefan_face.dds	sRGB=false
+models/npc/old/stefan_face_n.dds	models/npc/old/stefan_face_n.dds	sRGB=false
+models/npc/old/stefan_knee.anim	models/npc/old/stefan_knee.anim	
+models/npc/old/stefan_knee.model	models/npc/old/stefan_knee.model	LODSwitchDistances=
+models/npc/old/stefan_sitting_noswing.anim	models/npc/old/stefan_sitting_noswing.anim	
+models/npc/old/stefan_sitting_noswing.model	models/npc/old/stefan_sitting_noswing.model	LODSwitchDistances=
+models/npc/old/stefan_sitting_swing.anim	models/npc/old/stefan_sitting_swing.anim	
+models/npc/old/stefan_sitting_swing.model	models/npc/old/stefan_sitting_swing.model	LODSwitchDistances=
+models/npc/old/stefan_stand.anim	models/npc/old/stefan_stand.anim	
+models/npc/old/stefan_stand.model	models/npc/old/stefan_stand.model	LODSwitchDistances=
+models/npc/old/stefan_walk.anim	models/npc/old/stefan_walk.anim	
+models/npc/old/stefan_walk.model	models/npc/old/stefan_walk.model	LODSwitchDistances=
+models/npc/old/stefan_walk_anims.anim	models/npc/old/stefan_walk_anims.anim	
+models/npc/old/stefan_walk_anims.model	models/npc/old/stefan_walk_anims.model	LODSwitchDistances=
+models/npc/old/stefanstdbody.dds	models/npc/old/stefanstdbody.dds	sRGB=false
+models/npc/old/stefanstdbody_n.dds	models/npc/old/stefanstdbody_n.dds	sRGB=false
+models/npc/old/stefanwlkbody.dds	models/npc/old/stefanwlkbody.dds	sRGB=false
+models/npc/old/stefanwlkbody_n.dds	models/npc/old/stefanwlkbody_n.dds	sRGB=false
+models/npc/old/sword.dds	models/npc/old/sword.dds	sRGB=false
+models/npc/old/sword_n.dds	models/npc/old/sword_n.dds	sRGB=false
+models/npc/old/thorsten_body.dds	models/npc/old/thorsten_body.dds	sRGB=false
+models/npc/old/thorsten_body_n.dds	models/npc/old/thorsten_body_n.dds	sRGB=false
+models/npc/old/thorsten_face.dds	models/npc/old/thorsten_face.dds	sRGB=false
+models/npc/old/thorsten_face_n.dds	models/npc/old/thorsten_face_n.dds	sRGB=false
+models/npc/old/thorsten_sitting.anim	models/npc/old/thorsten_sitting.anim	
+models/npc/old/thorsten_sitting.model	models/npc/old/thorsten_sitting.model	LODSwitchDistances=
+models/npc/old/thorsten_walk.anim	models/npc/old/thorsten_walk.anim	
+models/npc/old/thorsten_walk.model	models/npc/old/thorsten_walk.model	LODSwitchDistances=
+models/objects_outside/barrel01.model	models/objects_outside/barrel01.model	LODSwitchDistances=
+models/objects_outside/barrel02.model	models/objects_outside/barrel02.model	LODSwitchDistances=
+models/objects_outside/barrel_broken.model	models/objects_outside/barrel_broken.model	LODSwitchDistances=
+models/objects_outside/barrel_broken_lying.model	models/objects_outside/barrel_broken_lying.model	LODSwitchDistances=
+models/objects_outside/bell01.model	models/objects_outside/bell01.model	LODSwitchDistances=
+models/objects_outside/blubber.dds	models/objects_outside/blubber.dds	sRGB=false
+models/objects_outside/bowl01.model	models/objects_outside/bowl01.model	LODSwitchDistances=
+models/objects_outside/cage01.model	models/objects_outside/cage01.model	LODSwitchDistances=
+models/objects_outside/cage02.model	models/objects_outside/cage02.model	LODSwitchDistances=
+models/objects_outside/cage03.model	models/objects_outside/cage03.model	LODSwitchDistances=
+models/objects_outside/case_broken01.model	models/objects_outside/case_broken01.model	LODSwitchDistances=
+models/objects_outside/case_chains.model	models/objects_outside/case_chains.model	LODSwitchDistances=
+models/objects_outside/case_fabric.model	models/objects_outside/case_fabric.model	LODSwitchDistances=
+models/objects_outside/case_little.model	models/objects_outside/case_little.model	LODSwitchDistances=
+models/objects_outside/chain.model	models/objects_outside/chain.model	LODSwitchDistances=
+models/objects_outside/city_door.model	models/objects_outside/city_door.model	LODSwitchDistances=
+models/objects_outside/cuffs.model	models/objects_outside/cuffs.model	LODSwitchDistances=
+models/objects_outside/cuffs02.model	models/objects_outside/cuffs02.model	LODSwitchDistances=
+models/objects_outside/femur.model	models/objects_outside/femur.model	LODSwitchDistances=
+models/objects_outside/finial01.model	models/objects_outside/finial01.model	LODSwitchDistances=
+models/objects_outside/finial02.model	models/objects_outside/finial02.model	LODSwitchDistances=
+models/objects_outside/finial03.model	models/objects_outside/finial03.model	LODSwitchDistances=
+models/objects_outside/flag01.model	models/objects_outside/flag01.model	LODSwitchDistances=
+models/objects_outside/flag02.model	models/objects_outside/flag02.model	LODSwitchDistances=
+models/objects_outside/flag02b.model	models/objects_outside/flag02b.model	LODSwitchDistances=
+models/objects_outside/flag02c.model	models/objects_outside/flag02c.model	LODSwitchDistances=
+models/objects_outside/flag03.anim	models/objects_outside/flag03.anim	
+models/objects_outside/flag03.model	models/objects_outside/flag03.model	LODSwitchDistances=
+models/objects_outside/gargoyle01.model	models/objects_outside/gargoyle01.model	LODSwitchDistances=
+models/objects_outside/grid01.model	models/objects_outside/grid01.model	LODSwitchDistances=
+models/objects_outside/grid02.model	models/objects_outside/grid02.model	LODSwitchDistances=
+models/objects_outside/grid03.model	models/objects_outside/grid03.model	LODSwitchDistances=
+models/objects_outside/ground_pavement01.model	models/objects_outside/ground_pavement01.model	LODSwitchDistances=
+models/objects_outside/ground_pavement02.model	models/objects_outside/ground_pavement02.model	LODSwitchDistances=
+models/objects_outside/ground_pavement03.model	models/objects_outside/ground_pavement03.model	LODSwitchDistances=
+models/objects_outside/hook01.model	models/objects_outside/hook01.model	LODSwitchDistances=
+models/objects_outside/light01.model	models/objects_outside/light01.model	LODSwitchDistances=
+models/objects_outside/light02.model	models/objects_outside/light02.model	LODSwitchDistances=
+models/objects_outside/light03.model	models/objects_outside/light03.model	LODSwitchDistances=
+models/objects_outside/little_bell.model	models/objects_outside/little_bell.model	LODSwitchDistances=
+models/objects_outside/little_bell_simple.model	models/objects_outside/little_bell_simple.model	LODSwitchDistances=
+models/objects_outside/magicball.model	models/objects_outside/magicball.model	LODSwitchDistances=
+models/objects_outside/monster_skull.model	models/objects_outside/monster_skull.model	LODSwitchDistances=
+models/objects_outside/moss01.anim	models/objects_outside/moss01.anim	
+models/objects_outside/moss01.model	models/objects_outside/moss01.model	LODSwitchDistances=
+models/objects_outside/moss02.anim	models/objects_outside/moss02.anim	
+models/objects_outside/moss02.model	models/objects_outside/moss02.model	LODSwitchDistances=
+models/objects_outside/moss03.anim	models/objects_outside/moss03.anim	
+models/objects_outside/moss03.model	models/objects_outside/moss03.model	LODSwitchDistances=
+models/objects_outside/moss04.anim	models/objects_outside/moss04.anim	
+models/objects_outside/moss04.model	models/objects_outside/moss04.model	LODSwitchDistances=
+models/objects_outside/moss05.anim	models/objects_outside/moss05.anim	
+models/objects_outside/moss05.model	models/objects_outside/moss05.model	LODSwitchDistances=
+models/objects_outside/moss06.anim	models/objects_outside/moss06.anim	
+models/objects_outside/moss06.model	models/objects_outside/moss06.model	LODSwitchDistances=
+models/objects_outside/pot01.model	models/objects_outside/pot01.model	LODSwitchDistances=
+models/objects_outside/pot02.model	models/objects_outside/pot02.model	LODSwitchDistances=
+models/objects_outside/pot03.model	models/objects_outside/pot03.model	LODSwitchDistances=
+models/objects_outside/pot_broken.model	models/objects_outside/pot_broken.model	LODSwitchDistances=
+models/objects_outside/rat.model	models/objects_outside/rat.model	LODSwitchDistances=
+models/objects_outside/rat_grey.model	models/objects_outside/rat_grey.model	LODSwitchDistances=
+models/objects_outside/sign_herbalist_dandelion.anim	models/objects_outside/sign_herbalist_dandelion.anim	
+models/objects_outside/sign_herbalist_dandelion.model	models/objects_outside/sign_herbalist_dandelion.model	LODSwitchDistances=
+models/objects_outside/sign_tavern_spotted_dog.anim	models/objects_outside/sign_tavern_spotted_dog.anim	
+models/objects_outside/sign_tavern_spotted_dog.model	models/objects_outside/sign_tavern_spotted_dog.model	LODSwitchDistances=
+models/objects_outside/skeleton_hand.model	models/objects_outside/skeleton_hand.model	LODSwitchDistances=
+models/objects_outside/skeleton_hand_cuffs.model	models/objects_outside/skeleton_hand_cuffs.model	LODSwitchDistances=
+models/objects_outside/skeleton_sitting.model	models/objects_outside/skeleton_sitting.model	LODSwitchDistances=
+models/objects_outside/skeleton_sitting02.model	models/objects_outside/skeleton_sitting02.model	LODSwitchDistances=
+models/objects_outside/spidernet01_corner.model	models/objects_outside/spidernet01_corner.model	LODSwitchDistances=
+models/objects_outside/spidernet01_floor.model	models/objects_outside/spidernet01_floor.model	LODSwitchDistances=
+models/objects_outside/spidernet01_roof.model	models/objects_outside/spidernet01_roof.model	LODSwitchDistances=
+models/objects_outside/spidernet02_roof.model	models/objects_outside/spidernet02_roof.model	LODSwitchDistances=
+models/objects_outside/spidernet03_roof.model	models/objects_outside/spidernet03_roof.model	LODSwitchDistances=
+models/objects_outside/spidernet04_corner.model	models/objects_outside/spidernet04_corner.model	LODSwitchDistances=
+models/objects_outside/spidernet04_floor.model	models/objects_outside/spidernet04_floor.model	LODSwitchDistances=
+models/objects_outside/spidernet04_roof.model	models/objects_outside/spidernet04_roof.model	LODSwitchDistances=
+models/objects_outside/stones01.model	models/objects_outside/stones01.model	LODSwitchDistances=
+models/objects_outside/stones02.model	models/objects_outside/stones02.model	LODSwitchDistances=
+models/objects_outside/stones03.model	models/objects_outside/stones03.model	LODSwitchDistances=
+models/objects_outside/thorax.model	models/objects_outside/thorax.model	LODSwitchDistances=
+models/objects_outside/torch01.model	models/objects_outside/torch01.model	LODSwitchDistances=
+models/pc/005san.anim	models/pc/005san.anim	
+models/pc/005san.model	models/pc/005san.model	LODSwitchDistances=
+models/pc/barbarian.anim	models/pc/barbarian.anim	
+models/pc/barbarian.model	models/pc/barbarian.model	LODSwitchDistances=
+models/pc/tmp/005san.anim	models/pc/tmp/005san.anim	
+models/pc/tmp/005san.model	models/pc/tmp/005san.model	LODSwitchDistances=
+models/transports/carriage01.model	models/transports/carriage01.model	LODSwitchDistances=
+models/trees/tree01.model	models/trees/tree01.model	LODSwitchDistances=
+models/trees/tree02.model	models/trees/tree02.model	LODSwitchDistances=
+models/trees/tree04.model	models/trees/tree04.model	LODSwitchDistances=
+models/trees/tree14.model	models/trees/tree14.model	LODSwitchDistances=
+models/vegetals/herbs01.model	models/vegetals/herbs01.model	LODSwitchDistances=
+models/vegetals/herbs02.model	models/vegetals/herbs02.model	LODSwitchDistances=
+models/vegetals/herbs03.model	models/vegetals/herbs03.model	LODSwitchDistances=
+models/vegetals/herbs04.model	models/vegetals/herbs04.model	LODSwitchDistances=
+models/vegetals/tree_roots01.model	models/vegetals/tree_roots01.model	LODSwitchDistances=
+models/vegetals/tree_roots02.model	models/vegetals/tree_roots02.model	LODSwitchDistances=
+models/warrior/sword.model	models/warrior/sword.model	LODSwitchDistances=
+models/water/water01.model	models/water/water01.model	LODSwitchDistances=
+models/water/water02.model	models/water/water02.model	LODSwitchDistances=
+models/water/water03.model	models/water/water03.model	LODSwitchDistances=
+models/windows/castle_windows.model	models/windows/castle_windows.model	LODSwitchDistances=
+models/windows/m01_windows_a.model	models/windows/m01_windows_a.model	LODSwitchDistances=
+models/windows/m01_windows_b.model	models/windows/m01_windows_b.model	LODSwitchDistances=
+models/windows/m02_windows01.model	models/windows/m02_windows01.model	LODSwitchDistances=
+models/windows/m02_windows02.model	models/windows/m02_windows02.model	LODSwitchDistances=
+models/windows/m02_windows02b.model	models/windows/m02_windows02b.model	LODSwitchDistances=
+models/windows/m03_windows_a.model	models/windows/m03_windows_a.model	LODSwitchDistances=
+models/windows/m03_windows_b.model	models/windows/m03_windows_b.model	LODSwitchDistances=
+models/windows/m04_windows_a.model	models/windows/m04_windows_a.model	LODSwitchDistances=
+models/windows/m04_windows_b.model	models/windows/m04_windows_b.model	LODSwitchDistances=
+models/windows/m05_windows_a.model	models/windows/m05_windows_a.model	LODSwitchDistances=
+models/windows/m05_windows_b.model	models/windows/m05_windows_b.model	LODSwitchDistances=
+models/windows/m06_windows01a.model	models/windows/m06_windows01a.model	LODSwitchDistances=
+models/windows/m06_windows01b.model	models/windows/m06_windows01b.model	LODSwitchDistances=
+models/windows/m06_windows02.model	models/windows/m06_windows02.model	LODSwitchDistances=
+models/windows/m07_windows01.model	models/windows/m07_windows01.model	LODSwitchDistances=
+models/windows/m08_windows01.model	models/windows/m08_windows01.model	LODSwitchDistances=
+models/windows/m08_windows02.model	models/windows/m08_windows02.model	LODSwitchDistances=
+models/windows/m10_windows01.model	models/windows/m10_windows01.model	LODSwitchDistances=
+models/windows/m16_windows.model	models/windows/m16_windows.model	LODSwitchDistances=
+models/windows/m17_windows.model	models/windows/m17_windows.model	LODSwitchDistances=
+models/windows/store_window.model	models/windows/store_window.model	LODSwitchDistances=
+models/windows/tower01_windows_a.model	models/windows/tower01_windows_a.model	LODSwitchDistances=
+models/windows/tower01_windows_b.model	models/windows/tower01_windows_b.model	LODSwitchDistances=
+models/windows/tower01_windows_c.model	models/windows/tower01_windows_c.model	LODSwitchDistances=
+newstaticmeshes/ground_newuv.vcolmesh	newstaticmeshes/ground_newuv.vcolmesh	
+newstaticmeshes/ground_newuv.vmesh	newstaticmeshes/ground_newuv.vmesh	LODSwitchDistances=
+newstaticmeshes/m01_newuv.vcolmesh	newstaticmeshes/m01_newuv.vcolmesh	
+newstaticmeshes/m01_newuv.vmesh	newstaticmeshes/m01_newuv.vmesh	LODSwitchDistances=
+newstaticmeshes/m02_newuv.vcolmesh	newstaticmeshes/m02_newuv.vcolmesh	
+newstaticmeshes/m02_newuv.vmesh	newstaticmeshes/m02_newuv.vmesh	LODSwitchDistances=
+newstaticmeshes/m03_newuv.vcolmesh	newstaticmeshes/m03_newuv.vcolmesh	
+newstaticmeshes/m03_newuv.vmesh	newstaticmeshes/m03_newuv.vmesh	LODSwitchDistances=
+newstaticmeshes/m10_newuv.vcolmesh	newstaticmeshes/m10_newuv.vcolmesh	
+newstaticmeshes/m10_newuv.vmesh	newstaticmeshes/m10_newuv.vmesh	LODSwitchDistances=
+newstaticmeshes/market_house01.vcolmesh	newstaticmeshes/market_house01.vcolmesh	
+newstaticmeshes/market_house01.vmesh	newstaticmeshes/market_house01.vmesh	LODSwitchDistances=
+newstaticmeshes/market_house02.vcolmesh	newstaticmeshes/market_house02.vcolmesh	
+newstaticmeshes/market_house02.vmesh	newstaticmeshes/market_house02.vmesh	LODSwitchDistances=
+particles/blood.dds	particles/blood.dds	sRGB=false
+particles/blood02.dds	particles/blood02.dds	sRGB=false
+particles/groundfog02.dds	particles/groundfog02.dds	sRGB=false
+particles/smoothfire.dds	particles/smoothfire.dds	sRGB=false
+staticmeshes/rd_arch_wall.vcolmesh	staticmeshes/rd_arch_wall.vcolmesh	
+staticmeshes/rd_arch_wall.vmesh	staticmeshes/rd_arch_wall.vmesh	LODSwitchDistances=
+staticmeshes/rd_bridge.vcolmesh	staticmeshes/rd_bridge.vcolmesh	
+staticmeshes/rd_bridge.vmesh	staticmeshes/rd_bridge.vmesh	LODSwitchDistances=
+staticmeshes/rd_castle.vcolmesh	staticmeshes/rd_castle.vcolmesh	
+staticmeshes/rd_castle.vmesh	staticmeshes/rd_castle.vmesh	LODSwitchDistances=
+staticmeshes/rd_entrance.vcolmesh	staticmeshes/rd_entrance.vcolmesh	
+staticmeshes/rd_entrance.vmesh	staticmeshes/rd_entrance.vmesh	LODSwitchDistances=
+staticmeshes/rd_extension.vcolmesh	staticmeshes/rd_extension.vcolmesh	
+staticmeshes/rd_extension.vmesh	staticmeshes/rd_extension.vmesh	LODSwitchDistances=
+staticmeshes/rd_extension00.vcolmesh	staticmeshes/rd_extension00.vcolmesh	
+staticmeshes/rd_extension00.vmesh	staticmeshes/rd_extension00.vmesh	LODSwitchDistances=
+staticmeshes/rd_footbridge.vcolmesh	staticmeshes/rd_footbridge.vcolmesh	
+staticmeshes/rd_footbridge.vmesh	staticmeshes/rd_footbridge.vmesh	LODSwitchDistances=
+staticmeshes/rd_fortification00.vcolmesh	staticmeshes/rd_fortification00.vcolmesh	
+staticmeshes/rd_fortification00.vmesh	staticmeshes/rd_fortification00.vmesh	LODSwitchDistances=
+staticmeshes/rd_fortification01.vcolmesh	staticmeshes/rd_fortification01.vcolmesh	
+staticmeshes/rd_fortification01.vmesh	staticmeshes/rd_fortification01.vmesh	LODSwitchDistances=
+staticmeshes/rd_fortification02.vcolmesh	staticmeshes/rd_fortification02.vcolmesh	
+staticmeshes/rd_fortification02.vmesh	staticmeshes/rd_fortification02.vmesh	LODSwitchDistances=
+staticmeshes/rd_fortification03.vcolmesh	staticmeshes/rd_fortification03.vcolmesh	
+staticmeshes/rd_fortification03.vmesh	staticmeshes/rd_fortification03.vmesh	LODSwitchDistances=
+staticmeshes/rd_ground.vcolmesh	staticmeshes/rd_ground.vcolmesh	
+staticmeshes/rd_ground.vmesh	staticmeshes/rd_ground.vmesh	LODSwitchDistances=
+staticmeshes/rd_ground02.vcolmesh	staticmeshes/rd_ground02.vcolmesh	
+staticmeshes/rd_ground02.vmesh	staticmeshes/rd_ground02.vmesh	LODSwitchDistances=
+staticmeshes/rd_ground03.vcolmesh	staticmeshes/rd_ground03.vcolmesh	
+staticmeshes/rd_ground03.vmesh	staticmeshes/rd_ground03.vmesh	LODSwitchDistances=
+staticmeshes/rd_house01.vcolmesh	staticmeshes/rd_house01.vcolmesh	
+staticmeshes/rd_house01.vmesh	staticmeshes/rd_house01.vmesh	LODSwitchDistances=
+staticmeshes/rd_house02.vcolmesh	staticmeshes/rd_house02.vcolmesh	
+staticmeshes/rd_house02.vmesh	staticmeshes/rd_house02.vmesh	LODSwitchDistances=
+staticmeshes/rd_house03.vcolmesh	staticmeshes/rd_house03.vcolmesh	
+staticmeshes/rd_house03.vmesh	staticmeshes/rd_house03.vmesh	LODSwitchDistances=
+staticmeshes/rd_house04.vcolmesh	staticmeshes/rd_house04.vcolmesh	
+staticmeshes/rd_house04.vmesh	staticmeshes/rd_house04.vmesh	LODSwitchDistances=
+staticmeshes/rd_house04_small.vcolmesh	staticmeshes/rd_house04_small.vcolmesh	
+staticmeshes/rd_house04_small.vmesh	staticmeshes/rd_house04_small.vmesh	LODSwitchDistances=
+staticmeshes/rd_house05.vcolmesh	staticmeshes/rd_house05.vcolmesh	
+staticmeshes/rd_house05.vmesh	staticmeshes/rd_house05.vmesh	LODSwitchDistances=
+staticmeshes/rd_house06.vcolmesh	staticmeshes/rd_house06.vcolmesh	
+staticmeshes/rd_house06.vmesh	staticmeshes/rd_house06.vmesh	LODSwitchDistances=
+staticmeshes/rd_house07.vcolmesh	staticmeshes/rd_house07.vcolmesh	
+staticmeshes/rd_house07.vmesh	staticmeshes/rd_house07.vmesh	LODSwitchDistances=
+staticmeshes/rd_house08.vcolmesh	staticmeshes/rd_house08.vcolmesh	
+staticmeshes/rd_house08.vmesh	staticmeshes/rd_house08.vmesh	LODSwitchDistances=
+staticmeshes/rd_house09.vcolmesh	staticmeshes/rd_house09.vcolmesh	
+staticmeshes/rd_house09.vmesh	staticmeshes/rd_house09.vmesh	LODSwitchDistances=
+staticmeshes/rd_house10.vcolmesh	staticmeshes/rd_house10.vcolmesh	
+staticmeshes/rd_house10.vmesh	staticmeshes/rd_house10.vmesh	LODSwitchDistances=
+staticmeshes/rd_house16.vcolmesh	staticmeshes/rd_house16.vcolmesh	
+staticmeshes/rd_house16.vmesh	staticmeshes/rd_house16.vmesh	LODSwitchDistances=
+staticmeshes/rd_house17.vcolmesh	staticmeshes/rd_house17.vcolmesh	
+staticmeshes/rd_house17.vmesh	staticmeshes/rd_house17.vmesh	LODSwitchDistances=
+staticmeshes/rd_house18.vcolmesh	staticmeshes/rd_house18.vcolmesh	
+staticmeshes/rd_house18.vmesh	staticmeshes/rd_house18.vmesh	LODSwitchDistances=
+staticmeshes/rd_house_destruct.vcolmesh	staticmeshes/rd_house_destruct.vcolmesh	
+staticmeshes/rd_house_destruct.vmesh	staticmeshes/rd_house_destruct.vmesh	LODSwitchDistances=
+staticmeshes/rd_lord_castle.vcolmesh	staticmeshes/rd_lord_castle.vcolmesh	
+staticmeshes/rd_lord_castle.vmesh	staticmeshes/rd_lord_castle.vmesh	LODSwitchDistances=
+staticmeshes/rd_market_house01.vcolmesh	staticmeshes/rd_market_house01.vcolmesh	
+staticmeshes/rd_market_house01.vmesh	staticmeshes/rd_market_house01.vmesh	LODSwitchDistances=
+staticmeshes/rd_market_house02.vcolmesh	staticmeshes/rd_market_house02.vcolmesh	
+staticmeshes/rd_market_house02.vmesh	staticmeshes/rd_market_house02.vmesh	LODSwitchDistances=
+staticmeshes/rd_market_house03.vcolmesh	staticmeshes/rd_market_house03.vcolmesh	
+staticmeshes/rd_market_house03.vmesh	staticmeshes/rd_market_house03.vmesh	LODSwitchDistances=
+staticmeshes/rd_stair01.vcolmesh	staticmeshes/rd_stair01.vcolmesh	
+staticmeshes/rd_stair01.vmesh	staticmeshes/rd_stair01.vmesh	LODSwitchDistances=
+staticmeshes/rd_stair01b.vcolmesh	staticmeshes/rd_stair01b.vcolmesh	
+staticmeshes/rd_stair01b.vmesh	staticmeshes/rd_stair01b.vmesh	LODSwitchDistances=
+staticmeshes/rd_stair02.vcolmesh	staticmeshes/rd_stair02.vcolmesh	
+staticmeshes/rd_stair02.vmesh	staticmeshes/rd_stair02.vmesh	LODSwitchDistances=
+staticmeshes/rd_stair03.vcolmesh	staticmeshes/rd_stair03.vcolmesh	
+staticmeshes/rd_stair03.vmesh	staticmeshes/rd_stair03.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower01.vcolmesh	staticmeshes/rd_tower01.vcolmesh	
+staticmeshes/rd_tower01.vmesh	staticmeshes/rd_tower01.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower02b.vcolmesh	staticmeshes/rd_tower02b.vcolmesh	
+staticmeshes/rd_tower02b.vmesh	staticmeshes/rd_tower02b.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower_bottoms.vcolmesh	staticmeshes/rd_tower_bottoms.vcolmesh	
+staticmeshes/rd_tower_bottoms.vmesh	staticmeshes/rd_tower_bottoms.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower_bottoms01.vcolmesh	staticmeshes/rd_tower_bottoms01.vcolmesh	
+staticmeshes/rd_tower_bottoms01.vmesh	staticmeshes/rd_tower_bottoms01.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower_corner.vcolmesh	staticmeshes/rd_tower_corner.vcolmesh	
+staticmeshes/rd_tower_corner.vmesh	staticmeshes/rd_tower_corner.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower_entrance.vcolmesh	staticmeshes/rd_tower_entrance.vcolmesh	
+staticmeshes/rd_tower_entrance.vmesh	staticmeshes/rd_tower_entrance.vmesh	LODSwitchDistances=
+staticmeshes/rd_tower_entrance02.vcolmesh	staticmeshes/rd_tower_entrance02.vcolmesh	
+staticmeshes/rd_tower_entrance02.vmesh	staticmeshes/rd_tower_entrance02.vmesh	LODSwitchDistances=
+staticmeshes/rd_tree.vcolmesh	staticmeshes/rd_tree.vcolmesh	
+staticmeshes/rd_tree.vmesh	staticmeshes/rd_tree.vmesh	LODSwitchDistances=
+textures/arch_wall_c_mu.dds	textures/arch_wall_c_mu.dds	sRGB=false
+textures/arch_wall_n_mu.dds	textures/arch_wall_n_mu.dds	sRGB=false
+textures/barrel02_c_mu.dds	textures/barrel02_c_mu.dds	sRGB=false
+textures/barrel02_n_mu.dds	textures/barrel02_n_mu.dds	sRGB=false
+textures/barrels_c_mu.dds	textures/barrels_c_mu.dds	sRGB=false
+textures/barrels_n_mu.dds	textures/barrels_n_mu.dds	sRGB=false
+textures/bell01_c_mu.dds	textures/bell01_c_mu.dds	sRGB=false
+textures/bell01_n_mu.dds	textures/bell01_n_mu.dds	sRGB=false
+textures/bowl01_c_mu.dds	textures/bowl01_c_mu.dds	sRGB=false
+textures/bowl01_n_mu.dds	textures/bowl01_n_mu.dds	sRGB=false
+textures/bridge.dds	textures/bridge.dds	sRGB=false
+textures/bridge_n.dds	textures/bridge_n.dds	sRGB=false
+textures/cage01_c_mu.dds	textures/cage01_c_mu.dds	sRGB=false
+textures/cage01_n_mu.dds	textures/cage01_n_mu.dds	sRGB=false
+textures/cage02_c_mu.dds	textures/cage02_c_mu.dds	sRGB=false
+textures/cage02_n_mu.dds	textures/cage02_n_mu.dds	sRGB=false
+textures/cage03_c_mu.dds	textures/cage03_c_mu.dds	sRGB=false
+textures/cage03_n_mu.dds	textures/cage03_n_mu.dds	sRGB=false
+textures/carriage01_c_mu.dds	textures/carriage01_c_mu.dds	sRGB=false
+textures/carriage01_n_mu.dds	textures/carriage01_n_mu.dds	sRGB=false
+textures/case_chains_c_mu.dds	textures/case_chains_c_mu.dds	sRGB=false
+textures/case_chains_n_mu.dds	textures/case_chains_n_mu.dds	sRGB=false
+textures/case_fabric_c_mu.dds	textures/case_fabric_c_mu.dds	sRGB=false
+textures/case_fabric_n_mu.dds	textures/case_fabric_n_mu.dds	sRGB=false
+textures/case_little_c_mu.dds	textures/case_little_c_mu.dds	sRGB=false
+textures/case_little_n_mu.dds	textures/case_little_n_mu.dds	sRGB=false
+textures/castle.dds	textures/castle.dds	sRGB=false
+textures/castle_n.dds	textures/castle_n.dds	sRGB=false
+textures/chain_c_mu.dds	textures/chain_c_mu.dds	sRGB=false
+textures/chain_n_mu.dds	textures/chain_n_mu.dds	sRGB=false
+textures/chicken_brown_color.dds	textures/chicken_brown_color.dds	sRGB=false
+textures/crow.dds	textures/crow.dds	sRGB=false
+textures/cuffs_c_mu.dds	textures/cuffs_c_mu.dds	sRGB=false
+textures/cuffs_n_mu.dds	textures/cuffs_n_mu.dds	sRGB=false
+textures/donkey_gray_color.dds	textures/donkey_gray_color.dds	sRGB=false
+textures/door_city_entrance.dds	textures/door_city_entrance.dds	sRGB=false
+textures/door_city_entrance_n.dds	textures/door_city_entrance_n.dds	sRGB=false
+textures/effects/smoke01.dds	textures/effects/smoke01.dds	sRGB=false
+textures/ext_ground_black.dds	textures/ext_ground_black.dds	sRGB=false
+textures/ext_ground_blue.dds	textures/ext_ground_blue.dds	sRGB=false
+textures/ext_ground_green.dds	textures/ext_ground_green.dds	sRGB=false
+textures/ext_ground_red.dds	textures/ext_ground_red.dds	sRGB=false
+textures/femur_c_mu.dds	textures/femur_c_mu.dds	sRGB=false
+textures/finial_metal_c_mu.dds	textures/finial_metal_c_mu.dds	sRGB=false
+textures/flag01_c_mu.dds	textures/flag01_c_mu.dds	sRGB=false
+textures/flag02_c_mu.dds	textures/flag02_c_mu.dds	sRGB=false
+textures/flag02b_c_mu.dds	textures/flag02b_c_mu.dds	sRGB=false
+textures/flag02c_c_mu.dds	textures/flag02c_c_mu.dds	sRGB=false
+textures/flag03_c_mu.dds	textures/flag03_c_mu.dds	sRGB=false
+textures/footbridge_c_mu.dds	textures/footbridge_c_mu.dds	sRGB=false
+textures/footbridge_n_mu.dds	textures/footbridge_n_mu.dds	sRGB=false
+textures/fortification_c.dds	textures/fortification_c.dds	sRGB=false
+textures/fortification_n.dds	textures/fortification_n.dds	sRGB=false
+textures/gargoyle01_mudbox_c_mu.dds	textures/gargoyle01_mudbox_c_mu.dds	sRGB=false
+textures/gargoyle01_mudbox_n_mu.dds	textures/gargoyle01_mudbox_n_mu.dds	sRGB=false
+textures/goose_white_color.dds	textures/goose_white_color.dds	sRGB=false
+textures/grey.dds	textures/grey.dds	sRGB=false
+textures/grid01_c_mu.dds	textures/grid01_c_mu.dds	sRGB=false
+textures/grid01_n_mu.dds	textures/grid01_n_mu.dds	sRGB=false
+textures/grid03_c_mu.dds	textures/grid03_c_mu.dds	sRGB=false
+textures/grid03_n_mu.dds	textures/grid03_n_mu.dds	sRGB=false
+textures/ground_b7_c_mu.dds	textures/ground_b7_c_mu.dds	sRGB=false
+textures/ground_b7_n_mu.dds	textures/ground_b7_n_mu.dds	sRGB=false
+textures/ground_b8_c_mu.dds	textures/ground_b8_c_mu.dds	sRGB=false
+textures/ground_b8_n_mu.dds	textures/ground_b8_n_mu.dds	sRGB=false
+textures/ground_castle.dds	textures/ground_castle.dds	sRGB=false
+textures/ground_castle_n.dds	textures/ground_castle_n.dds	sRGB=false
+textures/ground_deadtree.dds	textures/ground_deadtree.dds	sRGB=false
+textures/ground_deadtree_n.dds	textures/ground_deadtree_n.dds	sRGB=false
+textures/ground_gate.dds	textures/ground_gate.dds	sRGB=false
+textures/ground_gate_n.dds	textures/ground_gate_n.dds	sRGB=false
+textures/ground_pavements_c_mu.dds	textures/ground_pavements_c_mu.dds	sRGB=false
+textures/gui/freecamera.dds	textures/gui/freecamera.dds	sRGB=false
+textures/gui/freecamera@2x.dds	textures/gui/freecamera@2x.dds	sRGB=false
+textures/gui/pathcamera.dds	textures/gui/pathcamera.dds	sRGB=false
+textures/gui/pathcamera@2x.dds	textures/gui/pathcamera@2x.dds	sRGB=false
+textures/gui/playercamera.dds	textures/gui/playercamera.dds	sRGB=false
+textures/gui/playercamera@2x.dds	textures/gui/playercamera@2x.dds	sRGB=false
+textures/herbs01.dds	textures/herbs01.dds	sRGB=false
+textures/hook01_c_mu.dds	textures/hook01_c_mu.dds	sRGB=false
+textures/hook01_n_mu.dds	textures/hook01_n_mu.dds	sRGB=false
+textures/horse_brown_color.dds	textures/horse_brown_color.dds	sRGB=false
+textures/items/cloverleaf_c_mu.dds	textures/items/cloverleaf_c_mu.dds	sRGB=false
+textures/items/cloverleaf_n_mu.dds	textures/items/cloverleaf_n_mu.dds	sRGB=false
+textures/items/diamond_c_mu.dds	textures/items/diamond_c_mu.dds	sRGB=false
+textures/items/emerald_c_mu.dds	textures/items/emerald_c_mu.dds	sRGB=false
+textures/items/gold_c_mu.dds	textures/items/gold_c_mu.dds	sRGB=false
+textures/items/gold_n_mu.dds	textures/items/gold_n_mu.dds	sRGB=false
+textures/items/morningstar_c_mu.dds	textures/items/morningstar_c_mu.dds	sRGB=false
+textures/items/phial_c_mu.dds	textures/items/phial_c_mu.dds	sRGB=false
+textures/items/phial_n_mu.dds	textures/items/phial_n_mu.dds	sRGB=false
+textures/items/ruby_c_mu.dds	textures/items/ruby_c_mu.dds	sRGB=false
+textures/items/shield01_c_mu.dds	textures/items/shield01_c_mu.dds	sRGB=false
+textures/items/shield01_n_mu.dds	textures/items/shield01_n_mu.dds	sRGB=false
+textures/items/sword.dds	textures/items/sword.dds	sRGB=false
+textures/items/sword_c.dds	textures/items/sword_c.dds	sRGB=false
+textures/items/sword_n.dds	textures/items/sword_n.dds	sRGB=false
+textures/largecorona.dds	textures/largecorona.dds	sRGB=false
+textures/light01_c_mu.dds	textures/light01_c_mu.dds	sRGB=false
+textures/light01_n_mu.dds	textures/light01_n_mu.dds	sRGB=false
+textures/light02_c_mu.dds	textures/light02_c_mu.dds	sRGB=false
+textures/light02_n_mu.dds	textures/light02_n_mu.dds	sRGB=false
+textures/light03_c_mu.dds	textures/light03_c_mu.dds	sRGB=false
+textures/light03_n_mu.dds	textures/light03_n_mu.dds	sRGB=false
+textures/little_bell_c_mu.dds	textures/little_bell_c_mu.dds	sRGB=false
+textures/little_bell_n_mu.dds	textures/little_bell_n_mu.dds	sRGB=false
+textures/little_bell_simple_c_mu.dds	textures/little_bell_simple_c_mu.dds	sRGB=false
+textures/little_bell_simple_n_mu.dds	textures/little_bell_simple_n_mu.dds	sRGB=false
+textures/lord_castle_c_mu.dds	textures/lord_castle_c_mu.dds	sRGB=false
+textures/lord_castle_n_mu.dds	textures/lord_castle_n_mu.dds	sRGB=false
+textures/m01_m03_shared_c.dds	textures/m01_m03_shared_c.dds	sRGB=false
+textures/m01_m03_shared_n.dds	textures/m01_m03_shared_n.dds	sRGB=false
+textures/m02_m10_shared_c.dds	textures/m02_m10_shared_c.dds	sRGB=false
+textures/m02_m10_shared_g.dds	textures/m02_m10_shared_g.dds	sRGB=false
+textures/m02_m10_shared_n.dds	textures/m02_m10_shared_n.dds	sRGB=false
+textures/m04_c_mu.dds	textures/m04_c_mu.dds	sRGB=false
+textures/m04_c_sm.dds	textures/m04_c_sm.dds	sRGB=false
+textures/m04_c_window_mu.dds	textures/m04_c_window_mu.dds	sRGB=false
+textures/m04_n_mu.dds	textures/m04_n_mu.dds	sRGB=false
+textures/m04_n_sm.dds	textures/m04_n_sm.dds	sRGB=false
+textures/m04_n_window_mu.dds	textures/m04_n_window_mu.dds	sRGB=false
+textures/m05_new.dds	textures/m05_new.dds	sRGB=false
+textures/m05_new_n.dds	textures/m05_new_n.dds	sRGB=false
+textures/m06_c.dds	textures/m06_c.dds	sRGB=false
+textures/m06_n_eu.dds	textures/m06_n_eu.dds	sRGB=false
+textures/m07_c.dds	textures/m07_c.dds	sRGB=false
+textures/m07_n_eu.dds	textures/m07_n_eu.dds	sRGB=false
+textures/m08_c.dds	textures/m08_c.dds	sRGB=false
+textures/m08_n_eu.dds	textures/m08_n_eu.dds	sRGB=false
+textures/m09_c.dds	textures/m09_c.dds	sRGB=false
+textures/m09_n_eu.dds	textures/m09_n_eu.dds	sRGB=false
+textures/m10_emissive.dds	textures/m10_emissive.dds	sRGB=false
+textures/m16_c_mu.dds	textures/m16_c_mu.dds	sRGB=false
+textures/m16_n_mu.dds	textures/m16_n_mu.dds	sRGB=false
+textures/m17_c_mu.dds	textures/m17_c_mu.dds	sRGB=false
+textures/m17_n_mu.dds	textures/m17_n_mu.dds	sRGB=false
+textures/mdestruct.dds	textures/mdestruct.dds	sRGB=false
+textures/mdestruct_n.dds	textures/mdestruct_n.dds	sRGB=false
+textures/metall.dds	textures/metall.dds	sRGB=false
+textures/monster_skull_c_mu.dds	textures/monster_skull_c_mu.dds	sRGB=false
+textures/monster_skull_n_mu.dds	textures/monster_skull_n_mu.dds	sRGB=false
+textures/moss_c_mu.dds	textures/moss_c_mu.dds	sRGB=false
+textures/pig_pink_color.dds	textures/pig_pink_color.dds	sRGB=false
+textures/pot01_c_mu.dds	textures/pot01_c_mu.dds	sRGB=false
+textures/pot01_n_mu.dds	textures/pot01_n_mu.dds	sRGB=false
+textures/pot02_c_mu.dds	textures/pot02_c_mu.dds	sRGB=false
+textures/pot02_n_mu.dds	textures/pot02_n_mu.dds	sRGB=false
+textures/pot03_c_mu.dds	textures/pot03_c_mu.dds	sRGB=false
+textures/pot03_n_mu.dds	textures/pot03_n_mu.dds	sRGB=false
+textures/pot_broken_c_mu.dds	textures/pot_broken_c_mu.dds	sRGB=false
+textures/pot_broken_n_mu.dds	textures/pot_broken_n_mu.dds	sRGB=false
+textures/rat_c_mu.dds	textures/rat_c_mu.dds	sRGB=false
+textures/rat_grey_c_mu.dds	textures/rat_grey_c_mu.dds	sRGB=false
+textures/rat_n_mu.dds	textures/rat_n_mu.dds	sRGB=false
+textures/rtbark1a.dds	textures/rtbark1a.dds	sRGB=false
+textures/rtbark1a_nrm.dds	textures/rtbark1a_nrm.dds	sRGB=false
+textures/rtbranch1a.dds	textures/rtbranch1a.dds	sRGB=false
+textures/sheep_white_color.dds	textures/sheep_white_color.dds	sRGB=false
+textures/shepherd_dog_color.dds	textures/shepherd_dog_color.dds	sRGB=false
+textures/sign_herbalist_dandelion.dds	textures/sign_herbalist_dandelion.dds	sRGB=false
+textures/sign_herbalist_dandelion_n_mu.dds	textures/sign_herbalist_dandelion_n_mu.dds	sRGB=false
+textures/sign_tavern_spotted_dog.dds	textures/sign_tavern_spotted_dog.dds	sRGB=false
+textures/sign_tavern_spotted_dog_n_mu.dds	textures/sign_tavern_spotted_dog_n_mu.dds	sRGB=false
+textures/skeleton_c_mu.dds	textures/skeleton_c_mu.dds	sRGB=false
+textures/sky/clear_morning_back.bmp	textures/sky/clear_morning_back.bmp	sRGB=false
+textures/sky/clear_morning_front.bmp	textures/sky/clear_morning_front.bmp	sRGB=false
+textures/sky/clear_morning_left.bmp	textures/sky/clear_morning_left.bmp	sRGB=false
+textures/sky/clear_morning_right.bmp	textures/sky/clear_morning_right.bmp	sRGB=false
+textures/sky/clear_morning_top.bmp	textures/sky/clear_morning_top.bmp	sRGB=false
+textures/spidernet01_c_mu.dds	textures/spidernet01_c_mu.dds	sRGB=false
+textures/spidernet02_c_mu.dds	textures/spidernet02_c_mu.dds	sRGB=false
+textures/spidernet03_c_mu.dds	textures/spidernet03_c_mu.dds	sRGB=false
+textures/spidernet04_c_mu.dds	textures/spidernet04_c_mu.dds	sRGB=false
+textures/stairs01_mu.dds	textures/stairs01_mu.dds	sRGB=false
+textures/stairs01_n_mu.dds	textures/stairs01_n_mu.dds	sRGB=false
+textures/stairs02_mu.dds	textures/stairs02_mu.dds	sRGB=false
+textures/stairs02_n_mu.dds	textures/stairs02_n_mu.dds	sRGB=false
+textures/stairs03_mu.dds	textures/stairs03_mu.dds	sRGB=false
+textures/stairs03_n_mu.dds	textures/stairs03_n_mu.dds	sRGB=false
+textures/stones_c_mu.dds	textures/stones_c_mu.dds	sRGB=false
+textures/stones_n_mu.dds	textures/stones_n_mu.dds	sRGB=false
+textures/tentacle_c_mu.dds	textures/tentacle_c_mu.dds	sRGB=false
+textures/tentacle_n_mu.dds	textures/tentacle_n_mu.dds	sRGB=false
+textures/thorax_c_mu.dds	textures/thorax_c_mu.dds	sRGB=false
+textures/torch01_c_mu.dds	textures/torch01_c_mu.dds	sRGB=false
+textures/torch01_n_mu.dds	textures/torch01_n_mu.dds	sRGB=false
+textures/tower01_c_mu.dds	textures/tower01_c_mu.dds	sRGB=false
+textures/tower01_n_mu.dds	textures/tower01_n_mu.dds	sRGB=false
+textures/tower02_c_mu.dds	textures/tower02_c_mu.dds	sRGB=false
+textures/tower02_n_mu.dds	textures/tower02_n_mu.dds	sRGB=false
+textures/tower_bottoms_c_mu.dds	textures/tower_bottoms_c_mu.dds	sRGB=false
+textures/tower_bottoms_n_mu.dds	textures/tower_bottoms_n_mu.dds	sRGB=false
+textures/tower_corner_c.dds	textures/tower_corner_c.dds	sRGB=false
+textures/tower_corner_n.dds	textures/tower_corner_n.dds	sRGB=false
+textures/tower_entrance_c.dds	textures/tower_entrance_c.dds	sRGB=false
+textures/tower_entrance_n.dds	textures/tower_entrance_n.dds	sRGB=false
+textures/tree01_c.dds	textures/tree01_c.dds	sRGB=false
+textures/tree01_n.dds	textures/tree01_n.dds	sRGB=false
+textures/water01_diffuse.dds	textures/water01_diffuse.dds	sRGB=false
+textures/water02_diffuse.dds	textures/water02_diffuse.dds	sRGB=false
+textures/water03_diffuse.dds	textures/water03_diffuse.dds	sRGB=false
+textures/water_normal.tga	textures/water_normal.tga	sRGB=false
+textures/water_normal2.dds	textures/water_normal2.dds	sRGB=false
+textures/water_normal2.tga	textures/water_normal2.tga	sRGB=false
+textures/windows01_m08_c.dds	textures/windows01_m08_c.dds	sRGB=false
+textures/windows01_m08_n.dds	textures/windows01_m08_n.dds	sRGB=false
+textures/windows02_m08_c.dds	textures/windows02_m08_c.dds	sRGB=false
+textures/windows02_m08_n.dds	textures/windows02_m08_n.dds	sRGB=false
+textures/windows_castle_c.dds	textures/windows_castle_c.dds	sRGB=false
+textures/windows_castle_n.dds	textures/windows_castle_n.dds	sRGB=false
+textures/windows_m01_c.dds	textures/windows_m01_c.dds	sRGB=false
+textures/windows_m01_n.dds	textures/windows_m01_n.dds	sRGB=false
+textures/windows_m02_01_c.dds	textures/windows_m02_01_c.dds	sRGB=false
+textures/windows_m02_01_n.dds	textures/windows_m02_01_n.dds	sRGB=false
+textures/windows_m02_02_c.dds	textures/windows_m02_02_c.dds	sRGB=false
+textures/windows_m02_02_n.dds	textures/windows_m02_02_n.dds	sRGB=false
+textures/windows_m03_c.dds	textures/windows_m03_c.dds	sRGB=false
+textures/windows_m03_n.dds	textures/windows_m03_n.dds	sRGB=false
+textures/windows_m04_c.dds	textures/windows_m04_c.dds	sRGB=false
+textures/windows_m04_n.dds	textures/windows_m04_n.dds	sRGB=false
+textures/windows_m05_c.dds	textures/windows_m05_c.dds	sRGB=false
+textures/windows_m05_n.dds	textures/windows_m05_n.dds	sRGB=false
+textures/windows_m06_01_c.dds	textures/windows_m06_01_c.dds	sRGB=false
+textures/windows_m06_01_n.dds	textures/windows_m06_01_n.dds	sRGB=false
+textures/windows_m06_02_c.dds	textures/windows_m06_02_c.dds	sRGB=false
+textures/windows_m06_02_n.dds	textures/windows_m06_02_n.dds	sRGB=false
+textures/windows_m07_c.dds	textures/windows_m07_c.dds	sRGB=false
+textures/windows_m07_n.dds	textures/windows_m07_n.dds	sRGB=false
+textures/windows_m10_c.dds	textures/windows_m10_c.dds	sRGB=false
+textures/windows_m10_n.dds	textures/windows_m10_n.dds	sRGB=false
+textures/windows_m16_c.dds	textures/windows_m16_c.dds	sRGB=false
+textures/windows_m16_n.dds	textures/windows_m16_n.dds	sRGB=false
+textures/windows_m17_c.dds	textures/windows_m17_c.dds	sRGB=false
+textures/windows_m17_n.dds	textures/windows_m17_n.dds	sRGB=false
+textures/windows_tower01_c.dds	textures/windows_tower01_c.dds	sRGB=false
+textures/windows_tower01_n.dds	textures/windows_tower01_n.dds	sRGB=false
+textures/wood01_c_mu.dds	textures/wood01_c_mu.dds	sRGB=false
+textures/wood01_n_mu.dds	textures/wood01_n_mu.dds	sRGB=false
+scenes/particlerain_p01.dds	scenes/particlerain_p01.dds	sRGB=false
+scenes/particlerain_p01_c1.dds	scenes/particlerain_p01_c1.dds	sRGB=false
+scenes/particlerain_p01_c2.dds	scenes/particlerain_p01_c2.dds	sRGB=false
+scenes/particlerain_p01_c3.dds	scenes/particlerain_p01_c3.dds	sRGB=false

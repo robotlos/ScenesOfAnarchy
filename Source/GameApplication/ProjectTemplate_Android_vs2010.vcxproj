@@ -127,6 +127,7 @@
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ParticleRainController.cpp" />
     <ClCompile Include="StackNode.cpp" />
     <ClCompile Include="TowerOfDoomController.cpp" />
   </ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="GameApplicationPCH.h" />
     <ClInclude Include="GravityRoomController.h" />
     <ClInclude Include="IController.h" />
+    <ClInclude Include="ParticleRainController.h" />
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="TowerOfDoomController.h" />
   </ItemGroup>
