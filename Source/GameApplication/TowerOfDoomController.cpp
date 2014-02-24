@@ -52,8 +52,7 @@ hkvVec3 project3D(float x, float y, float fDist)
     hkvVec3 traceEnd = traceStart + traceDir;    
     return hkvVec3(traceEnd);
 }
-
-void TowerOfDoomController::Run(VInputMap* inputMap){
+bool TowerOfDoomController::Run(VInputMap* inputMap){
 	this->StackBlocks(500);
 
 	//if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
@@ -71,6 +70,7 @@ void TowerOfDoomController::Run(VInputMap* inputMap){
 	//if(inputMap->GetTrigger(PICK)){
 	//	this->Swipe(inputMap);
 	//}
+	return true;
 }
 
 void TowerOfDoomController::MapTriggers(VInputMap* inputMap){

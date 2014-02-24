@@ -12,3 +12,13 @@ enum CustomControls{
 	Y,
 	PICK
 };
+
+enum SceneID{
+	MAIN_MENU,
+	GRAVITY_ROOM, 
+	TOWER_OF_DOOM, 
+	TUMBLER, 
+	CAR_DERBY, 
+	BALL_DROP, 
+	SCENE6
+};

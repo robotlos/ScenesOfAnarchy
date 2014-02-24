@@ -10,6 +10,7 @@
     <ClCompile Include="StackNode.cpp" />
     <ClCompile Include="TowerOfDoomController.cpp" />
     <ClCompile Include="ParticleRainController.cpp" />
+    <ClCompile Include="MenuController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApplicationPCH.h" />
@@ -20,5 +21,6 @@
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="TowerOfDoomController.h" />
     <ClInclude Include="ParticleRainController.h" />
+    <ClInclude Include="MenuController.h" />
   </ItemGroup>
 </Project>

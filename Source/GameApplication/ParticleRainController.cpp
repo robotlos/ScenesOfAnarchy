@@ -38,13 +38,11 @@ void ParticleRainController::RainBalls(int numOfBalls){
 
 
 
-void ParticleRainController::Run(VInputMap* inputMap){
-		
-	
-
+bool ParticleRainController::Run(VInputMap* inputMap){
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
 		this->RainBalls(10);
 	}
+	return true;
 }
 
 void ParticleRainController::MapTriggers(VInputMap* inputMap){
