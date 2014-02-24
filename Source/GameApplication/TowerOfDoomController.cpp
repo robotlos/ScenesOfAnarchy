@@ -2,13 +2,14 @@
 #include "TowerOfDoomController.h"
 
 
-int blockCount = 0;
-int z = 100;
+
 
 TowerOfDoomController::TowerOfDoomController(void)
 {
 	//VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("CameraPosition");
 	//Vision::Camera.AttachToEntity(pCamera, hkvVec3(-500.0f, 0.0f, 0.0f));
+	blockCount = 0;
+	z = 100;
 }
 
 
@@ -53,7 +54,7 @@ hkvVec3 project3D(float x, float y, float fDist)
     return hkvVec3(traceEnd);
 }
 bool TowerOfDoomController::Run(VInputMap* inputMap){
-	this->StackBlocks(500);
+	this->StackBlocks(10);
 
 	//if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
 	//	//this->AddCube();

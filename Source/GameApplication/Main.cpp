@@ -26,7 +26,7 @@ VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
 
 
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","","","","", ""};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", ""};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -123,7 +123,7 @@ void ProjectTemplateApp::Init()
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
 	menu->Enable();
-	
+
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -138,7 +138,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//RegisterAppModule(new VHelp(help));
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
-	Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
+	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
 	// Add other initial game code here
 	// [...]
 	//controller = new GravityRoomController();
@@ -150,7 +150,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
-	
+
 
 	if(currentSceneID==MAIN_MENU){
 		//Do menu stuff
@@ -176,6 +176,7 @@ bool ProjectTemplateApp::Run()
 		if(ProjectTemplateApp::GetInputMap()->GetTrigger(VAPP_EXIT)){
 			SwitchScene(MAIN_MENU);
 			currentSceneID = MAIN_MENU;
+			controller = NULL;
 			menu->Enable();
 		}
 	}
@@ -223,6 +224,7 @@ void ProjectTemplateApp::RecordFPS()
 	//const char * c = s.c_str();
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
+	this->m_pSceneLoader->UnloadScene();
 	VisAppLoadSettings settings(sceneNames[sceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
@@ -236,13 +238,18 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TOWER_OF_DOOM:
+		this->controller = new TowerOfDoomController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
+	case PARTICLE_RAIN:
+		this->controller = new ParticleRainController();
+		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TUMBLER:
 		break;
 	case CAR_DERBY:
 		break;
-	case BALL_DROP:
-		break;
+
 	default:
 		break;
 	}

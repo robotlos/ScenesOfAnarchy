@@ -14,7 +14,8 @@ public:
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
 	void StackBlocks(int numOfBlocks);
 	void Swipe(VInputMap *inputMap);
-
+	int blockCount;
+	int z;
 #if defined(_VISION_ANDROID)
 	vHavokPhysicsModule* pMod;
 	VMotionInputAndroid* pMotionInput;
