@@ -14,6 +14,10 @@
 #include "GravityRoomController.h"
 #include "TowerOfDoomController.h"
 #include "ParticleRainController.h"
+#include <sstream>
+#include <iostream>
+#include <fstream>
+using namespace std;
 
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
@@ -37,11 +41,14 @@ public:
 	virtual void DeInit() HKV_OVERRIDE;
 	void UpdateFPS();
 	void UpdateStats(); // as UpdateFPS, but with number of objects added to the output.
+	void RecordFPS();
 	IController* controller;
 	float m_iFrameCounter;
 	float m_fTimeAccumulator;
 	float m_fCurrentFrameTime;
 	float m_fCurrentFps;
+	float previousFps;
+	ofstream stats;
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -94,6 +101,8 @@ void ProjectTemplateApp::Init()
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
+	stats.open("stats.txt");
+	stats << "FPS\tFrame Time\n";
 
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
@@ -127,8 +136,12 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
-	//UpdateFPS();  //Update stats replaces and extends UpdateFPS
+	
+	previousFps = m_fCurrentFps;
 	UpdateStats();
+	if(m_fCurrentFps != previousFps){ 
+		RecordFPS();
+	}
 	controller->Run(this->GetInputMap());
 	return true;
 }
@@ -163,6 +176,16 @@ void ProjectTemplateApp::UpdateStats(){
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 }
 
+void ProjectTemplateApp::RecordFPS()
+{
+	std::ostringstream ss;
+	ss << m_fCurrentFps;
+	ss << " ";
+	ss << m_fCurrentFrameTime * 1000.0f;
+	std::string s = ss.str() + "\n";
+	stats << s;
+	//const char * c = s.c_str();
+}
 
 void ProjectTemplateApp::DeInit()
 {
