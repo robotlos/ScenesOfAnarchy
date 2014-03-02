@@ -32,13 +32,11 @@ bool GravityRoomController::Run(VInputMap* inputMap){
 		//this->RemoveLast();
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-		this->AddSphere();
-
+		this->AddSphere(-100.0f, -30, 100);
 		//this->RemoveLast();
-
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
-		this->AddRagdoll();
+		this->AddRagdoll(-100.0f, 5, 100);
 	}
 	return true;
 }

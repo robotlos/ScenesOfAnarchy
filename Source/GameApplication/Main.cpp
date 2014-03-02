@@ -7,13 +7,18 @@
 */
 
 #include "GameApplicationPCH.h"
-#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp>
-
+#include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp> 
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
+#include "TowerOfDoomController.h"
+#include "ParticleRainController.h"
 #include "MenuController.h"
 #include "Constants.h"
+#include <sstream>
+#include <iostream>
+#include <fstream>
+using namespace std;
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
@@ -21,7 +26,7 @@ VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
 
 
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","","","","", ""};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", ""};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -39,6 +44,8 @@ public:
 	void SwitchScene(int sceneID);
 	void SwitchController(int sceneID);
 	void UpdateFPS();
+	void UpdateStats(); // as UpdateFPS, but with number of objects added to the output.
+	void RecordFPS();
 	IController* controller;
 	MenuController* menu;
 	int currentSceneID;
@@ -46,6 +53,8 @@ public:
 	float m_fTimeAccumulator;
 	float m_fCurrentFrameTime;
 	float m_fCurrentFps;
+	float previousFps;
+	ofstream stats;
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -101,17 +110,20 @@ void ProjectTemplateApp::Init()
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
+	stats.open("stats.txt");
+	stats << "FPS\tFrame Time\n";
 
 	//Initliaze the menu
 	menu = new MenuController(this->GetContext());
 	currentSceneID=MAIN_MENU;
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
+
 	VisAppLoadSettings settings(sceneNames[currentSceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
 	menu->Enable();
-	
+
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -126,13 +138,11 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//RegisterAppModule(new VHelp(help));
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
-	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(0.0f, 0.0f, 170.0f));
+	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
 	// Add other initial game code here
 	// [...]
 	//controller = new GravityRoomController();
 	//controller->MapTriggers(this->GetInputMap());
-	
-
 }
 
 //---------------------------------------------------------------------------------------------------------
@@ -140,6 +150,8 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
 {
+
+
 	if(currentSceneID==MAIN_MENU){
 		//Do menu stuff
 		int newSceneID = menu->Run();
@@ -150,7 +162,11 @@ bool ProjectTemplateApp::Run()
 		}
 	}
 	else{
-		UpdateFPS();
+		previousFps = m_fCurrentFps;
+		UpdateStats();
+		if(m_fCurrentFps != previousFps){ 
+			RecordFPS();
+		}
 		bool doNotExit = controller->Run(this->GetInputMap());
 		if(!doNotExit){
 			SwitchScene(MAIN_MENU);
@@ -160,6 +176,7 @@ bool ProjectTemplateApp::Run()
 		if(ProjectTemplateApp::GetInputMap()->GetTrigger(VAPP_EXIT)){
 			SwitchScene(MAIN_MENU);
 			currentSceneID = MAIN_MENU;
+			controller = NULL;
 			menu->Enable();
 		}
 	}
@@ -181,7 +198,33 @@ void ProjectTemplateApp::UpdateFPS(){
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 35, "FPS : %.1f\nFrame Time : %.2f", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f);
 }
 
+void ProjectTemplateApp::UpdateStats(){
+	m_iFrameCounter++;
+	m_fTimeAccumulator += Vision::GetUITimer()->GetTimeDifference();
+
+	if (m_fTimeAccumulator >= 1.0f)
+	{
+		m_fCurrentFrameTime = m_fTimeAccumulator / m_iFrameCounter;
+		m_fCurrentFps = m_iFrameCounter / m_fTimeAccumulator;
+
+		m_fTimeAccumulator = 0.0f;
+		m_iFrameCounter = 0;
+	}
+	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+}
+
+void ProjectTemplateApp::RecordFPS()
+{
+	std::ostringstream ss;
+	ss << m_fCurrentFps;
+	ss << " ";
+	ss << m_fCurrentFrameTime * 1000.0f;
+	std::string s = ss.str() + "\n";
+	stats << s;
+	//const char * c = s.c_str();
+}
 void ProjectTemplateApp::SwitchScene(int sceneID){
+	this->m_pSceneLoader->UnloadScene();
 	VisAppLoadSettings settings(sceneNames[sceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
@@ -195,13 +238,18 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TOWER_OF_DOOM:
+		this->controller = new TowerOfDoomController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
+	case PARTICLE_RAIN:
+		this->controller = new ParticleRainController();
+		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TUMBLER:
 		break;
 	case CAR_DERBY:
 		break;
-	case BALL_DROP:
-		break;
+
 	default:
 		break;
 	}
