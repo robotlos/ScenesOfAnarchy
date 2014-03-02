@@ -39,14 +39,14 @@ void MenuController::Enable(){
 	char *sceneNames[6] = {"Gravity Room", "Tower of Doom", "Scene 3", "Scene 4", "Scene 5", "Scene 6"};
 
 	for(int i = 0; i < 6; i++){
-		buttonArray[i]->SetPosition((x/2) - x/4, y * i/6 + y/20);		
+		buttonArray[i]->SetPosition(0, y * i/6 + y/20);		
 		buttonArray[i]->SetText(sceneNames[i]);
-		buttonArray[i]->SetSize(x/2, y/20);		
+		buttonArray[i]->SetSize(x, y/20);		
 		buttonArray[i]->SetDialogResult(i+1);	//every scene has a dialog result used for loading call
 		buttonArray[i]->SetEnabled(true); //not sure if this is necessary
 
 		buttonArray[i]->Text().SetFont(Vision::Fonts.FindFont("MenuFont"));
-		buttonArray[i]->Text().SetColor(VColorRef (100,40,245,255));
+		buttonArray[i]->Text().SetColor(VColorRef (50,50,255,255));
 		
 		buttonArray[i]->Text().SetHorizontalAlignment(VisFont_cl::ALIGN_CENTER);
 		buttonArray[i]->Text().SetVerticalAlignment(VisFont_cl::ALIGN_CENTER);
