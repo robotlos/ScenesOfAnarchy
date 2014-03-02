@@ -17,7 +17,7 @@ GravityRoomController::~GravityRoomController(void)
 {
 }
 
-void GravityRoomController::Run(VInputMap* inputMap){
+bool GravityRoomController::Run(VInputMap* inputMap){
 #if defined(_VISION_ANDROID)
 	hkvVec3 accel = pMotionInput->GetAcceleration();
 	//Multiply it by 1K to increase the intensity
@@ -28,24 +28,24 @@ void GravityRoomController::Run(VInputMap* inputMap){
 	pMod->SetGravity(gravity);
 #endif
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		this->AddRagdoll();
+		this->AddCube();
+		//this->RemoveLast();
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-		this->AddSphere();
+		this->AddSphere(-100.0f, -30, 100);
+		//this->RemoveLast();
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
-		this->AddCube();
+		this->AddRagdoll(-100.0f, 5, 100);
 	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_FOUR)){
-		this->RemoveLast();
-	}
+	return true;
 }
 
 void GravityRoomController::MapTriggers(VInputMap* inputMap){
 
 #if defined(WIN32)
 	inputMap->MapTrigger(CUSTOM_CONTROL_ONE, V_KEYBOARD, VInputControl::CT_KB_UP, VInputOptions::Once());
-	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, V_KEYBOARD, VInputControl::CT_KB_KP_DOWN, VInputOptions::Once());
+	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, V_KEYBOARD, VInputControl::CT_KB_DOWN, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, V_KEYBOARD, VInputControl::CT_KB_LEFT, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, V_KEYBOARD, VInputControl::CT_KB_RIGHT, VInputOptions::Once());
 #endif
@@ -66,4 +66,5 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, removeLastArea, CT_TOUCH_ANY);
 	
 #endif
+
 }

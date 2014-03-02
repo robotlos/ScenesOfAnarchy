@@ -1,9 +1,6 @@
 <root>
-  <LOADRESOURCE type="FONT" filename="Arial_18" name="MenuFont" />
-  <CURSOR name="DefaultMouse" texture="MouseNorm.tga" color="255,255,255,255" hotspot="2,2"/>
-  <CURSOR name="HighMouse" texture="MouseHigh.tga" color="255,255,255,255" hotspot="2,2"/>
-  <defaults
-    cursor = "DefaultMouse"
+  <LOADRESOURCE type="FONT" filename="Fonts\\Arial_80" name="MenuFont" />
+ <!-- <defaults
 	font = "MenuFont"
-  />
+  />-->
 </root>
