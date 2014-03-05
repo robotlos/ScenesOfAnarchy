@@ -20,6 +20,10 @@ MenuController::~MenuController(void)
 }
 
 void MenuController::Enable(){
+	//VDialogCollection openDialogs = spContext->
+	//for(int i = 0; i < openDialogs.Count(); i++){
+		//spContext->CloseDialog(openDialogs.GetAt(i));
+	//}
 	this->m_pMainMenuDialog = spContext->ShowDialog("Assets\\MainMenu.xml");
 	this->enabled=true;
 	
