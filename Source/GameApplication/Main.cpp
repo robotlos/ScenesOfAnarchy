@@ -158,6 +158,10 @@ void ProjectTemplateApp::addButtons(){
 	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
 	addSphere->SetPos(width *.10, height * .85 );
 
+	//VisScreenMask_cl *toggleCamera = new VisScreenMask_cl();
+	//toggleCamera->LoadFromFile("\\ParticleRainGUI\\button.tga");
+	//toggleCamera->(width * .85, height *10);
+
 #endif
 
 }
