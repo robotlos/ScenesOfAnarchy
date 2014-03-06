@@ -15,6 +15,7 @@
 #include "ParticleRainController.h"
 #include "MenuController.h"
 #include "Constants.h"
+#include "WaterSimulationController.h"
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -23,10 +24,7 @@ using namespace std;
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
-
-
-
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", ""};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", "Scenes/WaterSimulation.vscene"};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -290,7 +288,10 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		break;
 	case CAR_DERBY:
 		break;
-
+	case WATER_SIMULATION:
+		this->controller = new WaterSimulationController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
 	default:
 		break;
 	}
@@ -301,8 +302,7 @@ void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
 	// [...]
-	//changes by carlos
-	//end changes by carlos
+	
 }
 
 /*
