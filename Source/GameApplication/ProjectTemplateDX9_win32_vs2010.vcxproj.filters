@@ -7,6 +7,10 @@
     <ClCompile Include="GravityRoomController.cpp" />
     <ClCompile Include="StackNode.cpp" />
     <ClCompile Include="EntityStack.cpp" />
+    <ClCompile Include="TowerOfDoomController.cpp" />
+    <ClCompile Include="ParticleRainController.cpp" />
+    <ClCompile Include="MenuController.cpp" />
+    <ClCompile Include="WaterSimulationController.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApplicationPCH.h" />
@@ -15,8 +19,13 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="EntityStack.h" />
+    <ClInclude Include="TowerOfDoomController.h" />
+    <ClInclude Include="ParticleRainController.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="WaterSimulationController.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="..\..\..\..\..\..\..\Havok\AnarchySDK\Source\Vision\Runtime\Common\Android\VirtualKeyboardActivity.java" />
   </ItemGroup>
 </Project>
