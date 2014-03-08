@@ -9,6 +9,8 @@
 #include "GameApplicationPCH.h"
 #include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp> 
 #include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
+#include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Input/VFreeCamera.hpp>
+#include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Input/VVirtualThumbStick.hpp>
 #include "IController.h"
 #include "GravityRoomController.h"
 #include "TowerOfDoomController.h"
@@ -154,6 +156,10 @@ void ProjectTemplateApp::addButtons(){
 	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
 	addSphere->SetPos(width *.10, height * .85 );
 
+	//VisScreenMask_cl *toggleCamera = new VisScreenMask_cl();
+	//toggleCamera->LoadFromFile("\\ParticleRainGUI\\button.tga");
+	//toggleCamera->(width * .85, height *10);
+
 #endif
 
 }
@@ -167,6 +173,13 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//help.Append("How to use this demo...");
 	//help.Append("");
 	//RegisterAppModule(new VHelp(help));
+
+	//VVirtualThumbStick* stick = new VVirtualThumbStick();
+
+	VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
+	pCam->SetPosition(150, 150, 150);
+	pCam->SetOrientation(180, -15, 100);
+
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
 	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));

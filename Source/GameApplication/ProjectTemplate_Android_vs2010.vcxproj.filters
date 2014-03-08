@@ -25,4 +25,7 @@
     <ClInclude Include="MenuController.h" />
     <ClInclude Include="WaterSimulationController.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Java Include="..\..\..\..\..\..\..\Havok\AnarchySDK\Source\Vision\Runtime\Common\Android\VirtualKeyboardActivity.java" />
+  </ItemGroup>
 </Project>

@@ -26,5 +26,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="..\..\..\..\..\..\..\Havok\AnarchySDK\Source\Vision\Runtime\Common\Android\VirtualKeyboardActivity.java" />
   </ItemGroup>
 </Project>
