@@ -62,7 +62,7 @@ void MenuController::Disable(){
 }
 
 int MenuController::DialogResultToSceneID(int dialogResults){
-	if(dialogResults == 1){ //Gravity Room = 1
+/*	if(dialogResults == 1){ //Gravity Room = 1
 		return GRAVITY_ROOM;
 	}
 	else if(dialogResults == 2){ //Tower of Doom = 2
@@ -71,7 +71,7 @@ int MenuController::DialogResultToSceneID(int dialogResults){
 	//TODO: add cases 3-6
 	else if(dialogResults == 6){
 		return WATER_SIMULATION;
-	}
+	}*/
 	return MAIN_MENU;
 }
 int MenuController::Run(){

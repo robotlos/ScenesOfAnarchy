@@ -3,9 +3,10 @@
 
 WaterSimulationController::WaterSimulationController(void)
 {
-#if defined(_VISION_ANDROID)
+	
+#if defined(_VISION_ANDROID) //free camera for android (joystick/finger camera)
 	VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
-	pCam->SetPosition(-290, -220, 680);
+	pCam->SetPosition(-290, -220, 680); //spawns with same coordinates as windows
 	pCam->SetOrientation(20, 67, 19);
 
 #endif
@@ -22,27 +23,13 @@ WaterSimulationController::WaterSimulationController(void)
 }
 bool WaterSimulationController::Run(VInputMap* inputMap){
 
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		VisBaseEntity_cl *ent = this->AddSphere(0, -300, 1);
-		ent->SetScaling(0.05f);
-		ent->RemoveAllComponents();
-		vHavokRigidBody *sphere = new vHavokRigidBody();
-		sphere->Havok_TightFit = true;
-		sphere->Havok_Restitution = 0.35f;
-		ent->AddComponent(sphere);
-
-
-	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-		TriggerBoxEntity_cl *triggerbox = vdynamic_cast <TriggerBoxEntity_cl *> (Vision::Game.SearchEntity("triggerbox"));
-
-			if(triggerbox->IsEnabled())
-				triggerbox->SetEnabled(false);
-
-			else if(!triggerbox->IsEnabled())
-				triggerbox->SetEnabled(true);	
-	}
+	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE))
+		 this->AddWaterDrop(0, -300, 100, .05f); //x, y, z and scaling values
+		
+	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO))
+		this->Drain(); //turns drain on/off
 	
+
 	return true;
 }
 
