@@ -176,9 +176,9 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 
 	//VVirtualThumbStick* stick = new VVirtualThumbStick();
 
-	VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
+	/*VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
 	pCam->SetPosition(150, 150, 150);
-	pCam->SetOrientation(180, -15, 100);
+	pCam->SetOrientation(180, -15, 100);*/
 
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
