@@ -1,11 +1,19 @@
 #include "GameApplicationPCH.h"
 #include "WaterSimulationController.h"
 
-bool initload = true;
 WaterSimulationController::WaterSimulationController(void)
 {
+#if defined(_VISION_ANDROID)
+	VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
+	pCam->SetPosition(-290, -220, 680);
+	pCam->SetOrientation(20, 67, 19);
+
+#endif
+#if defined(WIN32)
 	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("tankcamera");
 	Vision::Camera.AttachToEntity(pCamera, hkvVec3::ZeroVector());
+
+#endif	
 	/*#if defined(_VISION_ANDROID)
 	pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
 	pMotionInput = (VMotionInputAndroid*)(&VInputManager::GetInputDevice(INPUT_DEVICE_MOTION_SENSOR));
@@ -15,8 +23,8 @@ WaterSimulationController::WaterSimulationController(void)
 bool WaterSimulationController::Run(VInputMap* inputMap){
 
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		VisBaseEntity_cl *ent = this->AddSphere(0, -300, 150);
-		ent->SetScaling(0.025f);
+		VisBaseEntity_cl *ent = this->AddSphere(0, -300, 1);
+		ent->SetScaling(0.05f);
 		ent->RemoveAllComponents();
 		vHavokRigidBody *sphere = new vHavokRigidBody();
 		sphere->Havok_TightFit = true;
@@ -28,16 +36,13 @@ bool WaterSimulationController::Run(VInputMap* inputMap){
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
 		TriggerBoxEntity_cl *triggerbox = vdynamic_cast <TriggerBoxEntity_cl *> (Vision::Game.SearchEntity("triggerbox"));
 
-		if(initload){
 			if(triggerbox->IsEnabled())
 				triggerbox->SetEnabled(false);
 
 			else if(!triggerbox->IsEnabled())
-				triggerbox->SetEnabled(true);
-			initload = false;
-		}
+				triggerbox->SetEnabled(true);	
 	}
-
+	
 	return true;
 }
 
