@@ -81,7 +81,7 @@ bool TowerOfDoomController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
 			if(this->dialog->GetDialogResult() == 42){
-				this->blockCount = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("TEXT1")))->GetText()));
+				this->blockCount = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
 				this->spContext->CloseDialog(this->dialog);
 				menuMode = false;
 				menuDisplayed = false;
@@ -132,7 +132,7 @@ void TowerOfDoomController::MapTriggers(VInputMap* inputMap){
 
 void TowerOfDoomController::EnableMenu(){
 
-	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\TowerOfDoomMenu.xml");
+	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\InputDialog.xml");
 	int x = Vision::Video.GetXRes();
 	int y = Vision::Video.GetYRes();
 	//To properly scale the dialog box grab input object
