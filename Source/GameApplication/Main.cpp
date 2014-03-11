@@ -135,6 +135,39 @@ void ProjectTemplateApp::Init()
 
 
 }
+<<<<<<< HEAD
+=======
+//added by Bardia
+void ProjectTemplateApp::addButtons(){
+
+#if defined(_VISION_ANDROID)
+	int width = Vision::Video.GetXRes();
+	int height = Vision::Video.GetYRes();
+
+	VisScreenMask_cl *addCube = new VisScreenMask_cl();
+	addCube->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addCube->SetPos(width *.85, height * .10 );
+
+	VisScreenMask_cl *deleteLast = new VisScreenMask_cl();
+	deleteLast->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	deleteLast->SetPos(width *.10, height * .10 );
+
+	VisScreenMask_cl *addRagdoll = new VisScreenMask_cl();
+	addRagdoll->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addRagdoll->SetPos(width *.85, height * .85 );
+
+	VisScreenMask_cl *addSphere = new VisScreenMask_cl();
+	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
+	addSphere->SetPos(width *.10, height * .85 );
+
+	//VisScreenMask_cl *toggleCamera = new VisScreenMask_cl();
+	//toggleCamera->LoadFromFile("\\ParticleRainGUI\\button.tga");
+	//toggleCamera->(width * .85, height *10);
+
+#endif
+
+}
+>>>>>>> origin/Ian-to-be-merged
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
