@@ -17,6 +17,7 @@
 #include "ParticleRainController.h"
 #include "MenuController.h"
 #include "Constants.h"
+#include "WaterSimulationController.h"
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -25,10 +26,7 @@ using namespace std;
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
-
-
-
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", ""};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", "Scenes/WaterSimulation.vscene"};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -148,6 +146,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 
 
 
+
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
 	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
 	// Add other initial game code here
@@ -228,7 +227,7 @@ void ProjectTemplateApp::UpdateStats(){
 		m_fTimeAccumulator = 0.0f;
 		m_iFrameCounter = 0;
 	}
-	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+	Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 }
 
 void ProjectTemplateApp::RecordFPS()
@@ -270,7 +269,10 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		break;
 	case CAR_DERBY:
 		break;
-
+	case WATER_SIMULATION:
+		this->controller = new WaterSimulationController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
 	default:
 		break;
 	}
@@ -281,8 +283,7 @@ void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
 	// [...]
-	//changes by carlos
-	//end changes by carlos
+	
 }
 
 /*
