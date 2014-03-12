@@ -143,6 +143,9 @@
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="TowerOfDoomController.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Java Include="..\..\Assets\VirtualKeyboardActivity.java" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -9,6 +9,7 @@
 IController::IController(void)
 {
 	entityStack = new EntityStack();
+	maskCount = 0;
 }
 
 
@@ -85,6 +86,16 @@ VisBaseEntity_cl* IController::AddRagdoll(float x, float y, float z){
 	return ent;
 }
 
+void IController::AddButton(char* buttonImage, int x, int y, int width, int height){
+	VisScreenMask_cl *butt = new VisScreenMask_cl();
+	butt->LoadFromFile(buttonImage);
+	butt->SetPos(x,y);
+	if(width !=0 && height !=0){
+		butt->SetTargetSize(width, height);
+	}
+	masks[maskCount] = butt;
+	maskCount++;
+}
 
 void IController::RemoveLast(void)
 {
