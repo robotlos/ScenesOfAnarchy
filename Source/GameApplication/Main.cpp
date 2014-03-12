@@ -98,8 +98,8 @@ void ProjectTemplateApp::Init()
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
-	stats.open("stats.txt");
-	stats << "FPS\tFrame Time\n";
+	stats.open("stats.csv");
+	stats << "FPS, Frame Time\n";
 
 	// Set filename and paths to our stand alone version.
 	// Note: "/Data/Vision/Base" is always added by the sample framework
@@ -159,7 +159,7 @@ void ProjectTemplateApp::RecordFPS()
 {
 	std::ostringstream ss;
 	ss << m_fCurrentFps;
-	ss << " ";
+	ss << ", ";
 	ss << m_fCurrentFrameTime * 1000.0f;
 	std::string s = ss.str() + "\n";
 	stats << s;
