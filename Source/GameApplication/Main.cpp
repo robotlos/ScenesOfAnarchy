@@ -17,6 +17,7 @@
 #include "ParticleRainController.h"
 #include "MenuController.h"
 #include "Constants.h"
+#include "WaterSimulationController.h"
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -25,10 +26,7 @@ using namespace std;
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 
-
-
-
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", ""};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", "Scenes/WaterSimulation.vscene"};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -135,39 +133,6 @@ void ProjectTemplateApp::Init()
 
 
 }
-<<<<<<< HEAD
-=======
-//added by Bardia
-void ProjectTemplateApp::addButtons(){
-
-#if defined(_VISION_ANDROID)
-	int width = Vision::Video.GetXRes();
-	int height = Vision::Video.GetYRes();
-
-	VisScreenMask_cl *addCube = new VisScreenMask_cl();
-	addCube->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addCube->SetPos(width *.85, height * .10 );
-
-	VisScreenMask_cl *deleteLast = new VisScreenMask_cl();
-	deleteLast->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	deleteLast->SetPos(width *.10, height * .10 );
-
-	VisScreenMask_cl *addRagdoll = new VisScreenMask_cl();
-	addRagdoll->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addRagdoll->SetPos(width *.85, height * .85 );
-
-	VisScreenMask_cl *addSphere = new VisScreenMask_cl();
-	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addSphere->SetPos(width *.10, height * .85 );
-
-	//VisScreenMask_cl *toggleCamera = new VisScreenMask_cl();
-	//toggleCamera->LoadFromFile("\\ParticleRainGUI\\button.tga");
-	//toggleCamera->(width * .85, height *10);
-
-#endif
-
-}
->>>>>>> origin/Ian-to-be-merged
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
@@ -178,6 +143,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//help.Append("How to use this demo...");
 	//help.Append("");
 	//RegisterAppModule(new VHelp(help));
+
 
 
 
@@ -261,7 +227,7 @@ void ProjectTemplateApp::UpdateStats(){
 		m_fTimeAccumulator = 0.0f;
 		m_iFrameCounter = 0;
 	}
-	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+	Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 }
 
 void ProjectTemplateApp::RecordFPS()
@@ -303,7 +269,10 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		break;
 	case CAR_DERBY:
 		break;
-
+	case WATER_SIMULATION:
+		this->controller = new WaterSimulationController();
+		this->controller->MapTriggers(this->GetInputMap());
+		break;
 	default:
 		break;
 	}
@@ -314,8 +283,7 @@ void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
 	// [...]
-	//changes by carlos
-	//end changes by carlos
+	
 }
 
 /*

@@ -40,7 +40,7 @@ void MenuController::Enable(){
 	VPushButton* buttonScene6 = new VPushButton();
 
 	VPushButton* buttonArray[6] = {buttonGR, buttonToD, buttonScene3, buttonScene4, buttonScene5, buttonScene6};
-	char *sceneNames[6] = {"Gravity Room", "Tower of Doom", "Scene 3", "Scene 4", "Scene 5", "Scene 6"};
+	char *sceneNames[6] = {"Gravity Room", "Tower of Doom", "Particle Rain", "Tumbler", "Car Derby", "Water Simulation"};
 
 	for(int i = 0; i < 6; i++){
 		buttonArray[i]->SetPosition(0, y * i/6 + y/20);		
@@ -66,13 +66,16 @@ void MenuController::Disable(){
 }
 
 int MenuController::DialogResultToSceneID(int dialogResults){
-	if(dialogResults == 1){ //Gravity Room = 1
+/*	if(dialogResults == 1){ //Gravity Room = 1
 		return GRAVITY_ROOM;
 	}
 	else if(dialogResults == 2){ //Tower of Doom = 2
 		return TOWER_OF_DOOM;
 	}
 	//TODO: add cases 3-6
+	else if(dialogResults == 6){
+		return WATER_SIMULATION;
+	}*/
 	return MAIN_MENU;
 }
 int MenuController::Run(){
