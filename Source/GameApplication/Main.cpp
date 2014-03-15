@@ -133,36 +133,6 @@ void ProjectTemplateApp::Init()
 
 
 }
-//added by Bardia
-void ProjectTemplateApp::addButtons(){
-
-#if defined(_VISION_ANDROID)
-	int width = Vision::Video.GetXRes();
-	int height = Vision::Video.GetYRes();
-
-	VisScreenMask_cl *addCube = new VisScreenMask_cl();
-	addCube->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addCube->SetPos(width *.85, height * .10 );
-
-	VisScreenMask_cl *deleteLast = new VisScreenMask_cl();
-	deleteLast->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	deleteLast->SetPos(width *.10, height * .10 );
-
-	VisScreenMask_cl *addRagdoll = new VisScreenMask_cl();
-	addRagdoll->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addRagdoll->SetPos(width *.85, height * .85 );
-
-	VisScreenMask_cl *addSphere = new VisScreenMask_cl();
-	addSphere->LoadFromFile("\\GravityRoomGUI\\button.tga");
-	addSphere->SetPos(width *.10, height * .85 );
-
-	//VisScreenMask_cl *toggleCamera = new VisScreenMask_cl();
-	//toggleCamera->LoadFromFile("\\ParticleRainGUI\\button.tga");
-	//toggleCamera->(width * .85, height *10);
-
-#endif
-
-}
 //---------------------------------------------------------------------------------------------------------
 // Gets called after the scene has been loaded
 //---------------------------------------------------------------------------------------------------------
@@ -174,11 +144,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//help.Append("");
 	//RegisterAppModule(new VHelp(help));
 
-	//VVirtualThumbStick* stick = new VVirtualThumbStick();
 
-	/*VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
-	pCam->SetPosition(150, 150, 150);
-	pCam->SetOrientation(180, -15, 100);*/
 
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
@@ -283,15 +249,17 @@ void ProjectTemplateApp::SwitchScene(int sceneID){
 }
 
 void ProjectTemplateApp::SwitchController(int sceneID){
+	this->controller = NULL;
 	switch(sceneID){
 	case GRAVITY_ROOM:
 		this->controller = new GravityRoomController();
 		this->controller->MapTriggers(this->GetInputMap());
-		addButtons();
 		break;
 	case TOWER_OF_DOOM:
 		this->controller = new TowerOfDoomController();
 		this->controller->MapTriggers(this->GetInputMap());
+		//Extremely hacky, Might be dangerous.
+		((TowerOfDoomController*)this->controller)->InitMenu(this->GetContext());
 		break;
 	case PARTICLE_RAIN:
 		this->controller = new ParticleRainController();

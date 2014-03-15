@@ -26,6 +26,6 @@
     <ClInclude Include="WaterSimulationController.h" />
   </ItemGroup>
   <ItemGroup>
-    <Java Include="..\..\..\..\..\..\..\Havok\AnarchySDK\Source\Vision\Runtime\Common\Android\VirtualKeyboardActivity.java" />
+    <Java Include="..\..\Assets\VirtualKeyboardActivity.java" />
   </ItemGroup>
 </Project>

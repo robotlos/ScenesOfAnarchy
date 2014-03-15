@@ -18,6 +18,9 @@ public:
 	}
 protected:
 	//VisBaseEntity_cl* AddEntity();
+	VisScreenMask_cl* masks[7];
+	int maskCount;
+	void AddButton(char* buttonImage, int x, int y, int height, int width);
 	VisBaseEntity_cl* AddSphere();
 	VisBaseEntity_cl* AddCube();
 	VisBaseEntity_cl* AddRagdoll();
