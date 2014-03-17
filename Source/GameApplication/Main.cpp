@@ -118,7 +118,7 @@ void ProjectTemplateApp::Init()
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
 	stats.open("stats.csv");
-	stats << "FPS, Frame Time\n";
+	stats << "Scene Name,FPS, Frame Time, Body Count\n";
 
 	//Initliaze the menu
 	menu = new MenuController(this->GetContext());
@@ -233,12 +233,15 @@ void ProjectTemplateApp::UpdateStats(){
 void ProjectTemplateApp::RecordFPS()
 {
 	std::ostringstream ss;
+	ss << sceneNames[currentSceneID];
+	ss << ", ";
 	ss << m_fCurrentFps;
 	ss << ", ";
 	ss << m_fCurrentFrameTime * 1000.0f;
+	ss << ", ";
+	ss << controller->entityStack->getLength();
 	std::string s = ss.str() + "\n";
 	stats << s;
-	//const char * c = s.c_str();
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
 	this->m_pSceneLoader->UnloadScene();
