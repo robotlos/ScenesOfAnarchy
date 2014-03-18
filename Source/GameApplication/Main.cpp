@@ -123,7 +123,7 @@ void ProjectTemplateApp::Init()
 	//Initliaze the menu
 	menu = new MenuController(this->GetContext());
 	currentSceneID=MAIN_MENU;
-
+	this->controller = NULL;
 
 	VisAppLoadSettings settings(sceneNames[currentSceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
@@ -166,9 +166,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 // Main Loop of the application until we quit
 //---------------------------------------------------------------------------------------------------------
 bool ProjectTemplateApp::Run()
-{
-
-
+{	
 	if(currentSceneID==MAIN_MENU){
 		//Do menu stuff
 		int newSceneID = menu->Run();
@@ -241,6 +239,9 @@ void ProjectTemplateApp::RecordFPS()
 	//const char * c = s.c_str();
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
+		if(this->controller != NULL){
+			this->controller->DeInitGUI();
+	}
 	this->m_pSceneLoader->UnloadScene();
 	VisAppLoadSettings settings(sceneNames[sceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
@@ -249,7 +250,7 @@ void ProjectTemplateApp::SwitchScene(int sceneID){
 }
 
 void ProjectTemplateApp::SwitchController(int sceneID){
-	this->controller = NULL;
+
 	switch(sceneID){
 	case GRAVITY_ROOM:
 		this->controller = new GravityRoomController();
