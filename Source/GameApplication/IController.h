@@ -12,10 +12,12 @@ public:
 	EntityStack* entityStack;
 	IController(void);
 	virtual ~IController(void);
+
 	virtual void MapTriggers(VInputMap* inputMap){}
 	virtual bool Run(VInputMap* inputMap){
 		return true;
 	}
+
 protected:
 	//VisBaseEntity_cl* AddEntity();
 	VisScreenMask_cl* masks[7];

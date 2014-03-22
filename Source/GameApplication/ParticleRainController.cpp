@@ -1,14 +1,30 @@
 #include "GameApplicationPCH.h"
 #include "ParticleRainController.h"
-//#include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Scripting/VScriptComponent.hpp>
+#include <vector>
+#include <time.h>
+
 
 int ballCount = 0;
 int camNumber = 0;
+
+// Locations we want to keep track of for automated mode
+std::vector<hkvVec3> locations;
+
+// Used for Automation mode
+double time_counter = 0;
+clock_t this_time;
+clock_t last_time;
 
 ParticleRainController::ParticleRainController(void)
 {
 	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("cam5");
 	Vision::Camera.AttachToEntity(pCamera, hkvVec3(0.0f, 0.0f, 0.0f));
+	this_time = clock();
+	last_time = this_time;
+	menuMode = true;
+	menuDisplayed = false;
+	this-autoMode = false;
+	this->userInputBalls = 0;
 }
 
 
@@ -16,23 +32,53 @@ ParticleRainController::~ParticleRainController(void)
 {
 }
 
+void createBall(hkvVec3 location){
+	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", location, "Models\\Misc\\Sphere.Model");
+	vHavokRigidBody *ball = new vHavokRigidBody();
+	ball->Havok_TightFit = true;
+	ball->Havok_Mass = 5.0f;
+	ball->Havok_Restitution = 1.0f;
+	ball->Shape_Type = ShapeType_SPHERE;
+	ent->SetScaling(1.0f);
+	
+	ent->AddComponent(ball);
+	++ballCount;
+}
+
 
 void ParticleRainController::RainBalls(int numOfBalls){
-	while (ballCount < numOfBalls){
-		int randomx = rand() % 6000 - 3255;
-		int randomy = rand() % 6000 - 1416;
-		VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(randomx, randomy, 3000), "Models\\Misc\\Sphere.Model");
-		vHavokRigidBody *ball = new vHavokRigidBody();
-		ball->Havok_TightFit = true;
-		ball->Havok_Mass = 5.0f;
-		ball->Havok_Restitution = 1.0f;
-		ball->Shape_Type = ShapeType_SPHERE;
-		ent->SetScaling(1.0f);
+	
+	// Use previous locations to spawn balls
+	if (!locations.empty()){
+		
+		for (int i = 0; i < locations.size(); i++){
+			createBall(locations.at(i));
+		}
+	}
+	
+	// First time spawning balls
+	else{
+		while (ballCount < numOfBalls){
+			int randomx = rand() % 6000 - 3255;
+			int randomy = rand() % 6000 - 1416;
+		
+			hkvVec3 spawnLocation = hkvVec3(randomx, randomy, 3000);
+			locations.push_back(spawnLocation);
 
-		ent->AddComponent(ball);
-		++ballCount;
+			createBall(spawnLocation);
+		}
 	}
 	ballCount = 0;
+}
+
+void ParticleRainController::StartAutoMode(){
+	this_time = clock();
+	
+	if (difftime(this_time, last_time) > 1000){
+		last_time = this_time;
+		this->RainBalls(this->userInputBalls);
+	}
+	
 }
 
 void ParticleRainController::ChangeCam(){
@@ -68,14 +114,73 @@ void ParticleRainController::ChangeCam(){
 
 
 bool ParticleRainController::Run(VInputMap* inputMap){
+	
+	
+	if(menuMode){
+		if(menuDisplayed){
+			// User clicked accept
+			if(this->dialog->GetDialogResult() == 42){
+				this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
+				
+				// Check if automated mode checkbox was selected
+				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("Input2")))->IsChecked()){
+					this->autoMode = true;
+				}
+				this->spContext->CloseDialog(this->dialog);
+				menuMode = false;
+				menuDisplayed = false;
+			}
+
+		}
+		else{
+			EnableMenu();
+		}
+	}
+	else{
+		
+		if (this->autoMode){
+			this->StartAutoMode();
+		}
+	}
+
+	
 
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		this->RainBalls(100);
+		this->RainBalls(this->userInputBalls);
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
 		this->ChangeCam();
 	}
 	return true;
+}
+
+void ParticleRainController::EnableMenu(){
+
+	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\InputDialog.xml");
+	int x = Vision::Video.GetXRes();
+	int y = Vision::Video.GetYRes();
+	//To properly scale the dialog box grab input object
+	//this->dialog->Items().FindItem(//Find input by id);
+	/*
+	VImageControl* logo = new VImageControl();
+	logo->SetPosition(50,50);
+	logo->SetSize(300,75);
+	logo->Image().SetTexture(Vision::TextureManager.Load2DTexture("Assets\\Dialogs\\TOD.png"));
+	this->dialog->AddControl(logo);
+	*/
+	VPushButton* accept = new VPushButton();
+	accept->SetPosition(90, 350);
+	accept->SetSize(300,75);
+	accept->SetEnabled(true);
+	accept->SetText("Accept");
+	accept->SetDialogResult(42);
+	this->dialog->AddControl(accept);
+	
+	menuDisplayed = true;
+}
+
+void ParticleRainController::InitMenu(VAppMenuContext* context){
+	spContext = context;
 }
 
 void ParticleRainController::MapTriggers(VInputMap* inputMap){

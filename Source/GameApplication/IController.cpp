@@ -18,6 +18,7 @@ IController::~IController(void)
 }
 
 
+
 VisBaseEntity_cl* IController::AddRagdoll(){
 	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(-100.0f, 5, 100), "Models\\Warrior\\Warrior.model");
 	vHavokRagdoll *ragdoll = new vHavokRagdoll();

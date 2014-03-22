@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|hkAndroid">
@@ -86,7 +86,7 @@
       <DeployTool>$(VISION_SDK)\Build\StandaloneTools\Deployment\Exe\deployAndroid.exe</DeployTool>
       <ResDir>..\..\Data\Common\Anarchy\Android</ResDir>
       <Install>true</Install>
-      <WriteExternal>true</WriteExternal>      
+      <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodexL.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodeventL.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
     </Deploy>
@@ -105,7 +105,7 @@
       <DeployTool>$(VISION_SDK)\Build\StandaloneTools\Deployment\Exe\deployAndroid.exe</DeployTool>
       <ResDir>..\..\Data\Common\Anarchy\Android</ResDir>
       <Install>true</Install>
-      <WriteExternal>true</WriteExternal>      
+      <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodex.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodevent.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
     </Deploy>
@@ -124,18 +124,36 @@
       <DeployTool>$(VISION_SDK)\Build\StandaloneTools\Deployment\Exe\deployAndroid.exe</DeployTool>
       <ResDir>..\..\Data\Common\Anarchy\Android</ResDir>
       <Install>true</Install>
-      <WriteExternal>true</WriteExternal>      
+      <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodex.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/x86/libfmodevent.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
     </Deploy>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="$(NDKROOT)\sources\android\native_app_glue\android_native_app_glue.c" />
+    <ClCompile Include="EntityStack.cpp" />
     <ClCompile Include="GameApplicationPCH.cpp" />
+    <ClCompile Include="GravityRoomController.cpp" />
+    <ClCompile Include="IController.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MenuController.cpp" />
+    <ClCompile Include="ParticleRainController.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StackNode.cpp" />
+    <ClCompile Include="TowerOfDoomController.cpp" />
+    <ClCompile Include="WaterSimulationController.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="EntityStack.h" />
     <ClInclude Include="GameApplicationPCH.h" />
+    <ClInclude Include="GravityRoomController.h" />
+    <ClInclude Include="IController.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="ParticleRainController.h" />
+    <ClInclude Include="StackNode.h" />
+    <ClInclude Include="TowerOfDoomController.h" />
+    <ClInclude Include="WaterSimulationController.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -4,7 +4,10 @@
 			<frame texture="Assets\Textures\UIMedia_stop.TGA" color="160,160,160,255"/>
 			<text font="Assets\Fonts\Arial_18.fnt" color="0,0,0,255"/>
 		</control>
-	
 
+    <control class="VCheckBox" pos="90,100" size="260,200" ID="Input2" taborder="0" clientborder="4,4">
+      <frame texture="Assets\Textures\UIMedia_stop.TGA" color="160,160,160,255"/>
+      <text font="Assets\Fonts\Arial_18.fnt" color="0,0,0,255"/>
+    </control>
   </DIALOG>
 </root>

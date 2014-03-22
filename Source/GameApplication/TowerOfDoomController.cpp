@@ -12,13 +12,6 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-//
-//void DeInitGUI()	{
-//	spMainDlg = NULL;
-//	spGUIContext->SetActivate(false);
-//	//spGUIContext = NULL;
-//	
-//}
 
 
 TowerOfDoomController::TowerOfDoomController(void)
@@ -69,14 +62,8 @@ void TowerOfDoomController::Swipe(VInputMap *inputMap){
 	//hkvVec3 point = project3D(x, y, 1000);
 }
 
-hkvVec3 project3D(float x, float y, float fDist)
-{
-    hkvVec3 traceStart = Vision::Camera.GetCurrentCameraPosition();
-    hkvVec3 traceDir;
-    Vision::Contexts.GetCurrentContext()->GetTraceDirFromScreenPos(x, y, traceDir, fDist);
-    hkvVec3 traceEnd = traceStart + traceDir;    
-    return hkvVec3(traceEnd);
-}
+
+
 bool TowerOfDoomController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
@@ -129,6 +116,7 @@ void TowerOfDoomController::MapTriggers(VInputMap* inputMap){
 	
 #endif
 }
+
 
 void TowerOfDoomController::EnableMenu(){
 
