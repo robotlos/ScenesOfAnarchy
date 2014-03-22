@@ -18,6 +18,8 @@
 #include "MenuController.h"
 #include "Constants.h"
 #include "WaterSimulationController.h"
+#include "CarDerbyController.h"
+#include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokSync.hpp>
 #include <sstream>
 #include <iostream>
 #include <fstream>
@@ -25,8 +27,9 @@ using namespace std;
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
+VIMPORT IVisPlugin_cl* GetEnginePlugin_vHavok();
 
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","", "Scenes/WaterSimulation.vscene"};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","Scenes/CarDerby.vscene", "Scenes/WaterSimulation.vscene"};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -103,6 +106,9 @@ void ProjectTemplateApp::PreloadPlugins()
 	// you still need to statically link your plugin library (e.g. on mobile platforms) through project
 	// Properties, Linker, Additional Dependencies.
 	VISION_PLUGIN_ENSURE_LOADED(GamePlugin);
+	
+		  VISION_PLUGIN_ENSURE_LOADED(vHavok);
+	  
 }
 
 
@@ -112,6 +118,8 @@ void ProjectTemplateApp::PreloadPlugins()
 //---------------------------------------------------------------------------------------------------------
 void ProjectTemplateApp::Init()
 {
+  VISION_HAVOK_SYNC_STATICS();
+  VISION_HAVOK_SYNC_PER_THREAD_STATICS(vHavokPhysicsModule::GetInstance());
 	//Initiliaze FPS variables to 0.
 	m_iFrameCounter=0;
 	m_fTimeAccumulator=0;
@@ -263,11 +271,11 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		break;
 	case PARTICLE_RAIN:
 		this->controller = new ParticleRainController();
-		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TUMBLER:
 		break;
 	case CAR_DERBY:
+		this->controller = new CarDerbyController();
 		break;
 	case WATER_SIMULATION:
 		this->controller = new WaterSimulationController();
@@ -276,13 +284,16 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 	default:
 		break;
 	}
+	this->controller->MapTriggers(this->GetInputMap());
 }
 
 
 void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
-	// [...]
+	
+	VISION_HAVOK_UNSYNC_ALL_STATICS()
+  VISION_HAVOK_UNSYNC_PER_THREAD_STATICS(vHavokPhysicsModule::GetInstance());
 	
 }
 
