@@ -250,7 +250,6 @@ void ProjectTemplateApp::RecordFPS()
 	stats << s;
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
-	
 	this->m_pSceneLoader->UnloadScene();
 	VisAppLoadSettings settings(sceneNames[sceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
