@@ -23,6 +23,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <ctime>
 using namespace std;
 // Use the following line to initialize a plugin that is statically linked.
 // Note that only Windows platform links plugins dynamically (on Windows you can comment out this line).
@@ -58,6 +59,7 @@ public:
 	float m_fCurrentFps;
 	float previousFps;
 	ofstream stats;
+	clock_t begin, end;
 
 	///changes by carlos
 	void addButtons();
@@ -125,8 +127,8 @@ void ProjectTemplateApp::Init()
 	m_fTimeAccumulator=0;
 	m_fCurrentFrameTime=0;
 	m_fCurrentFps=0;
-	stats.open("stats.txt");
-	stats << "FPS\tFrame Time\n";
+	stats.open("stats.csv");
+	stats << "Scene Name, FPS, Frame Time, Body Count, Time Elapsed\n";
 
 	//Initliaze the menu
 	menu = new MenuController(this->GetContext());
@@ -233,18 +235,25 @@ void ProjectTemplateApp::UpdateStats(){
 		m_fTimeAccumulator = 0.0f;
 		m_iFrameCounter = 0;
 	}
+	end = clock();
 	Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 }
 
 void ProjectTemplateApp::RecordFPS()
 {
 	std::ostringstream ss;
+	double elapsed_secs = double(end-begin)/CLOCKS_PER_SEC;
+	ss << sceneNames[currentSceneID];
+	ss << ", ";
 	ss << m_fCurrentFps;
-	ss << " ";
+	ss << ", ";
 	ss << m_fCurrentFrameTime * 1000.0f;
+	ss << ", ";
+	ss << controller->entityStack->getLength();
+	ss << ", ";
+	ss << elapsed_secs;
 	std::string s = ss.str() + "\n";
 	stats << s;
-	//const char * c = s.c_str();
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
 		if(this->controller != NULL){
@@ -255,6 +264,7 @@ void ProjectTemplateApp::SwitchScene(int sceneID){
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
 	this->currentSceneID=sceneID;
+	begin = clock();
 }
 
 void ProjectTemplateApp::SwitchController(int sceneID){
