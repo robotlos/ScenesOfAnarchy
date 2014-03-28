@@ -4,9 +4,13 @@
 GravityRoomController::GravityRoomController(void)
 {
 	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("CameraPosition");
-	Vision::Camera.AttachToEntity(pCamera, hkvVec3::ZeroVector());
-#if defined(_VISION_ANDROID)
+	Vision::Camera.AttachToEntity(pCamera, hkvVec3(-900.0f, 0.0f, 0.0f));
+	automate = false;
+	time = 0;
 	pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
+	rotate = hkvMat3(1.0f, 0.0f, 0.04, 0.0f, 1.0f, 0.0f, -0.04f, 0.0f, 1.0f);
+	pMod->GetGravity(grav);
+#if defined(_VISION_ANDROID)
 	pMotionInput = (VMotionInputAndroid*)(&VInputManager::GetInputDevice(INPUT_DEVICE_MOTION_SENSOR));
 	pMotionInput->SetEnabled(true);
 #endif
@@ -27,16 +31,26 @@ bool GravityRoomController::Run(VInputMap* inputMap){
 	//set the new gravity
 	pMod->SetGravity(gravity);
 #endif
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		this->AddCube();
-		//this->RemoveLast();
+	if(!automate)
+	{
+		if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
+			this->AddCube();
+			//this->RemoveLast();
+		}
+		if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
+			this->AddSphere(-100.0f, -30, 100);
+			//this->RemoveLast();
+		}
+		if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
+			this->AddRagdoll(-100.0f, 5, 100);
+		}
+		if(inputMap->GetTrigger(CUSTOM_CONTROL_FIVE)){
+			automate = true;
+		}
 	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-		this->AddSphere(-100.0f, -30, 100);
-		//this->RemoveLast();
-	}
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
-		this->AddRagdoll(-100.0f, 5, 100);
+	else
+	{
+		autorun();
 	}
 	return true;
 }
@@ -48,6 +62,7 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, V_KEYBOARD, VInputControl::CT_KB_DOWN, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, V_KEYBOARD, VInputControl::CT_KB_LEFT, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, V_KEYBOARD, VInputControl::CT_KB_RIGHT, VInputOptions::Once());
+	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, V_KEYBOARD, VInputControl::CT_KB_HOME, VInputOptions::Once());
 #endif
 	
 #if defined(_VISION_ANDROID)
@@ -55,19 +70,45 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	int height = Vision::Video.GetYRes();
 	VTouchArea* addRagdollArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef((float)width *.8f, (float)height * 0 , (float)width , (float)height * .2f), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_ONE, addRagdollArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\button.tga", width*.8, 0, width*.2, height*.2);
+	AddButton("\\GravityRoomGUI\\cube.tga", width*.8, 0, width*.2, height*.2);
 	
 	VTouchArea* addCubeArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(0.0f, (float)height*.8f, (float)width*.2f, (float)height), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, addCubeArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\button.tga", 0,height*.8, width*.2, height*.2);
+	AddButton("\\GravityRoomGUI\\sphere.tga", 0,height*.8, width*.2, height*.2);
 	
 	VTouchArea* addSphereArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef((float)width * .8f,(float)height * .8f , (float)width, (float)height), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, addSphereArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\button.tga", width*.8, height*.8, width*.2, height*.2);
+	AddButton("\\GravityRoomGUI\\ragdoll.tga", width*.8, height*.8, width*.2, height*.2);
 
 	VTouchArea* removeLastArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0.0f, 0.0f ,width * .2f , height * .2f ), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, removeLastArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\button.tga", 0, 0, width*.2, height*.2);
+	AddButton("\\GravityRoomGUI\\remove.tga", 0, 0, width*.2, height*.2);
+
+	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width/2-150, height/2-150, width/2+150, height/2+150), -900.0f);
+	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, autorunArea, CT_TOUCH_ANY);
+	//AddButton("\\GravityRoomGUI\\button.tga", width/2-50, height/2-50, width/2+150, height/2+150);
 #endif
 
+}
+
+void GravityRoomController::autorun() {
+	if(time == 0)
+		pMod->GetGravity(oldGrav);
+
+	grav = rotate * grav;
+	pMod->SetGravity(grav);
+
+	if(time%60 == 0)
+		this->AddCube();
+	if(time%50 == 0)
+		this->AddSphere();
+	if(time%200 == 0)
+		this->AddRagdoll();
+
+	if(time > 3600)
+	{
+		automate = false;
+		pMod->SetGravity(oldGrav);
+	}
+	time++;
 }
