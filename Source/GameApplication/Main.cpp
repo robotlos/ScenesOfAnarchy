@@ -61,12 +61,8 @@ public:
 	ofstream stats;
 	clock_t begin, end;
 
-	///changes by carlos
 	void addButtons();
-	private:
-	//State m_state;
-	//VDialog* m_pMainMenuDialog;
-	///end changes by carlos
+	const char* IntToCharPtr(int num);
 };
 
 VAPP_IMPLEMENT_SAMPLE(ProjectTemplateApp);
@@ -154,20 +150,6 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//help.Append("");
 	//RegisterAppModule(new VHelp(help));
 
-
-
-
-	// Create a mouse controlled camera (set above the ground so that we can see the ground)
-	//Vision::Game.CreateEntity("VisMouseCamera_cl", hkvVec3(-600.0f, 0.0f, 170.0f));
-	// Add other initial game code here
-	// [...]
-
-	//changes by carlos
-	/*controller = new GravityRoomController();
-	controller->MapTriggers(this->GetInputMap());*/
-	
-
-	//end changes by carlos
 }
 
 
@@ -236,7 +218,14 @@ void ProjectTemplateApp::UpdateStats(){
 		m_iFrameCounter = 0;
 	}
 	end = clock();
-	Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+	
+	//Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+	//this->IntToCharPtr(m_fCurrentFps);
+	menu->DisplayMessage("mheee", 0, Vision::Video.GetYRes() * .7);
+
+	//	menu->DisplayMessage(IntToCharPtr(m_fCurrentFps), 0, Vision::Video.GetYRes() * .7);
+//	menu->DisplayMessage(IntToCharPtr(m_fCurrentFrameTime * 1000.0f), 0, Vision::Video.GetYRes() * .8);
+//	menu->DisplayMessage(IntToCharPtr(controller->entityStack->getLength()), 0, Vision::Video.GetYRes() * .9);
 }
 
 void ProjectTemplateApp::RecordFPS()
@@ -298,7 +287,12 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 	this->controller->MapTriggers(this->GetInputMap());
 }
 
-
+const char* ProjectTemplateApp::IntToCharPtr(int num){
+	stringstream strs;
+	strs << num;
+	string temp = strs.str();
+	return (char*) temp.c_str();
+}
 void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization

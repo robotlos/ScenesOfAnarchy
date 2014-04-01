@@ -15,5 +15,6 @@ public:
 	VDialog* m_pMainMenuDialog;
 	bool enabled;
 	void BackButton();
+	void DisplayMessage(const char* text, float x, float y);
 };
 

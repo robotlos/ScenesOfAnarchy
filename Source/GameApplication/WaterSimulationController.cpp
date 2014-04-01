@@ -53,3 +53,26 @@ void WaterSimulationController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, addCubeArea, CT_TOUCH_ANY);
 #endif 
 }
+
+//////////////////////////// Water Simulation Controls //////////////////////////////////////////////////////////////
+VisBaseEntity_cl* WaterSimulationController::AddWaterDrop(float x, float y, float z, float scaling){
+	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(x, y, z), "Assets\\Models\\Misc\\Sphere.Model");
+	ent->SetScaling(scaling);
+	vHavokRigidBody *sphere = new vHavokRigidBody();
+	sphere->Havok_TightFit = true;
+	sphere->Havok_Restitution = .35f;
+	ent->AddComponent(sphere);
+	return ent;
+}
+
+void WaterSimulationController::Drain(){ 
+		TriggerBoxEntity_cl *triggerbox = vdynamic_cast <TriggerBoxEntity_cl *> (Vision::Game.SearchEntity("triggerbox")); 
+
+		if(triggerbox->IsEnabled()) //if trigger box is enabled
+			triggerbox->SetEnabled(false); //disable it
+
+		else if(!triggerbox->IsEnabled()) //if trigger box is disabled
+			triggerbox->SetEnabled(true); //enable it
+}
+
+//////////////////////// End Water Simulation Controls ////////////////////////////////////////////////////////

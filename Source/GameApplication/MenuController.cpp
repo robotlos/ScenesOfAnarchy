@@ -66,22 +66,20 @@ void MenuController::Disable(){
 }
 
 int MenuController::DialogResultToSceneID(int dialogResults){
-/*	if(dialogResults == 1){ //Gravity Room = 1
-		return GRAVITY_ROOM;
-	}
-	else if(dialogResults == 2){ //Tower of Doom = 2
-		return TOWER_OF_DOOM;
-	}
-	//TODO: add cases 3-6
-	else if(dialogResults == 6){
-		return WATER_SIMULATION;
-	}*/
 	return MAIN_MENU;
 }
 int MenuController::Run(){
 	return this->m_pMainMenuDialog->GetDialogResult(); //nothing else is really necessary besides this
 }
 
-void MenuController::BackButton(){
+void MenuController::DisplayMessage(const char* textIn, float x, float y){
+	VTextLabel* text = new VTextLabel();
+
+	text->SetPosition(x, y);
+	text->SetText(textIn);
+	text->SetSize(200, 100);
+	text->Text().SetColor(VColorRef(255,255,255,255));
+	text->Text().SetFont(Vision::Fonts.FindFont("Assets\\Fonts\\Arial_80.fnt"));
 	
+	//this->m_pMainMenuDialog->AddControl(text);
 }

@@ -1,0 +1,6 @@
+<root>
+  <LOADRESOURCE type="FONT" filename="Fonts\\Arial_18" name="MenuFont" />
+ <!-- <defaults
+	font = "MenuFont"
+  />-->
+</root>

@@ -13,5 +13,8 @@ public:
 	~WaterSimulationController(void);
 	virtual void MapTriggers(VInputMap* inputMap) HKV_OVERRIDE;
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
+
+	virtual VisBaseEntity_cl* AddWaterDrop(float x, float y, float z, float scaling);
+	virtual void Drain();
 };
 
