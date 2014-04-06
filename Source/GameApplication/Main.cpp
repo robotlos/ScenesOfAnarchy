@@ -319,6 +319,7 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 	case WATER_SIMULATION:
 		this->controller = new WaterSimulationController();
 		this->controller->MapTriggers(this->GetInputMap());
+		((WaterSimulationController*)this->controller)->InitMenu(this->GetContext());
 		break;
 	default:
 		break;
