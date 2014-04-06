@@ -93,6 +93,11 @@ void WaterSimulationController::EnableMenu(){
 	menuDisplayed = true;
 }
 
+void WaterSimulationController::DeInitGUI(){
+	this->spContext->CloseDialog(this->dialog);
+	this->dialog = NULL;
+}
+
 void WaterSimulationController::InitMenu(VAppMenuContext* context){
 	spContext = context;
 }
