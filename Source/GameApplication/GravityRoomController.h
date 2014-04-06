@@ -16,10 +16,17 @@ public:
 	hkpContactListener* collListener;
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
 private:
+
+	bool automate;
+	int time;
+	void autorun();
+	vHavokPhysicsModule* pMod;
+	hkvVec3 oldGrav;
+	hkvVec3 grav;
+	hkvMat3 rotate;
 #if defined(_VISION_ANDROID)
 	VMotionInputAndroid* pMotionInput;
 #endif
-	vHavokPhysicsModule* pMod;
 	hkpWorld* myWorld;
 };
 
