@@ -13,5 +13,16 @@ public:
 	~WaterSimulationController(void);
 	virtual void MapTriggers(VInputMap* inputMap) HKV_OVERRIDE;
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
+	void StartAutoMode();
+	void InitMenu(VAppMenuContext* context);
+	VDialog* dialog;
+	void EnableMenu();
+	bool menuMode;
+	bool menuDisplayed;
+	bool autoMode;
+	VAppMenuContext* spContext;
+	//void StartAutoMode();
+
+
 };
 

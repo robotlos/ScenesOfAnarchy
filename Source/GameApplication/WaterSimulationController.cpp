@@ -1,9 +1,19 @@
 #include "GameApplicationPCH.h"
 #include "WaterSimulationController.h"
+#include <time.h>
+
+double time_counter = 0;
+clock_t current_time;
+clock_t previous_time;
 
 WaterSimulationController::WaterSimulationController(void)
 {
-	
+	current_time = clock();
+	previous_time = current_time;
+	menuMode = true;
+	menuDisplayed = false;
+	autoMode = false;
+
 #if defined(_VISION_ANDROID) //free camera for android (joystick/finger camera)
 	VisBaseEntity_cl* pCam = Vision::Game.CreateEntity("VFreeCamera", hkvVec3::ZeroVector());
 	pCam->SetPosition(-290, -220, 680); //spawns with same coordinates as windows
@@ -22,7 +32,33 @@ WaterSimulationController::WaterSimulationController(void)
 	#endif*/
 }
 bool WaterSimulationController::Run(VInputMap* inputMap){
+	
+		if(menuMode){
+		if(menuDisplayed){
+			// User clicked accept
+			if(this->dialog->GetDialogResult() == 42){
+				//this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
 
+				// Check if automated mode checkbox was selected
+				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("Input2")))->IsChecked()){
+					this->autoMode = true;
+				}
+				this->spContext->CloseDialog(this->dialog);
+				menuMode = false;
+				menuDisplayed = false;
+			}
+
+		}
+		else{
+			EnableMenu();
+		}
+	}
+	else{
+
+		if (this->autoMode){
+			this->StartAutoMode();
+		}
+	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE))
 		 this->AddWaterDrop(0, -300, 100, .05f); //x, y, z and scaling values
 		
@@ -33,7 +69,33 @@ bool WaterSimulationController::Run(VInputMap* inputMap){
 	return true;
 }
 
+void WaterSimulationController::StartAutoMode(){
+		current_time = clock();
+		if(difftime(current_time,previous_time) > 1000 ){
+			previous_time = current_time;
+			this->AddWaterDrop(0, -300, 100, .05f);
+		}
+}
 
+void WaterSimulationController::EnableMenu(){
+
+	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\InputDialog.xml");
+	int x = Vision::Video.GetXRes();
+	int y = Vision::Video.GetYRes();
+	VPushButton* accept = new VPushButton();
+	accept->SetPosition(90, 350);
+	accept->SetSize(300,75);
+	accept->SetEnabled(true);
+	accept->SetText("Accept");
+	accept->SetDialogResult(42);
+	this->dialog->AddControl(accept);
+
+	menuDisplayed = true;
+}
+
+void WaterSimulationController::InitMenu(VAppMenuContext* context){
+	spContext = context;
+}
 WaterSimulationController::~WaterSimulationController(void)
 {
 }
