@@ -8,6 +8,13 @@
     <ClCompile Include="IController.cpp" />
     <ClCompile Include="EntityStack.cpp" />
     <ClCompile Include="StackNode.cpp" />
+    <ClCompile Include="TowerOfDoomController.cpp" />
+    <ClCompile Include="ParticleRainController.cpp" />
+    <ClCompile Include="MenuController.cpp" />
+    <ClCompile Include="WaterSimulationController.cpp" />
+    <ClCompile Include="CarDerbyController.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="VehicleSetup.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApplicationPCH.h" />
@@ -17,5 +24,15 @@
     <ClInclude Include="EntityStack.h" />
     <ClInclude Include="StackNode.h" />
     <ClInclude Include="myCollisionListener.h" />
+    <ClInclude Include="TowerOfDoomController.h" />
+    <ClInclude Include="ParticleRainController.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="WaterSimulationController.h" />
+    <ClInclude Include="CarDerbyController.h" />
+    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="VehicleSetup.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Java Include="..\..\Assets\VirtualKeyboardActivity.java" />
   </ItemGroup>
 </Project>
