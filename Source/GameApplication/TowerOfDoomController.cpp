@@ -4,7 +4,6 @@
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/GUI/vGUI.hpp>
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/GUI/Controls/VTextControl.hpp>
 #include <string>
-#include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/GUI/VDlgControlBase.hpp>
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/GUI/Controls/VItemContainer.hpp>
 #include <Vision/Runtime/Framework/VisionApp/Modules/VDefaultMenu.hpp>
@@ -12,13 +11,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdlib.h>
-//
-//void DeInitGUI()	{
-//	spMainDlg = NULL;
-//	spGUIContext->SetActivate(false);
-//	//spGUIContext = NULL;
-//	
-//}
+
 
 
 TowerOfDoomController::TowerOfDoomController(void)
@@ -87,7 +80,7 @@ hkvVec3 project3D(float x, float y, float fDist)
 bool TowerOfDoomController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
-			if(this->dialog->GetDialogResult() == 42){
+			if(this->dialog->GetDialogResult() == VGUIManager::GetID("Enter")){
 				this->blockCount = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
 				DeInitGUI();
 				menuMode = false;
@@ -121,10 +114,7 @@ void TowerOfDoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_ONE, V_KEYBOARD, VInputControl::CT_KB_UP, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, V_KEYBOARD, VInputControl::CT_KB_KP_DOWN, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, V_KEYBOARD, VInputControl::CT_KB_LEFT, VInputOptions::Once());
-	// For swiping
-	inputMap->MapTrigger(X, V_MOUSE, VInputControl::CT_MOUSE_ABS_X);
-	inputMap->MapTrigger(Y, V_MOUSE, VInputControl::CT_MOUSE_ABS_Y);
-	inputMap->MapTrigger(PICK, V_MOUSE, VInputControl::CT_MOUSE_LEFT_BUTTON);
+	
 #endif
 	
 #if defined(_VISION_ANDROID)
@@ -150,14 +140,6 @@ void TowerOfDoomController::EnableMenu(){
 	logo->SetSize(300,75);
 	logo->Image().SetTexture(Vision::TextureManager.Load2DTexture("Assets\\Dialogs\\TOD.png"));
 	this->dialog->AddControl(logo);
-
-	VPushButton* accept = new VPushButton();
-	accept->SetPosition(90, 350);
-	accept->SetSize(300,75);
-	accept->SetEnabled(true);
-	accept->SetText("Accept");
-	accept->SetDialogResult(42);
-	this->dialog->AddControl(accept);
 
 	menuDisplayed = true;
 }

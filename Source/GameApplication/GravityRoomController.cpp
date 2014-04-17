@@ -4,7 +4,7 @@
 
 GravityRoomController::GravityRoomController(void)
 {
-	VisBaseEntity_cl *pCamera  = Vision::Game.SearchEntity("CameraPosition");
+	VisBaseEntity_cl *pCamera  = Vision::Game.CreateEntity("VisBaseEntity_cl",hkvVec3(-900,0,0));
 	Vision::Camera.AttachToEntity(pCamera, hkvVec3::ZeroVector());
 	//vHavokPhysicsModule *pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
 	pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
@@ -96,9 +96,9 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, removeLastArea, CT_TOUCH_ANY);
 	AddButton("\\GravityRoomGUI\\remove.tga", 0, 0, width*.2, height*.2);
 
-	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width/2-150, height/2-150, width/2+150, height/2+150), -900.0f);
+	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width*.8, height/2-75, width, height/2+75), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, autorunArea, CT_TOUCH_ANY);
-	//AddButton("\\GravityRoomGUI\\button.tga", width/2-50, height/2-50, width/2+150, height/2+150);
+	AddButton("\\GravityRoomGUI\\button.tga", width*.8, height/2-75, width, height/2+75);
 #endif
 
 }

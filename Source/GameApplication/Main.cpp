@@ -8,7 +8,7 @@
 
 #include "GameApplicationPCH.h"
 #include <Vision/Runtime/Framework/VisionApp/VAppImpl.hpp> 
-#include <Vision/Runtime/Framework/VisionApp/Modules/VHelp.hpp>
+#include <Vision\Runtime\Framework\VisionApp\Modules\VDefaultMenu.hpp>
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Input/VFreeCamera.hpp>
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Input/VVirtualThumbStick.hpp>
 #include "IController.h"
@@ -122,6 +122,9 @@ void ProjectTemplateApp::Init()
 {
   VISION_HAVOK_SYNC_STATICS();
   VISION_HAVOK_SYNC_PER_THREAD_STATICS(vHavokPhysicsModule::GetInstance());
+
+
+
 	//Initiliaze FPS variables to 0.
 	m_iFrameCounter=0;
 	m_fTimeAccumulator=0;
@@ -155,6 +158,9 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	//RegisterAppModule(new VHelp(help));
 
 
+	
+VDefaultMenu* VDO = GetAppModule<VDefaultMenu>();
+this->DeRegisterAppModule(VDO);
 
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)

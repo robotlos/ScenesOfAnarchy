@@ -36,14 +36,13 @@ bool WaterSimulationController::Run(VInputMap* inputMap){
 		if(menuMode){
 		if(menuDisplayed){
 			// User clicked accept
-			if(this->dialog->GetDialogResult() == 42){
-				//this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
+			if(this->dialog->GetDialogResult() == VGUIManager::GetID("Enter")){
 
 				// Check if automated mode checkbox was selected
-				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("Input2")))->IsChecked()){
+				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("CheckBox")))->IsChecked()){
 					this->autoMode = true;
 				}
-				this->spContext->CloseDialog(this->dialog);
+				this->DeInitGUI();
 				menuMode = false;
 				menuDisplayed = false;
 			}
@@ -79,23 +78,16 @@ void WaterSimulationController::StartAutoMode(){
 
 void WaterSimulationController::EnableMenu(){
 
-	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\InputDialog.xml");
-	int x = Vision::Video.GetXRes();
-	int y = Vision::Video.GetYRes();
-	VPushButton* accept = new VPushButton();
-	accept->SetPosition(90, 350);
-	accept->SetSize(300,75);
-	accept->SetEnabled(true);
-	accept->SetText("Accept");
-	accept->SetDialogResult(42);
-	this->dialog->AddControl(accept);
+	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\CheckBoxDialog.xml");
 
 	menuDisplayed = true;
 }
 
 void WaterSimulationController::DeInitGUI(){
-	this->spContext->CloseDialog(this->dialog);
-	this->dialog = NULL;
+	if(this->dialog != NULL){
+		this->spContext->CloseDialog(this->dialog);
+		this->dialog = NULL;
+	}
 }
 
 void WaterSimulationController::InitMenu(VAppMenuContext* context){
