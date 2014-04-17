@@ -40,7 +40,7 @@ void MenuController::Enable(){
 	VPushButton* buttonScene6 = new VPushButton();
 
 	VPushButton* buttonArray[6] = {buttonGR, buttonToD, buttonScene3, buttonScene4, buttonScene5, buttonScene6};
-	char *sceneNames[6] = {"Gravity Room", "Tower of Doom", "Particle Rain", "Tumbler", "Car Derby", "Water Simulation"};
+	char *sceneNames[6] = {"Gravity Room", "Tower of Doom", "Particle Rain", "Tumbler", "Car Derby", "Maze Craze"};
 
 	for(int i = 0; i < 6; i++){
 		buttonArray[i]->SetPosition((x/2) - x/4, y * i/6 + y/20);		

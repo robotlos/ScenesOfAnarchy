@@ -1,0 +1,8 @@
+<root>
+    <Materials>
+        <Material name="Wood_01" diffuse="Textures\Wood_01.dds" transparency="opaque" doublesided="FALSE" specmul="0.1" specexp="2" parallaxscale="-0.03" parallaxbias="-0.015" lightmapsize="128,128" lightmapgran="0" lightmapID="-1" />
+        <Material name="Wood_02" diffuse="Textures\Wood_02.dds" transparency="opaque" doublesided="FALSE" specmul="0.1" specexp="2" parallaxscale="-0.03" parallaxbias="-0.015" lightmapsize="128,128" lightmapgran="0" lightmapID="-1" />
+        <Material name="Checker" diffuse="Textures\Checker.dds" transparency="opaque" doublesided="FALSE" specmul="0.1" specexp="2" parallaxscale="-0.03" parallaxbias="-0.015" lightmapsize="128,128" lightmapgran="0" lightmapID="-1" />
+        <Material name="Screw" diffuse="Textures\Screw.dds" transparency="opaque" doublesided="FALSE" specmul="0.2" specexp="2" parallaxscale="-0.03" parallaxbias="-0.015" lightmapsize="128,128" lightmapgran="0" lightmapID="-1" />
+    </Materials>
+</root>

@@ -17,7 +17,7 @@
 #include "ParticleRainController.h"
 #include "MenuController.h"
 #include "Constants.h"
-#include "WaterSimulationController.h"
+#include "MazeCraze.h"
 #include "CarDerbyController.h"
 #include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokSync.hpp>
 #include <sstream>
@@ -30,7 +30,7 @@ using namespace std;
 VIMPORT IVisPlugin_cl* GetEnginePlugin_GamePlugin();
 VIMPORT IVisPlugin_cl* GetEnginePlugin_vHavok();
 
-const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","Scenes/CarDerby.vscene", "Scenes/WaterSimulation.vscene"};
+const char *sceneNames[7]={"Scenes/Default.vscene", "Scenes/GravityRoom.vscene","Scenes/TowerOfDoom.vscene","Scenes/ParticleRain.vscene","","Scenes/CarDerby.vscene", "Scenes/Maze.vscene"};
 
 class ProjectTemplateApp : public VAppImpl
 {
@@ -277,10 +277,11 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 	case CAR_DERBY:
 		this->controller = new CarDerbyController();
 		break;
-	case WATER_SIMULATION:
-		this->controller = new WaterSimulationController();
+	case MAZE_CRAZE:
+		this->controller = new MazeCraze();
 		this->controller->MapTriggers(this->GetInputMap());
 		break;
+	
 	default:
 		break;
 	}
