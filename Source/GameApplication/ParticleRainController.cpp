@@ -7,8 +7,30 @@
 int ballCount = 0;
 int camNumber = 0;
 
-// Locations we want to keep track of for automated mode
-std::vector<hkvVec3> locations;
+// 50 Locations
+static hkvVec3 autoModeLocations[] = {hkvVec3(-1600,-600,3000), hkvVec3(-1600,-300,3000), hkvVec3(-1600,0,3000),
+							  hkvVec3(-1600,300,3000), hkvVec3(-1600,600,3000), hkvVec3(-1600,900,3000),
+							  hkvVec3(-1600,1200,3000), hkvVec3(-1600,1500,3000), hkvVec3(-1600,1800,3000),
+							  hkvVec3(-1600,2100,3000), hkvVec3(-1600,2400,3000), hkvVec3(-1600,2700,3000),
+                              hkvVec3(-1600,3000,3000), hkvVec3(-1600,3300,3000), hkvVec3(-1600,3600,3000),
+							  hkvVec3(-1600,3900,3000), hkvVec3(-1600,4200,3000),hkvVec3(-1600,-600,3000), 
+							  
+							  hkvVec3(-600,-300,3000), hkvVec3(-600,0,3000),
+							  hkvVec3(-600,300,3000), hkvVec3(-600,600,3000), hkvVec3(-600,900,3000),
+							  hkvVec3(-600,1200,3000), hkvVec3(-600,1500,3000), hkvVec3(-600,1800,3000),
+							  hkvVec3(-600,2100,3000), hkvVec3(-600,2400,3000), hkvVec3(-600,2700,3000),
+                              hkvVec3(-600,3000,3000), hkvVec3(-600,3300,3000), hkvVec3(-600,3600,3000),
+							  hkvVec3(-600,3900,3000), hkvVec3(-600,4200,3000),
+
+							  hkvVec3(600,-300,3000), hkvVec3(600,0,3000),
+							  hkvVec3(600,300,3000), hkvVec3(600,600,3000), hkvVec3(600,900,3000),
+							  hkvVec3(600,1200,3000), hkvVec3(600,1500,3000), hkvVec3(600,1800,3000),
+							  hkvVec3(600,2100,3000), hkvVec3(600,2400,3000), hkvVec3(600,2700,3000),
+                              hkvVec3(600,3000,3000), hkvVec3(600,3300,3000), hkvVec3(600,3600,3000),
+							  hkvVec3(600,3900,3000), hkvVec3(600,4200,3000)
+							 };
+
+
 
 // Used for Automation mode
 double time_counter = 0;
@@ -23,7 +45,7 @@ ParticleRainController::ParticleRainController(void)
 	last_time = this_time;
 	menuMode = true;
 	menuDisplayed = false;
-	this-autoMode = false;
+	this->autoMode = false;
 	this->userInputBalls = 0;
 }
 
@@ -32,49 +54,43 @@ ParticleRainController::~ParticleRainController(void)
 {
 }
 
-void createBall(hkvVec3 location){
-	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", location, "Models\\Misc\\Sphere.Model");
-	vHavokRigidBody *ball = new vHavokRigidBody();
-	ball->Havok_TightFit = true;
-	ball->Havok_Mass = 5.0f;
-	ball->Havok_Restitution = 1.0f;
-	ball->Shape_Type = ShapeType_SPHERE;
-	ent->SetScaling(1.0f);
-	
-	ent->AddComponent(ball);
-	++ballCount;
-}
 
+// For non automated mode
+void ParticleRainController::RandomRain(int numOfBalls){
+	
+	numOfBalls = numOfBalls <= 0 ?  50 : numOfBalls;
 
-void ParticleRainController::RainBalls(int numOfBalls){
-	
-	// Use previous locations to spawn balls
-	if (!locations.empty()){
-		
-		for (int i = 0; i < locations.size(); i++){
-			createBall(locations.at(i));
-		}
-	}
-	
-	// First time spawning balls
-	else{
-		while (ballCount < numOfBalls){
+	while (ballCount < numOfBalls){
 			int randomx = rand() % 6000 - 3255;
 			int randomy = rand() % 6000 - 1416;
 		
 			hkvVec3 spawnLocation = hkvVec3(randomx, randomy, 3000);
-			locations.push_back(spawnLocation);
-
-			createBall(spawnLocation);
+			AddSphere(randomx, randomy, 3000);
+			++ballCount;
 		}
-	}
 	ballCount = 0;
 }
+
+// Use previous locations to spawn balls
+void ParticleRainController::RainBalls(int numOfBalls){
+	
+		
+		// Only allow 50 or less balls at a time
+		numOfBalls = (numOfBalls <= 0 || numOfBalls > 50) ? 50 : numOfBalls;
+
+		for (int i = 0; i < numOfBalls; i++){
+			AddSphere(autoModeLocations[i].x, autoModeLocations[i].y, autoModeLocations[i].z);
+			++ballCount;
+		}
+	
+	ballCount = 0;
+}
+	
 
 void ParticleRainController::StartAutoMode(){
 	this_time = clock();
 	
-	if (difftime(this_time, last_time) > 1000){
+	if (difftime(this_time, last_time) > 2500){
 		last_time = this_time;
 		this->RainBalls(this->userInputBalls);
 	}
@@ -141,12 +157,13 @@ bool ParticleRainController::Run(VInputMap* inputMap){
 		if (this->autoMode){
 			this->StartAutoMode();
 		}
+		
 	}
 
 	
 
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		this->RainBalls(this->userInputBalls);
+		this->RandomRain(this->userInputBalls);
 	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
 		this->ChangeCam();

@@ -46,6 +46,7 @@ void TowerOfDoomController::StackBlocks(int numOfBlocks){
 		ent->SetObjectKey("Blocks");
 		++blockCount;
 		z = z +100;
+		entityStack->push(ent);
 	}
 	blocksStacked = true;
 }
