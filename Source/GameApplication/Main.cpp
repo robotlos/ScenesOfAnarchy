@@ -219,9 +219,9 @@ void ProjectTemplateApp::UpdateStats(){
 	}
 	end = clock();
 	
-	//Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
+	Vision::Message.Print (1, 10, Vision::Video.GetYRes() - 55, "FPS : %.1f\nFrame Time : %.2f\nEntity Count : %d", m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength());
 	//this->IntToCharPtr(m_fCurrentFps);
-	menu->DisplayMessage("mheee", 0, Vision::Video.GetYRes() * .7);
+//	menu->DisplayMessage("mheee", 0, Vision::Video.GetYRes() * .7);
 
 	//	menu->DisplayMessage(IntToCharPtr(m_fCurrentFps), 0, Vision::Video.GetYRes() * .7);
 //	menu->DisplayMessage(IntToCharPtr(m_fCurrentFrameTime * 1000.0f), 0, Vision::Video.GetYRes() * .8);

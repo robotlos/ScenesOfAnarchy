@@ -6,6 +6,9 @@
 #include <Vision/Runtime/EnginePlugins/Havok/HavokPhysicsEnginePlugin/vHavokPhysicsModule.hpp>
 
 #include <Vision/Runtime/EnginePlugins/VisionEnginePlugin/Input/VFreeCamera.hpp>
+#include "IController.h"
+#include "EntityStack.h"
+
 class MazeCraze : public IController
 {
 public:

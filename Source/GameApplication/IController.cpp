@@ -53,7 +53,7 @@ VisBaseEntity_cl* IController::AddCube(){
 }
 
 VisBaseEntity_cl* IController::AddSphere(float x, float y, float z){
-	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(x, y, z), "Models\\Misc\\Sphere.Model");
+	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(x, y, z), "Assets\\Ball.Model"); // "Models\\Misc\\Sphere.Model");
 	vHavokRigidBody *sphere = new vHavokRigidBody();
 	sphere->Havok_TightFit = true;
 	sphere->Havok_Restitution = 1.0f;
