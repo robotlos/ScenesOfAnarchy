@@ -33,7 +33,7 @@ static hkvVec3 autoModeLocations[] = {hkvVec3(-1600,-600,3000), hkvVec3(-1600,-3
 
 
 // Used for Automation mode
-double time_counter = 0;
+double timecounter = 0;
 clock_t this_time;
 clock_t last_time;
 

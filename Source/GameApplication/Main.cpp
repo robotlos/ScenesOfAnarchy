@@ -340,16 +340,9 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 
 void ProjectTemplateApp::DeInit()
 {
-	// De-Initialization
-<<<<<<< HEAD
-	
 	VISION_HAVOK_UNSYNC_ALL_STATICS()
   VISION_HAVOK_UNSYNC_PER_THREAD_STATICS(vHavokPhysicsModule::GetInstance());
 	
-=======
-	// [...]
-		
->>>>>>> origin/ParticleAutomated
 }
 
 /*
