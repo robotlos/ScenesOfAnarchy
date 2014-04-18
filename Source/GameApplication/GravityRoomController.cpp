@@ -98,7 +98,7 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 
 	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width*.8, height/2-75, width, height/2+75), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, autorunArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\button.tga", width*.8, height/2-75, width, height/2+75);
+	AddButton("\\GravityRoomGUI\\auto.tga", width*.8, height/2-75, 0,0);
 #endif
 
 }

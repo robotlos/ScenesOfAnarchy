@@ -110,7 +110,6 @@ void TowerOfDoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, V_KEYBOARD, VInputControl::CT_KB_LEFT, VInputOptions::Once());
 	
 #endif
-	
 #if defined(_VISION_ANDROID)
 	int width = Vision::Video.GetXRes();
 	int height = Vision::Video.GetYRes();

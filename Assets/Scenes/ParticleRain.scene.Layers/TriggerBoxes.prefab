@@ -1,0 +1,59 @@
+<root>
+  <info createdby="vForge version 2013.2.5.1" />
+  <header version="0" name="" description="" category="" convertible="True" autosavebinary="True" relativefilenames="False" />
+  <thumbnail type="jpg" size="1651">/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==</thumbnail>
+  <shape class="TriggerBoxShape">
+    <property name="Enabled" value="True" />
+    <property name="ObserverFlags" value="AllEntities" />
+    <property name="DestroyOnTrigger" value="False" />
+    <property name="TriggerShape" value="Box" />
+    <property name="BoxSizeX" value="6000" />
+    <property name="BoxSizeY" value="6000" />
+    <property name="BoxSizeZ" value="314" />
+    <property name="Preview3D" value="True" />
+    <property name="Preview2D" value="True" />
+    <property name="PreviewColor" value="160,190,255,255" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-255.0212,1583.84,227.7162" />
+    <property name="Orientation" value="0,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="TriggerBox0" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16478604039353794562" />
+    <component class="VScriptComponent" paramstring="ComponentID=;ScriptFile=Scripts/GravityLift.lua;" visible="True" serializable="True" editable="True" removable="True" />
+    <linksource class="LinkSourceTriggerComponent" name="OnCameraEnter" ID="OnCameraEnter" />
+    <linksource class="LinkSourceTriggerComponent" name="OnCameraLeave" ID="OnCameraLeave" />
+    <linksource class="LinkSourceTriggerComponent" name="OnObjectEnter" ID="OnObjectEnter" />
+    <linksource class="LinkSourceTriggerComponent" name="OnObjectLeave" ID="OnObjectLeave" />
+  </shape>
+  <shape class="TriggerBoxShape">
+    <property name="Enabled" value="True" />
+    <property name="ObserverFlags" value="AllEntities" />
+    <property name="DestroyOnTrigger" value="False" />
+    <property name="TriggerShape" value="Box" />
+    <property name="BoxSizeX" value="14855.15" />
+    <property name="BoxSizeY" value="10634.96" />
+    <property name="BoxSizeZ" value="314" />
+    <property name="Preview3D" value="True" />
+    <property name="Preview2D" value="True" />
+    <property name="PreviewColor" value="160,190,255,255" />
+    <property name="ObjectKey" value="" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-255.0212,1583.84,-1749.5" />
+    <property name="Orientation" value="0,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="TriggerBox1" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="16478604039353794566" />
+    <component class="VScriptComponent" paramstring="ComponentID=;ScriptFile=Scripts\092Remove.lua;" visible="True" serializable="True" editable="True" removable="True" />
+    <linksource class="LinkSourceTriggerComponent" name="OnCameraEnter" ID="OnCameraEnter" />
+    <linksource class="LinkSourceTriggerComponent" name="OnCameraLeave" ID="OnCameraLeave" />
+    <linksource class="LinkSourceTriggerComponent" name="OnObjectEnter" ID="OnObjectEnter" />
+    <linksource class="LinkSourceTriggerComponent" name="OnObjectLeave" ID="OnObjectLeave" />
+  </shape>
+</root>

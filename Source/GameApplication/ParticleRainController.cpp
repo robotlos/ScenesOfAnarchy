@@ -135,11 +135,11 @@ bool ParticleRainController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
 			// User clicked accept
-			if(this->dialog->GetDialogResult() == 42){
-				this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
+			if(this->dialog->GetDialogResult() == VGUIManager::GetID("Enter")){
+				//this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
 				
 				// Check if automated mode checkbox was selected
-				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("Input2")))->IsChecked()){
+				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("CheckBox")))->IsChecked()){
 					this->autoMode = true;
 				}
 				this->spContext->CloseDialog(this->dialog);
@@ -173,7 +173,7 @@ bool ParticleRainController::Run(VInputMap* inputMap){
 
 void ParticleRainController::EnableMenu(){
 
-	this->dialog = spContext->ShowDialog("Assets\\Dialogs\\InputDialog.xml");
+	this->dialog = spContext->ShowDialog("Assets\\CheckBoxDialog.xml");
 	int x = Vision::Video.GetXRes();
 	int y = Vision::Video.GetYRes();
 	//To properly scale the dialog box grab input object
@@ -185,13 +185,6 @@ void ParticleRainController::EnableMenu(){
 	logo->Image().SetTexture(Vision::TextureManager.Load2DTexture("Assets\\Dialogs\\TOD.png"));
 	this->dialog->AddControl(logo);
 	*/
-	VPushButton* accept = new VPushButton();
-	accept->SetPosition(90, 350);
-	accept->SetSize(300,75);
-	accept->SetEnabled(true);
-	accept->SetText("Accept");
-	accept->SetDialogResult(42);
-	this->dialog->AddControl(accept);
 	
 	menuDisplayed = true;
 }

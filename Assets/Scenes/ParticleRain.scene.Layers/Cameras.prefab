@@ -1,0 +1,101 @@
+<root>
+  <info createdby="vForge version 2013.2.5.1" />
+  <header version="0" name="" description="" category="" convertible="True" autosavebinary="True" relativefilenames="False" />
+  <thumbnail type="jpg" size="1651">/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAQADASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5/ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA//2Q==</thumbnail>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-1819.804,-372.9621,403.0085" />
+    <property name="Orientation" value="72.69326,-7.636969,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="CameraPosition" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241794" />
+  </shape>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam1" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="1556.172,-180.5276,243.1764" />
+    <property name="Orientation" value="150.2932,-2.636966,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="CameraPosition1" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241796" />
+  </shape>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam2" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-28.65102,-684.7299,365.7813" />
+    <property name="Orientation" value="64.19318,-9.036963,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="CameraPosition2" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241797" />
+  </shape>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam3" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-434.8006,2911.988,340.4548" />
+    <property name="Orientation" value="-146.2069,-4.036954,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="CameraPosition3" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241799" />
+  </shape>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam4" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-967.4039,2504.96,651.8157" />
+    <property name="Orientation" value="-161.2067,-3.836952,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="CameraPosition4" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241800" />
+  </shape>
+  <shape class="CameraPositionShape">
+    <property name="ShortCut" value="None" />
+    <property name="FOV" value="0" />
+    <property name="NearClipDistance" value="0" />
+    <property name="FarClipDistance" value="0" />
+    <property name="ObjectKey" value="cam5" />
+    <property name="Visible" value="True" />
+    <property name="Position" value="-2373.76,-523.7184,1830.864" />
+    <property name="Orientation" value="53,0,0" />
+    <property name="Scaling" value="1,1,1" />
+    <property name="TextLabel" value="" />
+    <property name="ShapeName" value="cam_texturecomparison" />
+    <property name="UserDataString" value="" />
+    <property name="ExportShape" value="True" />
+    <property name="UniqueID" value="14200090997966241801" />
+  </shape>
+</root>

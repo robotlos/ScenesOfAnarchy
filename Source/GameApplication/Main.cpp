@@ -141,7 +141,7 @@ void ProjectTemplateApp::Init()
 	VisAppLoadSettings settings(sceneNames[currentSceneID]);
 	settings.m_customSearchPaths.Append(":template_root/Assets");
 	LoadScene(settings);
-	menu->Enable();
+	menu->Enable(this->GetInputMap());
 
 
 
@@ -160,7 +160,8 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 
 	
 VDefaultMenu* VDO = GetAppModule<VDefaultMenu>();
-this->DeRegisterAppModule(VDO);
+
+//this->DeRegisterAppModule(VDO);
 
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
@@ -185,7 +186,7 @@ bool ProjectTemplateApp::Run()
 {	
 	if(currentSceneID==MAIN_MENU){
 		//Do menu stuff
-		int newSceneID = menu->Run();
+		int newSceneID = menu->Run(this->GetInputMap());
 		if(newSceneID != MAIN_MENU){
 			SwitchScene(newSceneID);
 			SwitchController(newSceneID);
@@ -202,13 +203,13 @@ bool ProjectTemplateApp::Run()
 		if(!doNotExit){
 			SwitchScene(MAIN_MENU);
 			controller = NULL;
-			menu->Enable();
+			menu->Enable(this->GetInputMap());
 		}
 		if(ProjectTemplateApp::GetInputMap()->GetTrigger(VAPP_EXIT)){
 			SwitchScene(MAIN_MENU);
 			currentSceneID = MAIN_MENU;
 			controller = NULL;
-			menu->Enable();
+			menu->Enable(this->GetInputMap());
 		}
 	}
 	return true;
