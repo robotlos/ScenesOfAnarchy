@@ -18,7 +18,7 @@ public:
 	virtual void MapTriggers(VInputMap* inputMap) HKV_OVERRIDE;
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
 
-	virtual VisBaseEntity_cl* AddBall(float x, float y, float z, float scaling);
+	virtual VisBaseEntity_cl* fixBall(VisBaseEntity_cl *ball);
 
 };
 
