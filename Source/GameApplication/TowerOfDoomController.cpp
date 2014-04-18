@@ -13,7 +13,6 @@
 #include <stdlib.h>
 
 
-
 TowerOfDoomController::TowerOfDoomController(void)
 {
 	VisBaseEntity_cl *pCamera  =  Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(0, 0, 0));
@@ -53,6 +52,7 @@ void TowerOfDoomController::StackBlocks(int numOfBlocks){
 		ent->SetObjectKey("Blocks");
 		++blockCount;
 		z = z +100;
+		entityStack->push(ent);
 	}
 	blocksStacked = true;
 }
@@ -69,14 +69,8 @@ void TowerOfDoomController::Swipe(VInputMap *inputMap){
 	//hkvVec3 point = project3D(x, y, 1000);
 }
 
-hkvVec3 project3D(float x, float y, float fDist)
-{
-    hkvVec3 traceStart = Vision::Camera.GetCurrentCameraPosition();
-    hkvVec3 traceDir;
-    Vision::Contexts.GetCurrentContext()->GetTraceDirFromScreenPos(x, y, traceDir, fDist);
-    hkvVec3 traceEnd = traceStart + traceDir;    
-    return hkvVec3(traceEnd);
-}
+
+
 bool TowerOfDoomController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
@@ -126,6 +120,7 @@ void TowerOfDoomController::MapTriggers(VInputMap* inputMap){
 	
 #endif
 }
+
 
 void TowerOfDoomController::EnableMenu(){
 

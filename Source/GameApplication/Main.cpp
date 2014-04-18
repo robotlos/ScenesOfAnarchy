@@ -309,6 +309,7 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		this->controller->MapTriggers(this->GetInputMap());
 		break;
 	case TOWER_OF_DOOM:
+		
 		this->controller = new TowerOfDoomController();
 		this->controller->MapTriggers(this->GetInputMap());
 		//Extremely hacky, Might be dangerous.
@@ -316,6 +317,9 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 		break;
 	case PARTICLE_RAIN:
 		this->controller = new ParticleRainController();
+
+		this->controller->MapTriggers(this->GetInputMap());
+		((ParticleRainController*)this->controller)->InitMenu(this->GetContext());
 		break;
 	case TUMBLER:
 		break;
@@ -337,10 +341,15 @@ void ProjectTemplateApp::SwitchController(int sceneID){
 void ProjectTemplateApp::DeInit()
 {
 	// De-Initialization
+<<<<<<< HEAD
 	
 	VISION_HAVOK_UNSYNC_ALL_STATICS()
   VISION_HAVOK_UNSYNC_PER_THREAD_STATICS(vHavokPhysicsModule::GetInstance());
 	
+=======
+	// [...]
+		
+>>>>>>> origin/ParticleAutomated
 }
 
 /*
