@@ -80,6 +80,7 @@
       <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodexL.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodeventL.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
+      <Orientation>landscape</Orientation>
     </Deploy>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dev|hkAndroid'">
@@ -99,6 +100,7 @@
       <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodex.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodevent.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
+      <Orientation>landscape</Orientation>
     </Deploy>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|hkAndroid'">
@@ -118,6 +120,7 @@
       <WriteExternal>true</WriteExternal>
       <Libraries>$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodex.so;$(HAVOK_THIRDPARTY_DIR)/redistsdks/fmod/4.44.23/lib/android/armeabi-v7a/libfmodevent.so</Libraries>
       <Assets>..\../Data/Vision/Base/ Data/Vision/Base/;..\../Assets/ Assets/</Assets>
+      <Orientation>landscape</Orientation>
     </Deploy>
   </ItemDefinitionGroup>
   <ItemGroup>

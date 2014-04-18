@@ -10,6 +10,7 @@ IController::IController(void)
 {
 	entityStack = new EntityStack();
 	maskCount = 0;
+	bodyCount = 0;
 }
 
 
@@ -17,7 +18,17 @@ IController::~IController(void)
 {
 }
 
+void IController::UnMapTriggers(VInputMap* inputMap){
+	inputMap->UnmapInput(CUSTOM_CONTROL_ONE);
+	inputMap->UnmapInput(CUSTOM_CONTROL_TWO);
+	inputMap->UnmapInput(CUSTOM_CONTROL_THREE);
+	inputMap->UnmapInput(CUSTOM_CONTROL_FOUR);
+	inputMap->UnmapInput(CUSTOM_CONTROL_FIVE);
+}
 
+int IController::GetBodyCount(){
+	return this->bodyCount;
+}
 
 VisBaseEntity_cl* IController::AddRagdoll(){
 	VisBaseEntity_cl *ent = Vision::Game.CreateEntity("VisBaseEntity_cl", hkvVec3(-100.0f, 5, 100), "Models\\Warrior\\Warrior.model");
@@ -87,15 +98,14 @@ VisBaseEntity_cl* IController::AddRagdoll(float x, float y, float z){
 	return ent;
 }
 
-void IController::AddButton(char* buttonImage, int x, int y, int width, int height){
+VisScreenMask_cl* IController::AddButton(char* buttonImage, int x, int y, int width, int height){
 	VisScreenMask_cl *butt = new VisScreenMask_cl();
 	butt->LoadFromFile(buttonImage);
 	butt->SetPos(x,y);
 	if(width !=0 && height !=0){
 		butt->SetTargetSize(width, height);
 	}
-	masks[maskCount] = butt;
-	maskCount++;
+	return butt;
 }
 
 void IController::RemoveLast(void)

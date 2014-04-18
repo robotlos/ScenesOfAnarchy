@@ -46,16 +46,20 @@ bool GravityRoomController::Run(VInputMap* inputMap){
 	if(!automate)
 	{
 		if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-			this->AddCube();
-			//this->RemoveLast();
+			this->entityStack->push(this->AddCube());
+			bodyCount++;
 		}
 		if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
-			this->AddSphere(-100.0f, -30, 100);
-			//this->RemoveLast();
+			this->entityStack->push(this->AddSphere(-100.0f, -30, 100));
+			bodyCount++;
 		}
 		if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
-			this->AddRagdoll(-100.0f, 5, 100);
+			this->entityStack->push(this->AddRagdoll(-100.0f, 5, 100));
+			bodyCount++;
 		}
+		/*if(inputMap->GetTrigger(CUSTOM_CONTROL_FOUR)){
+			this->entityStack->pop();
+		}*/
 		if(inputMap->GetTrigger(CUSTOM_CONTROL_FIVE)){
 			automate = true;
 		}
@@ -73,7 +77,7 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_ONE, V_KEYBOARD, VInputControl::CT_KB_UP, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, V_KEYBOARD, VInputControl::CT_KB_DOWN, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, V_KEYBOARD, VInputControl::CT_KB_LEFT, VInputOptions::Once());
-	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, V_KEYBOARD, VInputControl::CT_KB_RIGHT, VInputOptions::Once());
+	//inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, V_KEYBOARD, VInputControl::CT_KB_RIGHT, VInputOptions::Once());
 	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, V_KEYBOARD, VInputControl::CT_KB_HOME, VInputOptions::Once());
 #endif
 	
@@ -92,13 +96,13 @@ void GravityRoomController::MapTriggers(VInputMap* inputMap){
 	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, addSphereArea, CT_TOUCH_ANY);
 	AddButton("\\GravityRoomGUI\\ragdoll.tga", width*.8, height*.8, width*.2, height*.2);
 
-	VTouchArea* removeLastArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0.0f, 0.0f ,width * .2f , height * .2f ), -900.0f);
-	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, removeLastArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\remove.tga", 0, 0, width*.2, height*.2);
+	//VTouchArea* removeLastArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0.0f, 0.0f ,width * .2f , height * .2f ), -900.0f);
+	//inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, removeLastArea, CT_TOUCH_ANY);
+	//AddButton("\\GravityRoomGUI\\remove.tga", 0, 0, width*.2, height*.2);
 
-	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width*.8, height/2-75, width, height/2+75), -900.0f);
+	VTouchArea* autorunArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( width*.8, height/2-30, width*.8+150, height/2+30), -900.0f);
 	inputMap->MapTrigger(CUSTOM_CONTROL_FIVE, autorunArea, CT_TOUCH_ANY);
-	AddButton("\\GravityRoomGUI\\auto.tga", width*.8, height/2-75, 0,0);
+	AddButton("\\GravityRoomGUI\\Auto.png", width*.8, height/2-30,0, 0);
 #endif
 
 }
@@ -110,12 +114,18 @@ void GravityRoomController::autorun() {
 	grav = rotate * grav;
 	pMod->SetGravity(grav);
 
-	if(time%60 == 0)
+	if(time%60 == 0){
 		this->AddCube();
-	if(time%50 == 0)
+	bodyCount++;
+	}
+	if(time%50 == 0){
 		this->AddSphere();
-	if(time%200 == 0)
+	bodyCount++;
+}
+	if(time%200 == 0){
 		this->AddRagdoll();
+	bodyCount++;
+	}
 
 	if(time > 3600)
 	{

@@ -12,22 +12,26 @@ public:
 	virtual ~ParticleRainController(void);
 	virtual void MapTriggers(VInputMap* inputMap) HKV_OVERRIDE;
 	virtual bool Run(VInputMap* inputMap) HKV_OVERRIDE;
+	virtual void DeInitGUI() HKV_OVERRIDE;
 	void RainBalls(int numOfBalls);
 	void RandomRain(int numOfBalls);
 	void StartAutoMode();
 	VDialog* dialog;
 	void ChangeCam();
 	void InitMenu(VAppMenuContext* context);
-	void EnableMenu();
+	void EnableMenu(VInputMap* inputMap);
 	bool menuMode;
 	bool menuDisplayed;
 	bool autoMode;
+	int time;
 	VAppMenuContext* spContext;
 	int userInputBalls;
 
 #if defined(_VISION_ANDROID)
 	vHavokPhysicsModule* pMod;
 	VMotionInputAndroid* pMotionInput;
+	VisScreenMask_cl* autoButt;
+	VisScreenMask_cl* normalButt;
 #endif
 };
 

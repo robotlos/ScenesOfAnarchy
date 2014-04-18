@@ -22,6 +22,7 @@ TowerOfDoomController::TowerOfDoomController(void)
 	menuMode = true;
 	menuDisplayed = false;
 	blocksStacked = false;
+	
 }
 
 
@@ -52,7 +53,7 @@ void TowerOfDoomController::StackBlocks(int numOfBlocks){
 		ent->SetObjectKey("Blocks");
 		++blockCount;
 		z = z +100;
-		entityStack->push(ent);
+		bodyCount++;
 	}
 	blocksStacked = true;
 }
@@ -89,6 +90,7 @@ bool TowerOfDoomController::Run(VInputMap* inputMap){
 		if(!blocksStacked){
 			
 				Vision::Game.RemoveEntity("Blocks");
+				bodyCount = 0;
 			this->StackBlocks(this->blockCount);
 		}
 		else{

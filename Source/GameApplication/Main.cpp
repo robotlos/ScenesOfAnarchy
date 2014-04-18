@@ -60,6 +60,7 @@ public:
 	float previousFps;
 	ofstream stats;
 	clock_t begin, end;
+	long cps;
 
 	///changes by carlos
 	void addButtons();
@@ -161,7 +162,7 @@ void ProjectTemplateApp::AfterSceneLoaded(bool bLoadingSuccessful)
 	
 VDefaultMenu* VDO = GetAppModule<VDefaultMenu>();
 
-//this->DeRegisterAppModule(VDO);
+this->DeRegisterAppModule(VDO);
 
 
 	// Create a mouse controlled camera (set above the ground so that we can see the ground)
@@ -218,7 +219,7 @@ bool ProjectTemplateApp::Run()
 void ProjectTemplateApp::UpdateFPS(){
 	m_iFrameCounter++;
 	m_fTimeAccumulator += Vision::GetUITimer()->GetTimeDifference();
-	static long cps = 0;
+	cps = 0;
 	static hkpWorld *myWorld = vHavokPhysicsModule::GetInstance()->GetPhysicsWorld();
 	static vHavokPhysicsModule *pMod = static_cast<vHavokPhysicsModule*>(vHavokPhysicsModule::GetInstance());
 
@@ -266,7 +267,7 @@ void ProjectTemplateApp::UpdateStats(){
 	}
 	Vision::Message.Print(1, 10, Vision::Video.GetYRes() - 60,
 		"FPS: %.1f\nFrame Time: %.2f\nBody Count: %d\nCollisions Detected: %u",
-		m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->entityStack->getLength(), cps);
+		m_fCurrentFps, m_fCurrentFrameTime * 1000.0f, controller->GetBodyCount(), cps);
 
 	Vision::Message.Print(1,10,Vision::Video.GetYRes() - 90,
 		"Solver Iterations: %i\nMicro-steps: %i",i,m);
@@ -287,12 +288,14 @@ void ProjectTemplateApp::RecordFPS()
 	ss << controller->entityStack->getLength();
 	ss << ", ";
 	ss << elapsed_secs;
+	ss<<","<<cps;
 	std::string s = ss.str() + "\n";
 	stats << s;
 }
 void ProjectTemplateApp::SwitchScene(int sceneID){
 		if(this->controller != NULL){
 			this->controller->DeInitGUI();
+			this->controller->UnMapTriggers(this->GetInputMap());
 	}
 	this->m_pSceneLoader->UnloadScene();
 	VisAppLoadSettings settings(sceneNames[sceneID]);

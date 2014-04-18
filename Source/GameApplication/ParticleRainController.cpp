@@ -47,6 +47,12 @@ ParticleRainController::ParticleRainController(void)
 	menuDisplayed = false;
 	this->autoMode = false;
 	this->userInputBalls = 0;
+	time = 0;
+	this->dialog = NULL;
+#if defined(_VISION_ANDROID)
+	autoButt=NULL;
+	normalButt=NULL;
+#endif
 }
 
 
@@ -54,7 +60,21 @@ ParticleRainController::~ParticleRainController(void)
 {
 }
 
+void ParticleRainController::DeInitGUI(){
+	if(this->dialog!=NULL){
+		this->spContext->CloseDialog(this->dialog);
+		this->dialog = NULL;
+	}
+#if defined(_VISION_ANDROID)
+	if(autoButt!=NULL){
+	autoButt->DisposeObject();
+	normalButt->DisposeObject();
+	autoButt=NULL;
+	normalButt=NULL;
+	}
+#endif
 
+}
 // For non automated mode
 void ParticleRainController::RandomRain(int numOfBalls){
 	
@@ -67,6 +87,7 @@ void ParticleRainController::RandomRain(int numOfBalls){
 			hkvVec3 spawnLocation = hkvVec3(randomx, randomy, 3000);
 			AddSphere(randomx, randomy, 3000);
 			++ballCount;
+			bodyCount++;
 		}
 	ballCount = 0;
 }
@@ -81,6 +102,7 @@ void ParticleRainController::RainBalls(int numOfBalls){
 		for (int i = 0; i < numOfBalls; i++){
 			AddSphere(autoModeLocations[i].x, autoModeLocations[i].y, autoModeLocations[i].z);
 			++ballCount;
+			bodyCount++;
 		}
 	
 	ballCount = 0;
@@ -90,10 +112,11 @@ void ParticleRainController::RainBalls(int numOfBalls){
 void ParticleRainController::StartAutoMode(){
 	this_time = clock();
 	
-	if (difftime(this_time, last_time) > 2500){
+	if(time%80 == 0){
 		last_time = this_time;
-		this->RainBalls(this->userInputBalls);
+		this->RainBalls(15);
 	}
+	time++;
 	
 }
 
@@ -135,21 +158,53 @@ bool ParticleRainController::Run(VInputMap* inputMap){
 	if(menuMode){
 		if(menuDisplayed){
 			// User clicked accept
+#if defined(WIN32)
 			if(this->dialog->GetDialogResult() == VGUIManager::GetID("Enter")){
-				//this->userInputBalls = atoi((((VTextControl *)this->dialog->Items().FindItem(VGUIManager::GetID("Input")))->GetText()));
 				
 				// Check if automated mode checkbox was selected
 				if (((VCheckBox *)this->dialog->Items().FindItem(VGUIManager::GetID("CheckBox")))->IsChecked()){
 					this->autoMode = true;
 				}
-				this->spContext->CloseDialog(this->dialog);
+				this->DeInitGUI();
 				menuMode = false;
 				menuDisplayed = false;
 			}
+#endif
+#if defined(_VISION_ANDROID)
+			int width = Vision::Video.GetXRes();
+	int height = Vision::Video.GetYRes();
+	float mid = width /2.0;
+			if(inputMap->GetTrigger(CUSTOM_CONTROL_THREE)){
+				this->autoMode = true;
+				this->DeInitGUI();
+				inputMap->UnmapInput(CUSTOM_CONTROL_THREE);
+				inputMap->UnmapInput(CUSTOM_CONTROL_FOUR);
+				menuMode = false;
+				menuDisplayed = false;
+				VTouchArea* toggleCamera = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(width*.8, (float)height * 0.6f-30, (float)width*.8+150, (float)height * 0.6f+30), -900.0f);
+				inputMap->MapTrigger(CUSTOM_CONTROL_TWO, toggleCamera, CT_TOUCH_ANY);
+				AddButton("\\Textures\\ChangeCam.png", width*.8, (float)height * 0.6f-30, 0,0);
+			}
+			if(inputMap->GetTrigger(CUSTOM_CONTROL_FOUR)){
+				this->autoMode = false;
+				this->DeInitGUI();
+				inputMap->UnmapInput(CUSTOM_CONTROL_THREE);
+				inputMap->UnmapInput(CUSTOM_CONTROL_FOUR);
+				menuMode = false;
+				menuDisplayed = false;
+				VTouchArea* toggleCamera = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(width*.8, (float)height * 0.6f-30, (float)width*.8+150, (float)height * 0.6f+30), -900.0f);
+				inputMap->MapTrigger(CUSTOM_CONTROL_TWO, toggleCamera, CT_TOUCH_ANY);
+				AddButton("\\Textures\\ChangeCam.png", width*.8, (float)height * 0.6f-30, 0,0);
+				VTouchArea* addBallsArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(width*.8, (float)height * 0.3f-30, (float)width*.8+150, (float)height * 0.3f+30), -900.0f);
+				inputMap->MapTrigger(CUSTOM_CONTROL_ONE, addBallsArea, CT_TOUCH_ANY);
+				AddButton("\\Textures\\Drop.png", width*.8, (float)height * 0.3f-30, 0,0);
+			}
+#endif
 
 		}
 		else{
-			EnableMenu();
+			this->ChangeCam();
+			EnableMenu(inputMap);
 		}
 	}
 	else{
@@ -157,35 +212,40 @@ bool ParticleRainController::Run(VInputMap* inputMap){
 		if (this->autoMode){
 			this->StartAutoMode();
 		}
-		
+		else{
+			if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
+				this->RandomRain(15);
+			}
+		}
 	}
 
 	
 
-	if(inputMap->GetTrigger(CUSTOM_CONTROL_ONE)){
-		this->RandomRain(this->userInputBalls);
-	}
 	if(inputMap->GetTrigger(CUSTOM_CONTROL_TWO)){
 		this->ChangeCam();
 	}
 	return true;
 }
 
-void ParticleRainController::EnableMenu(){
-
+void ParticleRainController::EnableMenu(VInputMap* inputMap){
+#if defined(WIN32)
 	this->dialog = spContext->ShowDialog("Assets\\CheckBoxDialog.xml");
-	int x = Vision::Video.GetXRes();
-	int y = Vision::Video.GetYRes();
-	//To properly scale the dialog box grab input object
-	//this->dialog->Items().FindItem(//Find input by id);
-	/*
-	VImageControl* logo = new VImageControl();
-	logo->SetPosition(50,50);
-	logo->SetSize(300,75);
-	logo->Image().SetTexture(Vision::TextureManager.Load2DTexture("Assets\\Dialogs\\TOD.png"));
-	this->dialog->AddControl(logo);
-	*/
 	
+#endif
+	int width = Vision::Video.GetXRes();
+	int height = Vision::Video.GetYRes();
+	float mid = width /2.0;
+
+#if defined(_VISION_ANDROID)
+	VTouchArea* autoMode = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(mid-75, (float)height*.25f, mid+75, (float)height*.25f+60), -900.0f);
+	inputMap->MapTrigger(CUSTOM_CONTROL_THREE, autoMode, CT_TOUCH_ANY);
+	autoButt = AddButton("\\Textures\\Auto.png", (int)mid-75, height*.25f, 0,0);
+	VTouchArea* dropMode = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(mid-75, (float)height*.75f, mid+75, (float)height*.75f+60), -900.0f);
+	inputMap->MapTrigger(CUSTOM_CONTROL_FOUR, dropMode, CT_TOUCH_ANY);
+	normalButt = AddButton("\\Textures\\Drop.png", (int)mid-75, height*.75f, 0,0);
+#endif
+
+
 	menuDisplayed = true;
 }
 
@@ -203,11 +263,11 @@ void ParticleRainController::MapTriggers(VInputMap* inputMap){
 #if defined(_VISION_ANDROID)
 	int width = Vision::Video.GetXRes();
 	int height = Vision::Video.GetYRes();
-	
-	VTouchArea* addBallsArea = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(0.0f, (float)height * 0.5f, (float)width, (float)height), -900.0f);
-	inputMap->MapTrigger(CUSTOM_CONTROL_ONE, addBallsArea, CT_TOUCH_ANY);
-	VTouchArea* toggleCamera = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef(0.0f, 0.0f, (float)width, (float)height * 0.5f), -900.0f);
-	inputMap->MapTrigger(CUSTOM_CONTROL_TWO, toggleCamera, CT_TOUCH_ANY);
+	float mid = width /2.0;
+
+
+
+
 
 #endif
 }

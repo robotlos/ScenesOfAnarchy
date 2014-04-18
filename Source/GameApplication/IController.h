@@ -18,12 +18,14 @@ public:
 	virtual bool Run(VInputMap* inputMap){
 		return true;
 	}
-
+	void UnMapTriggers(VInputMap* inputMap);
+	int GetBodyCount();
 protected:
 	//VisBaseEntity_cl* AddEntity();
+	int bodyCount;
 	VisScreenMask_cl* masks[7];
 	int maskCount;
-	void AddButton(char* buttonImage, int x, int y, int height, int width);
+	VisScreenMask_cl* AddButton(char* buttonImage, int x, int y, int height, int width);
 	VisBaseEntity_cl* AddSphere();
 	VisBaseEntity_cl* AddCube();
 	VisBaseEntity_cl* AddRagdoll();

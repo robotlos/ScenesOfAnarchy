@@ -27,20 +27,20 @@ void MenuController::AndroidMenu(VInputMap* inputMap){
 	
 	//AddButton("\\GravityRoomGUI\\button.tga", width*.8, height/2-75, width, height/2+75);
 	
-		int pos =  y * 1/6 + y/20;
-		VTouchArea* area = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, 75), -900.0f);
+		int pos =  y * 0/6 + y/20;
+		VTouchArea* area = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, pos+75), -900.0f);
 		inputMap->MapTrigger(GR, area, CT_TOUCH_ANY, VInputOptions::Once());
 		this->AddButton("\\Textures\\gravroom.png", 0, pos, 0, 0);
-		pos =  y * 2/6 + y/20;
-		VTouchArea* area2 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, 75), -900.0f);
+		pos =  y * 1/6 + y/20;
+		VTouchArea* area2 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, pos+75), -900.0f);
 		inputMap->MapTrigger(TOD, area2, CT_TOUCH_ANY, VInputOptions::Once());
 		this->AddButton("\\Textures\\tod.png", 0, pos, 0, 0);
-		pos =  y * 3/6 + y/20;
-		VTouchArea* area3 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, 75), -900.0f);
+		pos =  y * 2/6 + y/20;
+		VTouchArea* area3 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, pos+75), -900.0f);
 		inputMap->MapTrigger(PR, area3, CT_TOUCH_ANY, VInputOptions::Once());
 		this->AddButton("\\Textures\\pr.png", 0, pos, 0, 0);
-		pos =  y * 4/6 + y/20;
-		VTouchArea* area4 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, 75), -900.0f);
+		pos =  y * 3/6 + y/20;
+		VTouchArea* area4 = new VTouchArea(VInputManager::GetTouchScreen(),VRectanglef( 0, pos, x/2.0, pos+75), -900.0f);
 		inputMap->MapTrigger(TUM, area4, CT_TOUCH_ANY, VInputOptions::Once());
 		this->AddButton("\\Textures\\tumb.png", 0, pos, 0, 0);
 	
@@ -51,7 +51,6 @@ void MenuController::Enable(VInputMap* inputMap){
 	//for(int i = 0; i < openDialogs.Count(); i++){
 		//spContext->CloseDialog(openDialogs.GetAt(i));
 	//}
-	
 	this->enabled=true;
 #if defined(WIN32)
 	this->m_pMainMenuDialog = spContext->ShowDialog("Assets\\MainMenu.xml");
